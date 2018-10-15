@@ -1,3 +1,5 @@
+# Injection Dependent
+
 This is our final to finish the course at Maker's Academy. The intention of the project is to help those with type 1 diabetes manage the condition by creating a mobile app that tracks and advises on injection sites.
 
 ## Team
@@ -18,4 +20,16 @@ First start by cloning this repo:
 
 ```
 git clone https://github.com/Alastair2D/injection_dependent
+```
+
+## User Stories
+
+```
+As a user,
+so I know where to inject,
+I want the app to generate a suggestion.
+
+As a user,
+so I know the last injection site,
+I want to be able to see this.
 ```
