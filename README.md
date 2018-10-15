@@ -14,6 +14,11 @@ This is our final to finish the course at Maker's Academy. The intention of the 
 
 [Harry Pugh](https://github.com/hjpugh)
 
+## Resources
+
+[Instagram](https://www.instagram.com/injection.dependent/?hl=en)
+[Trello](https://trello.com/injectiondependent)
+
 ## How to Use
 
 First start by cloning this repo:
