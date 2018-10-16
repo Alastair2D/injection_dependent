@@ -14,7 +14,6 @@ describe('App', () => {
     it('should render the the text Welcome to React Native! in our first text tag', () => {
       const app = shallow(<App />);
       const text = app.find('#welcome').dive().text();
-      console.log(text);
       expect(text).toEqual('Welcome to Injection Dependent');
     });
   });
