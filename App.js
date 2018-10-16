@@ -1,5 +1,7 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import CurrentSite from "./src/CurrentSite";
+import PreviousSite from "./src/PreviousSite";
 
 export default class App extends React.Component {
   constructor(props) {
@@ -15,11 +17,13 @@ export default class App extends React.Component {
       sites: rotatedSites
     })
   }
+  
   render() {
     return (
       <View style={styles.container}>
         <Text id="welcome">Welcome to Injection Dependent</Text>
         <Text id="site">{this.state.sites[0]}</Text>
+        <CurrentSite />;<PreviousSite />;
       </View>
     );
   }
@@ -28,8 +32,8 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center"
+  }
 });
