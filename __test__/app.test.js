@@ -32,9 +32,17 @@ describe("App", () => {
 
     it('should change the site after clicking confirmed', () => {
       const app = shallow(<App />);
-      handleConfirmation();
+      app.instance().handleConfirmation();
       const text = app.find('#site').dive().text();
       expect(text).toEqual('Left leg');
+    });
+
+    it('should change the site again after clicking confirmed a second time', () => {
+      const app = shallow(<App />);
+      app.instance().handleConfirmation();
+      app.instance().handleConfirmation();
+      const text = app.find('#site').dive().text();
+      expect(text).toEqual('Left arm');
     });
   });
 });
