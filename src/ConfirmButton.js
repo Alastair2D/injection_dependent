@@ -7,5 +7,11 @@ class ConfirmButton extends Comppnent {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit() {}
+  handleSubmit(event) {
+    event.preventDefault();
+    const { onSubmit } = this.props;
+    onSubmit();
+  }
 }
+
+export default ConfirmButton;
