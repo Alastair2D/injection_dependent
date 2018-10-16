@@ -7,13 +7,16 @@ export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      sites: ["Left arm", "Left leg"]
+      sites: ["Left arm", "Left leg", "Right arm", "Right leg"],
+      history: []
     }
   }
 
   handleConfirmation() {
-    rotatedSites = this.state.sites.slice(1).concat(this.state.sites[0])
+    let newHistory = this.state.history.concat(this.state.sites[0])
+    let rotatedSites = this.state.sites.slice(1).concat(this.state.sites[0])
     this.setState({
+      history: newHistory,
       sites: rotatedSites
     })
   }
@@ -23,6 +26,9 @@ export default class App extends React.Component {
       <View style={styles.container}>
         <Text id="welcome">Welcome to Injection Dependent</Text>
         <Text id="site">{this.state.sites[0]}</Text>
+        <Text id="previousSite">
+          {this.state.history[this.state.history.length - 1]}
+        </Text>
         <CurrentSite />
         <PreviousSite />
       </View>
