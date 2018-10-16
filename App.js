@@ -5,7 +5,8 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Welcome to React Native!</Text>
+        <Text id="welcome">Welcome to Injection Dependent</Text>
+        <Text id="siteLocation">Left arm</Text>
       </View>
     );
   }
