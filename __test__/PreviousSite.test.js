@@ -1,7 +1,6 @@
 import {shallow} from 'enzyme';
 import React from 'react';
 import PreviousSite from '../src/PreviousSite';
-import { equal } from 'assert';
 
 describe('PreviousSite', () => {
   it('renders something', () => {
