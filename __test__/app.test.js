@@ -3,7 +3,7 @@ import React from "react";
 import App from "../App";
 import CurrentSite from "../src/CurrentSite";
 import PreviousSite from "../src/PreviousSite";
-import GenerateButton from "../src/GenerateButton";
+import ConfirmButton from "../src/ConfirmButton";
 
 describe("App", () => {
   it("renders a current site component", () => {
@@ -16,9 +16,9 @@ describe("App", () => {
     expect(wrapper.containsMatchingElement(<PreviousSite />)).toEqual(true);
   });
 
-  it("renders a generate button", () => {
+  it("renders a confirm button", () => {
     let wrapper = shallow(<App />);
-    expect(wrapper.containsMatchingElement(<GenerateButton />)).toEqual(true);
+    expect(wrapper.containsMatchingElement(<ConfirmButton />)).toEqual(true);
   });
 
   describe('#Text', () => {

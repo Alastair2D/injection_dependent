@@ -1,10 +1,10 @@
 import {shallow} from 'enzyme';
 import React from 'react';
-import GenerateButton from '../src/GenerateButton';
+import ConfirmButton from '../src/ConfirmButton';
 
-describe('GenerateButton', () => {
+describe('ConfirmButton', () => {
   it('renders something', () => {
-    let wrapper = shallow(<GenerateButton />);
+    let wrapper = shallow(<ConfirmButton />);
     expect(wrapper.length > 0).toBe(true);
   });
 });
