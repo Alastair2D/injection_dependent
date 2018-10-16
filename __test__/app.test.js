@@ -42,7 +42,28 @@ describe("App", () => {
       app.instance().handleConfirmation();
       app.instance().handleConfirmation();
       const text = app.find('#site').dive().text();
+      expect(text).toEqual('Right arm');
+    });
+  });
+
+  describe('History', () => {
+    it('should start with a blank history', () => {
+      const app = shallow(<App />);
+      const text = app.find('#previousSite').dive().text();
+      expect(text).toEqual('');
+    });
+    it('should know the previous injection site once confirmed', () => {
+      const app = shallow(<App />);
+      app.instance().handleConfirmation();
+      const text = app.find('#previousSite').dive().text();
       expect(text).toEqual('Left arm');
+    });
+    it('should update previous injection site once confirmed again', () => {
+      const app = shallow(<App />);
+      app.instance().handleConfirmation();
+      app.instance().handleConfirmation();
+      const text = app.find('#previousSite').dive().text();
+      expect(text).toEqual('Left leg');
     });
   });
 });
