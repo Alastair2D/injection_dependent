@@ -2,23 +2,27 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import CurrentSite from "./src/CurrentSite";
 import PreviousSite from "./src/PreviousSite";
+import ConfirmButton from "./src/ConfirmButton";
 
 export default class App extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       sites: ["Left arm", "Left leg", "Right arm", "Right leg"],
       history: []
-    }
+    };
+    this.confirmButtonClick = this.confirmButtonClick.bind(this);
   }
 
+  confirmButtonClick() {}
+
   handleConfirmation() {
-    let newHistory = this.state.history.concat(this.state.sites[0])
-    let rotatedSites = this.state.sites.slice(1).concat(this.state.sites[0])
+    let newHistory = this.state.history.concat(this.state.sites[0]);
+    let rotatedSites = this.state.sites.slice(1).concat(this.state.sites[0]);
     this.setState({
       history: newHistory,
       sites: rotatedSites
-    })
+    });
   }
 
   render() {
@@ -31,6 +35,7 @@ export default class App extends React.Component {
         </Text>
         <CurrentSite />
         <PreviousSite />
+        <ConfirmButton onSubmit={this.confirmButtonClick} />
       </View>
     );
   }
