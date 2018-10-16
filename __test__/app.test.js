@@ -12,16 +12,25 @@ describe('App', () => {
 
   describe('#Text', () => {
     it('should render the the text Welcome to React Native! in our first text tag', () => {
-      const app = shallow(<App />)
+      const app = shallow(<App />);
       const text = app.find('#welcome').dive().text();
       console.log(text);
       expect(text).toEqual('Welcome to Injection Dependent');
     });
+  });
 
+  describe('Site', () => {
     it('should render the text of the first site location', () => {
-      const app = shallow(<App />)
-      const text = app.find('#siteLocation').dive().text();
+      const app = shallow(<App />);
+      const text = app.find('#site').dive().text();
       expect(text).toEqual('Left arm');
+    });
+
+    it('should change the site after clicking confirmed', () => {
+      const app = shallow(<App />);
+      handleConfirmation();
+      const text = app.find('#site').dive().text();
+      expect(text).toEqual('Left leg');
     });
   });
 });
