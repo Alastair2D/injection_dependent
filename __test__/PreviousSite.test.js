@@ -1,11 +1,10 @@
 import {shallow} from 'enzyme';
 import React from 'react';
-import App from '../App';
-import { equal } from 'assert';
+import PreviousSite from '../src/PreviousSite';
 
-describe('App', () => {
+describe('PreviousSite', () => {
   it('renders something', () => {
-    let wrapper = shallow(<App />);
+    let wrapper = shallow(<PreviousSite />);
     expect(wrapper.length > 0).toBe(true);
   });
 });
