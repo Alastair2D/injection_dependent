@@ -17,13 +17,14 @@ export default class App extends React.Component {
       sites: rotatedSites
     })
   }
-  
+
   render() {
     return (
       <View style={styles.container}>
         <Text id="welcome">Welcome to Injection Dependent</Text>
         <Text id="site">{this.state.sites[0]}</Text>
-        <CurrentSite />;<PreviousSite />;
+        <CurrentSite />
+        <PreviousSite />
       </View>
     );
   }
