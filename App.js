@@ -1,8 +1,7 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Button } from "react-native";
 import CurrentSite from "./src/CurrentSite";
 import PreviousSite from "./src/PreviousSite";
-import ConfirmButton from "./src/ConfirmButton";
 
 export default class App extends React.Component {
   constructor(props) {
@@ -11,10 +10,15 @@ export default class App extends React.Component {
       sites: ["Left arm", "Left leg", "Right arm", "Right leg"],
       history: []
     };
-    this.confirmButtonClick = this.confirmButtonClick.bind(this);
   }
 
-  confirmButtonClick() {}
+  confirmButtonClick = () => {
+    alert("Confirmed");
+  };
+
+  skipButtonClick = () => {
+    alert("Skipped");
+  };
 
   handleConfirmation() {
     let newHistory = this.state.history.concat(this.state.sites[0]);
@@ -35,7 +39,22 @@ export default class App extends React.Component {
         </Text>
         <CurrentSite />
         <PreviousSite />
-        <ConfirmButton onSubmit={this.confirmButtonClick} />
+
+        <Button
+          onPress={event => {
+            event.preventDefault();
+            this.confirmButtonClick();
+          }}
+          title="Confirm"
+        />
+
+        <Button
+          onPress={event => {
+            event.preventDefault();
+            this.skipButtonClick();
+          }}
+          title="Skip"
+        />
       </View>
     );
   }
