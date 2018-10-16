@@ -9,7 +9,7 @@ export default class App extends React.Component {
     this.state = {
       sites: ["Left arm", "Left leg", "Right arm", "Right leg"],
       history: [],
-      previous: {site: ""}
+      previous: ""
     }
   }
 
@@ -19,29 +19,22 @@ export default class App extends React.Component {
     this.setState({
       history: newHistory,
       sites: rotatedSites,
-      previous: {site: "random confirmation"}
+      previous: "random confirmation"
     })
   }
 
+  componentDidMount = () => AsyncStorage.getItem("1").then((value) =>
+    this.setState({previous: value}))
+
   render() {
-    _retrieveData = async () => {
-      try {
-        const value = await AsyncStorage.getItem("1");
-        if (value !== null) {
-          console.log(value);
-          this.setState({ previous: {site: "random string"}})
-        }
-      } catch (error) {
-        console.log(error)
-        this.setState({ previous: {site: "random error string"}})
-      }
-    }
+    AsyncStorage.getItem("1").then((value) =>
+      this.setState({previous: value}))
     return (
       <View style={styles.container}>
         <Text id="welcome">Welcome to Injection Dependent</Text>
         <Text id="site">{this.state.sites[0]}</Text>
         <Text id="previousSite">
-          Previous site: {this.state.previous.site}
+          Previous site: {this.state.previous}
         </Text>
         <CurrentSite />
         <PreviousSite />
