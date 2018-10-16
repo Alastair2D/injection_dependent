@@ -7,7 +7,8 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <CurrentSite />;<PreviousSite />;
+        <CurrentSite />
+        <PreviousSite />
       </View>
     );
   }
