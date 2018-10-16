@@ -12,9 +12,12 @@ export default class App extends React.Component {
       history: []
     };
     this.confirmButtonClick = this.confirmButtonClick.bind(this);
+    this.skipButtonClick = this.skipButtonClick.bind(this);
   }
 
   confirmButtonClick() {}
+
+  skipButtonClick() {}
 
   handleConfirmation() {
     let newHistory = this.state.history.concat(this.state.sites[0]);
@@ -36,6 +39,7 @@ export default class App extends React.Component {
         <CurrentSite />
         <PreviousSite />
         <ConfirmButton onSubmit={this.confirmButtonClick} />
+        <SkipButton onSubmit={this.skipButtonClick} />
       </View>
     );
   }
