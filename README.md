@@ -1,6 +1,6 @@
 # Injection Dependent
 
-This is our final project to finish the course at Maker's Academy. The intention of the project is to help those with type 1 diabetes manage the condition by creating a mobile app that tracks and advises on injection sites.
+This is our final project to finish the course at Makers. The intention of the project is to help those with type 1 diabetes manage the condition by creating a mobile app that tracks and advises on injection sites.
 
 ## Team
 
