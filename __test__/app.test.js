@@ -15,11 +15,6 @@ describe("App", () => {
     expect(wrapper.containsMatchingElement(<PreviousSite />)).toEqual(true);
   });
 
-  it("renders a confirm button", () => {
-    let wrapper = shallow(<App />);
-    expect(wrapper.containsMatchingElement(<ConfirmButton />)).toEqual(true);
-  });
-
   describe("#Text", () => {
     it("should render the the text Welcome to React Native! in our first text tag", () => {
       const app = shallow(<App />);
