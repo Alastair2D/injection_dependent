@@ -1,13 +1,11 @@
-import {mount} from 'enzyme';
+import {shallow} from 'enzyme';
 import React from 'react';
 import App from '../src/App';
+import { equal } from 'assert';
 
 describe('App', () => {
-  describe('#Text', () => {
-    it('should render the the text Welcome to React Native! in our first text tag', () => {
-      const app = mount(<App/>);
-      const text = app.find('Text').at(0).text();
-      expect(text).toEqual('Welcome to React Native!');
-    });
+  it('renders something', () => {
+    let wrapper = shallow(<App />);
+    expect(wrapper.length > 0).toBe(true);
   });
 });
