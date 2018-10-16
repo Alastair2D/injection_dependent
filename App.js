@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { AsyncStorage, StyleSheet, Text, View } from "react-native";
 import CurrentSite from "./src/CurrentSite";
 import PreviousSite from "./src/PreviousSite";
 
@@ -8,7 +8,8 @@ export default class App extends React.Component {
     super(props)
     this.state = {
       sites: ["Left arm", "Left leg", "Right arm", "Right leg"],
-      history: []
+      history: [],
+      previous: {site: ""}
     }
   }
 
@@ -17,17 +18,30 @@ export default class App extends React.Component {
     let rotatedSites = this.state.sites.slice(1).concat(this.state.sites[0])
     this.setState({
       history: newHistory,
-      sites: rotatedSites
+      sites: rotatedSites,
+      previous: {site: "random confirmation"}
     })
   }
 
   render() {
+    _retrieveData = async () => {
+      try {
+        const value = await AsyncStorage.getItem("1");
+        if (value !== null) {
+          console.log(value);
+          this.setState({ previous: {site: "random string"}})
+        }
+      } catch (error) {
+        console.log(error)
+        this.setState({ previous: {site: "random error string"}})
+      }
+    }
     return (
       <View style={styles.container}>
         <Text id="welcome">Welcome to Injection Dependent</Text>
         <Text id="site">{this.state.sites[0]}</Text>
         <Text id="previousSite">
-          {this.state.history[this.state.history.length - 1]}
+          Previous site: {this.state.previous.site}
         </Text>
         <CurrentSite />
         <PreviousSite />

@@ -3,6 +3,7 @@ import React from "react";
 import App from "../App";
 import CurrentSite from "../src/CurrentSite";
 import PreviousSite from "../src/PreviousSite";
+import MockStorage from "./MockStorage"
 
 describe("App", () => {
   it("renders a current site component", () => {
@@ -50,20 +51,32 @@ describe("App", () => {
     it('should start with a blank history', () => {
       const app = shallow(<App />);
       const text = app.find('#previousSite').dive().text();
-      expect(text).toEqual('');
+      expect(text).toEqual('Previous site: ');
     });
     it('should know the previous injection site once confirmed', () => {
       const app = shallow(<App />);
       app.instance().handleConfirmation();
       const text = app.find('#previousSite').dive().text();
-      expect(text).toEqual('Left arm');
+      expect(text).toEqual('Previous site: Left arm');
     });
     it('should update previous injection site once confirmed again', () => {
       const app = shallow(<App />);
       app.instance().handleConfirmation();
       app.instance().handleConfirmation();
       const text = app.find('#previousSite').dive().text();
-      expect(text).toEqual('Left leg');
+      expect(text).toEqual('Previous site: Left leg');
+    });
+  });
+
+  describe('AsyncStorage', () => {
+    it('does something', () => {
+      const storageCache = {"1": {site: "Left arm"}};
+      const AsyncStorage = new MockStorage(storageCache);
+      jest.setMock('AsyncStorage', AsyncStorage)
+      const app = shallow(<App />)
+      app.instance().handleConfirmation();
+      const text = app.find('#previousSite').dive().text();
+      expect(text).toEqual("Previous site: Left arm");
     });
   });
 });
