@@ -10,17 +10,15 @@ export default class App extends React.Component {
       sites: ["Left arm", "Left leg", "Right arm", "Right leg"],
       history: []
     };
-    this.confirmButtonClick = this.confirmButtonClick.bind(this);
-    this.skipButtonClick = this.skipButtonClick.bind(this);
   }
 
-  confirmButtonClick() {
+  confirmButtonClick = () => {
     alert("Confirmed");
-  }
+  };
 
-  skipButtonClick() {
+  skipButtonClick = () => {
     alert("Skipped");
-  }
+  };
 
   handleConfirmation() {
     let newHistory = this.state.history.concat(this.state.sites[0]);
