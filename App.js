@@ -47,7 +47,7 @@ export default class App extends React.Component {
             event.preventDefault();
             this.confirmButtonClick();
           }}
-          title="confirm"
+          title="Confirm"
         />
 
         <Button
