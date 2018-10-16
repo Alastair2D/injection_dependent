@@ -11,60 +11,81 @@ describe("App", () => {
     expect(wrapper.containsMatchingElement(<CurrentSite />)).toEqual(true);
   });
 
-  it("renders a previous site compoent", () => {
+  it("renders a previous site component", () => {
     let wrapper = shallow(<App />);
     expect(wrapper.containsMatchingElement(<PreviousSite />)).toEqual(true);
   });
 
-  describe('#Text', () => {
-    it('should render the the text Welcome to React Native! in our first text tag', () => {
+  describe("#Text", () => {
+    it("should render the the text Welcome to React Native! in our first text tag", () => {
       const app = shallow(<App />);
-      const text = app.find('#welcome').dive().text();
-      expect(text).toEqual('Welcome to Injection Dependent');
+      const text = app
+        .find("#welcome")
+        .dive()
+        .text();
+      expect(text).toEqual("Welcome to Injection Dependent");
     });
   });
 
-  describe('Site', () => {
-    it('should render the text of the first site location', () => {
+  describe("Site", () => {
+    it("should render the text of the first site location", () => {
       const app = shallow(<App />);
-      const text = app.find('#site').dive().text();
-      expect(text).toEqual('Left arm');
+      const text = app
+        .find("#site")
+        .dive()
+        .text();
+      expect(text).toEqual("Left arm");
     });
 
-    it('should change the site after clicking confirmed', () => {
+    it("should change the site after clicking confirmed", () => {
       const app = shallow(<App />);
       app.instance().handleConfirmation();
-      const text = app.find('#site').dive().text();
-      expect(text).toEqual('Left leg');
+      const text = app
+        .find("#site")
+        .dive()
+        .text();
+      expect(text).toEqual("Left leg");
     });
 
-    it('should change the site again after clicking confirmed a second time', () => {
+    it("should change the site again after clicking confirmed a second time", () => {
       const app = shallow(<App />);
       app.instance().handleConfirmation();
       app.instance().handleConfirmation();
-      const text = app.find('#site').dive().text();
-      expect(text).toEqual('Right arm');
+      const text = app
+        .find("#site")
+        .dive()
+        .text();
+      expect(text).toEqual("Right arm");
     });
   });
 
-  describe('History', () => {
-    it('should start with a blank history', () => {
+  describe("History", () => {
+    it("should start with a blank history", () => {
       const app = shallow(<App />);
-      const text = app.find('#previousSite').dive().text();
-      expect(text).toEqual('Previous site: ');
+      const text = app
+        .find("#previousSite")
+        .dive()
+        .text();
+      expect(text).toEqual("Previous site: ");
     });
-    it('should know the previous injection site once confirmed', () => {
+    it("should know the previous injection site once confirmed", () => {
       const app = shallow(<App />);
       app.instance().handleConfirmation();
-      const text = app.find('#previousSite').dive().text();
-      expect(text).toEqual('Previous site: Left arm');
+      const text = app
+        .find("#previousSite")
+        .dive()
+        .text();
+      expect(text).toEqual("Previous site: Left arm");
     });
-    it('should update previous injection site once confirmed again', () => {
+    it("should update previous injection site once confirmed again", () => {
       const app = shallow(<App />);
       app.instance().handleConfirmation();
       app.instance().handleConfirmation();
-      const text = app.find('#previousSite').dive().text();
-      expect(text).toEqual('Previous site: Left leg');
+      const text = app
+        .find("#previousSite")
+        .dive()
+        .text();
+      expect(text).toEqual("Previous site: Left leg");
     });
   });
 
