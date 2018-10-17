@@ -33,12 +33,13 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <Text id="welcome">Welcome to Injection Dependent</Text>
-        <Text id="site">{this.state.sites[0]}</Text>
-        <Text id="previousSite">
-          {this.state.history[this.state.history.length - 1]}
-        </Text>
-        <CurrentSite />
-        <PreviousSite />
+        <CurrentSite 
+          textID="site" site={ this.state.sites[0] } 
+        />
+        <PreviousSite 
+          textID="previous_site" 
+          site={ this.state.history[this.state.history.length - 1] } 
+        />
 
         <Button
           onPress={event => {

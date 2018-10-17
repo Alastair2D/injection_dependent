@@ -3,7 +3,9 @@
   "main": "node_modules/expo/AppEntry.js",
   "jest": {
     "collectCoverage": true,
-    "collectCoverageFrom": ["src/**/*.{js,jsx}"],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}"
+    ],
     "preset": "react-native",
     "testEnvironment": "jsdom",
     "setupFiles": [

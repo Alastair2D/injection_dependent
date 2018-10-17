@@ -33,6 +33,7 @@ describe("App", () => {
         .find("#site")
         .dive()
         .text();
+
       expect(text).toEqual("Left arm");
     });
 
