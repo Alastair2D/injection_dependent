@@ -5,7 +5,7 @@ class PreviousSite extends Component {
   render() {
     return (
       <View>
-        <Text style={styles.previous}>{ this.props.site }</Text>
+        <Text id="site" style={styles.previous}>{ this.props.site }</Text>
       </View>
     );
   }
