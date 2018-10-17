@@ -1,15 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1539694871108" clover="3.2.0">
-  <project timestamp="1539694871108" name="All files">
-    <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2" elements="4" coveredelements="4" complexity="0" loc="2" ncloc="2" packages="1" files="2" classes="2">
-      <file name="CurrentSite.js" path="/Users/mathou/Projects/FINAL/injection_dependent/src/CurrentSite.js">
-        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="6" count="1" type="stmt"/>
-      </file>
-      <file name="PreviousSite.js" path="/Users/mathou/Projects/FINAL/injection_dependent/src/PreviousSite.js">
-        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="6" count="1" type="stmt"/>
-      </file>
+<coverage generated="1539766785479" clover="3.2.0">
+  <project timestamp="1539766785480" name="All files">
+    <metrics statements="15" coveredstatements="14" conditionals="2" coveredconditionals="1" methods="6" coveredmethods="6" elements="23" coveredelements="21" complexity="0" loc="15" ncloc="15" packages="2" files="4" classes="4">
+      <package name="injection_dependent">
+        <metrics statements="13" coveredstatements="12" conditionals="2" coveredconditionals="1" methods="4" coveredmethods="4"/>
+        <file name="App.js" path="/Users/mathou/Projects/FINAL/injection_dependent/App.js">
+          <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+          <line num="8" count="9" type="stmt"/>
+          <line num="9" count="9" type="stmt"/>
+          <line num="16" count="6" type="stmt"/>
+          <line num="17" count="6" type="stmt"/>
+          <line num="18" count="6" type="stmt"/>
+          <line num="25" count="15" type="stmt"/>
+          <line num="39" count="1" type="stmt"/>
+        </file>
+        <file name="setupTests.js" path="/Users/mathou/Projects/FINAL/injection_dependent/setupTests.js">
+          <metrics statements="6" coveredstatements="5" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+          <line num="7" count="3" type="stmt"/>
+          <line num="8" count="3" type="stmt"/>
+          <line num="9" count="3" type="stmt"/>
+          <line num="10" count="606" type="cond" truecount="1" falsecount="1"/>
+          <line num="11" count="0" type="stmt"/>
+          <line num="14" count="3" type="stmt"/>
+        </file>
+      </package>
+      <package name="injection_dependent.src">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <file name="CurrentSite.js" path="/Users/mathou/Projects/FINAL/injection_dependent/src/CurrentSite.js">
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+          <line num="6" count="1" type="stmt"/>
+        </file>
+        <file name="PreviousSite.js" path="/Users/mathou/Projects/FINAL/injection_dependent/src/PreviousSite.js">
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+          <line num="6" count="1" type="stmt"/>
+        </file>
+      </package>
     </metrics>
   </project>
 </coverage>
