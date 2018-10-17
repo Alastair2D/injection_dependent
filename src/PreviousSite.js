@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 
-class CurrentSite extends Component {
+class PreviousSite extends Component {
   render() {
     return (
       <View>
-        <Text>Upper Arm Right</Text>
+        <Text id="site" >{ this.props.site }</Text>
       </View>
     );
   }
 }
 
-export default CurrentSite;
+export default PreviousSite;

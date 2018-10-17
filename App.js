@@ -12,48 +12,50 @@ export default class App extends React.Component {
     };
   }
 
-  confirmButtonClick = () => {
-    alert('Confirmed');
-  };
-
-  skipButtonClick = () => {
-    alert('Skipped');
-  };
+  nextSite() {
+    let rotatedSites = this.state.sites.slice(1).concat(this.state.sites[0]);
+    this.setState({
+      sites: rotatedSites
+    });
+  }
 
   handleConfirmation() {
-    const newHistory = this.state.history.concat(this.state.sites[0]);
-    const rotatedSites = this.state.sites.slice(1).concat(this.state.sites[0]);
+    let newHistory = this.state.history.concat(this.state.sites[0]);
     this.setState({
-      history: newHistory,
-      sites: rotatedSites,
+      history: newHistory
     });
+    this.nextSite();
+    alert("Confirmed")
+  }
+
+  handleSkip() {
+    this.nextSite();
+    alert("Skipped");
   }
 
   render() {
     return (
       <View style={styles.container}>
         <Text id="welcome">Welcome to Injection Dependent</Text>
-        <Text id="site">{this.state.sites[0]}</Text>
-        <Text id="previousSite">
-          {this.state.history[this.state.history.length - 1]}
-        </Text>
-        <CurrentSite />
-        <PreviousSite />
-
-        <Button
-          onPress={event => {
-            event.preventDefault();
-            this.confirmButtonClick();
-          }}
-          title="Confirm"
+        <CurrentSite id='currentSite'
+          site={ this.state.sites[0] }
+        />
+      <PreviousSite id='previousSite'
+          site={ this.state.history[this.state.history.length - 1] }
         />
 
         <Button
           onPress={event => {
-            event.preventDefault();
-            this.skipButtonClick();
+            this.handleConfirmation();
           }}
-          title="Skip"
+          id="confirm" title="Confirm"
+        />
+
+        <Button
+          onPress={event => {
+            this.handleSkip();
+          }}
+          id="skip" title="Skip"
         />
       </View>
     );
