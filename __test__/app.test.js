@@ -42,10 +42,10 @@ describe("App", () => {
 
   describe("Confirm Button", () => {
     beforeEach(() => {
-      window.alert = jest.fn();
+      window.alert = jest.fn()
     })
     it("should change the site after pressing Confirm", () => {
-      const app = shallow(<App />);
+      const app = shallow(<App />)
       app.find("#confirm").simulate('press')
       const text = app
         .find("#currentSite")
@@ -57,12 +57,10 @@ describe("App", () => {
     });
     it("shows the alert when confirmed", () => {
       const app = shallow(<App />);
-      // window.alert = jest.fn()
       app.find("#confirm").simulate('press')
       expect(window.alert).toHaveBeenCalledWith('Confirmed')
       })
     })
-
     it("should change the site again after pressing Confirm a second time", () => {
       const app = shallow(<App />);
       app.find("#confirm").simulate('press')
@@ -74,7 +72,29 @@ describe("App", () => {
         .dive()
         .text();
       expect(text).toEqual("Right arm");
-    });
+    })
+  })
+
+  describe("Skip button", () => {
+    beforeEach(() => {
+      window.alert = jest.fn()
+    })
+    it('Shows the next site', () => {
+      const app = shallow(<App />);
+      app.find("#skip").simulate('press')
+      const text = app
+        .find("#currentSite")
+        .dive()
+        .find('#site')
+        .dive()
+        .text();
+      expect(text).toEqual("Left leg");
+    })
+    it('Shows an alert when skipped', () => {
+      const app = shallow(<App />);
+      app.find("#skip").simulate('press')
+      expect(window.alert).toHaveBeenCalledWith('Skipped')
+    })
   });
 
   describe("History", () => {
@@ -112,39 +132,3 @@ describe("App", () => {
       expect(text).toEqual("Left leg");
     });
   });
-
-  describe("Skip button", () => {
-    it('Shows the next site', () => {
-      const app = shallow(<App />);
-      window.alert = jest.fn()
-      app.find("#skip").simulate('press')
-      const text = app
-        .find("#currentSite")
-        .dive()
-        .find('#site')
-        .dive()
-        .text();
-      expect(text).toEqual("Left leg");
-    })
-    it('Shows an alert when skipped', () => {
-      const app = shallow(<App />);
-      window.alert = jest.fn()
-      app.find("#skip").simulate('press')
-      expect(window.alert).toHaveBeenCalledWith('Skipped')
-    })
-  });
-
-  // it("should generate alert after 'Confirm' pressed", () => {
-  //   const app = shallow(<App />);
-  //   const text = app
-  //   alert = jest.fn()
-  //   app.find("#confirm").simulate('press')
-  //     // .find("#currentSite")
-  //     // .dive()
-  //     // .find('#site')
-  //     // .dive()
-  //     // .text();
-  //   // expect(text).toEqual("Left leg");
-  //   // window.alert = jest.fn();
-  //   expect(alert).toHaveBeenCalledOnce('pressed');
-  // });
