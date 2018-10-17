@@ -30,10 +30,11 @@ describe("App", () => {
     it("should render the text of the first site location", () => {
       const app = shallow(<App />);
       const text = app
-        .find("#site")
+        .find("#currentSite")
+        .dive()
+        .find('#site')
         .dive()
         .text();
-
       expect(text).toEqual("Left arm");
     });
 
@@ -41,7 +42,9 @@ describe("App", () => {
       const app = shallow(<App />);
       app.instance().handleConfirmation();
       const text = app
-        .find("#site")
+        .find("#currentSite")
+        .dive()
+        .find('#site')
         .dive()
         .text();
       expect(text).toEqual("Left leg");
@@ -52,7 +55,9 @@ describe("App", () => {
       app.instance().handleConfirmation();
       app.instance().handleConfirmation();
       const text = app
-        .find("#site")
+        .find("#currentSite")
+        .dive()
+        .find('#site')
         .dive()
         .text();
       expect(text).toEqual("Right arm");
@@ -65,6 +70,8 @@ describe("App", () => {
       const text = app
         .find("#previousSite")
         .dive()
+        .find('#site')
+        .dive()
         .text();
       expect(text).toEqual("");
     });
@@ -73,6 +80,8 @@ describe("App", () => {
       app.instance().handleConfirmation();
       const text = app
         .find("#previousSite")
+        .dive()
+        .find('#site')
         .dive()
         .text();
       expect(text).toEqual("Left arm");
@@ -83,6 +92,8 @@ describe("App", () => {
       app.instance().handleConfirmation();
       const text = app
         .find("#previousSite")
+        .dive()
+        .find('#site')
         .dive()
         .text();
       expect(text).toEqual("Left leg");

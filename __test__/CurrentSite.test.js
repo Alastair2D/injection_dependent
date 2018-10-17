@@ -9,12 +9,11 @@ describe('CurrentSite', () => {
   });
 
   it("should render the text of the first site location", () => {
-    const app = shallow(<App />);
+    const app = shallow(<CurrentSite site={"Left arm"}/>);
     const text = app
       .find("#site")
       .dive()
       .text();
-
     expect(text).toEqual("Left arm");
-
+  })
 });

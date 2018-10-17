@@ -6,11 +6,11 @@ class CurrentSite extends Component {
   constructor(props) {
     super(props);
   }
- 
+
   render() {
     return (
       <View>
-        <Text id={this.props.textID} > { this.props.site } </Text>
+        <Text id="site" >{ this.props.site }</Text>
       </View>
     );
   }
