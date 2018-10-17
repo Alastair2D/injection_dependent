@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Alastair2D/injection_dependent.svg?branch=master)](https://travis-ci.org/Alastair2D/injection_dependent.svg?branch=master)
+
 # Injection Dependent
 
 This is our final to finish the course at Maker's Academy. The intention of the project is to help those with type 1 diabetes manage the condition by creating a mobile app that tracks and advises on injection sites.
