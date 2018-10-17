@@ -13,21 +13,25 @@ export default class App extends React.Component {
     };
   }
 
-  confirmButtonClick = () => {
-    alert('Confirmed');
-  };
-
-  skipButtonClick = () => {
-    alert('Skipped');
-  };
+  nextSite() {
+    let rotatedSites = this.state.sites.slice(1).concat(this.state.sites[0]);
+    this.setState({
+      sites: rotatedSites
+    });
+  }
 
   handleConfirmation() {
-    const newHistory = this.state.history.concat(this.state.sites[0]);
-    const rotatedSites = this.state.sites.slice(1).concat(this.state.sites[0]);
+    let newHistory = this.state.history.concat(this.state.sites[0]);
     this.setState({
-      history: newHistory,
-      sites: rotatedSites,
+      history: newHistory
     });
+    this.nextSite();
+    alert("Confirmed")
+  }
+
+  handleSkip() {
+    this.nextSite();
+    alert("Skipped");
   }
 
   render() {
@@ -45,18 +49,16 @@ export default class App extends React.Component {
 
         <Button
           onPress={event => {
-            event.preventDefault();
-            this.confirmButtonClick();
+            this.handleConfirmation();
           }}
-          title="Confirm"
+          id="confirm" title="Confirm"
         />
 
         <Button
           onPress={event => {
-            event.preventDefault();
-            this.skipButtonClick();
+            this.handleSkip();
           }}
-          title="Skip"
+          id="skip" title="Skip"
         />
       </View>
     );

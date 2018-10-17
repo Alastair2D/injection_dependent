@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-class CurrentSite extends Component {
+class PreviousSite extends Component {
   render() {
     return (
       <View>
-        <Text style={styles.previous}>Upper Arm Right</Text>
+        <Text style={styles.previous}>{ this.props.site }/Text>
       </View>
     );
   }
