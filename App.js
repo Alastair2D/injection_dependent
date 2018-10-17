@@ -12,15 +12,6 @@ export default class App extends React.Component {
     };
   }
 
-  confirmButtonClick = () => {
-    this.handleConfirmation();
-    alert("Confirmed");
-  };
-
-  skipButtonClick = () => {
-
-  };
-
   nextSite() {
     let rotatedSites = this.state.sites.slice(1).concat(this.state.sites[0]);
     this.setState({
@@ -34,6 +25,7 @@ export default class App extends React.Component {
       history: newHistory
     });
     this.nextSite();
+    alert("Confirmed")
   }
 
   handleSkip() {

@@ -27,8 +27,8 @@ describe("App", () => {
     });
   });
 
-  describe("Site", () => {
-    it("should render the text of the first site location", () => {
+  describe("Recommended Site", () => {
+    it("should render the text of the suggested injection location", () => {
       const app = shallow(<App />);
       const text = app
         .find("#currentSite")
@@ -38,6 +38,12 @@ describe("App", () => {
         .text();
       expect(text).toEqual("Left arm");
     });
+  });
+
+  describe("Confirm Button", () => {
+    beforeEach(() => {
+      window.alert = jest.fn();
+    })
     it("should change the site after pressing Confirm", () => {
       const app = shallow(<App />);
       app.find("#confirm").simulate('press')
@@ -49,6 +55,14 @@ describe("App", () => {
         .text();
       expect(text).toEqual("Left leg");
     });
+    it("shows the alert when confirmed", () => {
+      const app = shallow(<App />);
+      // window.alert = jest.fn()
+      app.find("#confirm").simulate('press')
+      expect(window.alert).toHaveBeenCalledWith('Confirmed')
+      })
+    })
+
     it("should change the site again after pressing Confirm a second time", () => {
       const app = shallow(<App />);
       app.find("#confirm").simulate('press')
@@ -61,21 +75,6 @@ describe("App", () => {
         .text();
       expect(text).toEqual("Right arm");
     });
-
-    // it("should generate alert after 'Confirm' pressed", () => {
-    //   const app = shallow(<App />);
-    //   const text = app
-    //   alert = jest.fn()
-    //   app.find("#confirm").simulate('press')
-    //     // .find("#currentSite")
-    //     // .dive()
-    //     // .find('#site')
-    //     // .dive()
-    //     // .text();
-    //   // expect(text).toEqual("Left leg");
-    //   // window.alert = jest.fn();
-    //   expect(alert).toHaveBeenCalledOnce('pressed');
-    // });
   });
 
   describe("History", () => {
@@ -134,4 +133,18 @@ describe("App", () => {
       expect(window.alert).toHaveBeenCalledWith('Skipped')
     })
   });
-});
+
+  // it("should generate alert after 'Confirm' pressed", () => {
+  //   const app = shallow(<App />);
+  //   const text = app
+  //   alert = jest.fn()
+  //   app.find("#confirm").simulate('press')
+  //     // .find("#currentSite")
+  //     // .dive()
+  //     // .find('#site')
+  //     // .dive()
+  //     // .text();
+  //   // expect(text).toEqual("Left leg");
+  //   // window.alert = jest.fn();
+  //   expect(alert).toHaveBeenCalledOnce('pressed');
+  // });
