@@ -20,7 +20,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "eject": "expo eject",
-    "test": "jest"
+    "test": "jest",
+    "lint": "./node_modules/.bin/eslint src/**/*.js App.js"
   },
   "dependencies": {
     "babel-eslint": "^10.0.1",
