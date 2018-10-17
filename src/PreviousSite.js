@@ -5,7 +5,7 @@ class PreviousSite extends Component {
   render() {
     return (
       <View>
-        <Text id="site" >{ this.props.site }</Text>
+        <Text id="site" >Previous: { this.props.site }, {this.props.time}</Text>
       </View>
     );
   }
