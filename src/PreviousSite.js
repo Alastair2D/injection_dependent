@@ -5,7 +5,7 @@ class PreviousSite extends Component {
   render() {
     return (
       <View>
-        <Text style={styles.previous}>{ this.props.site }/Text>
+        <Text style={styles.previous}>{ this.props.site }</Text>
       </View>
     );
   }
@@ -13,8 +13,8 @@ class PreviousSite extends Component {
 
 const styles = StyleSheet.create({
   previous: {
-    fontSize: 20,
-  }
+    fontSize: 30,
+  },
 });
 
-export default CurrentSite;
+export default PreviousSite;

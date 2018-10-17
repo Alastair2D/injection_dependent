@@ -1,8 +1,8 @@
-import React from "react";
-import { StyleSheet, Text, View, Button, Image } from "react-native";
-import CurrentSite from "./src/CurrentSite";
-import PreviousSite from "./src/PreviousSite";
-import Header from './src/Header'
+import React from 'react';
+import { StyleSheet, Text, View, Button } from 'react-native';
+import CurrentSite from './src/CurrentSite';
+import PreviousSite from './src/PreviousSite';
+import Header from './src/Header';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -14,38 +14,37 @@ export default class App extends React.Component {
   }
 
   nextSite() {
-    let rotatedSites = this.state.sites.slice(1).concat(this.state.sites[0]);
+    const rotatedSites = this.state.sites.slice(1).concat(this.state.sites[0]);
     this.setState({
-      sites: rotatedSites
+      sites: rotatedSites,
     });
   }
 
   handleConfirmation() {
-    let newHistory = this.state.history.concat(this.state.sites[0]);
+    const newHistory = this.state.history.concat(this.state.sites[0]);
     this.setState({
-      history: newHistory
+      history: newHistory,
     });
     this.nextSite();
-    alert("Confirmed")
+    alert('Confirmed');
   }
 
   handleSkip() {
     this.nextSite();
-    alert("Skipped");
+    alert('Skipped');
   }
 
   render() {
     return (
       <View style={styles.container}>
       <View />
-        <Image source={require('./assets/makers-icon.png')} style={{width: 200, height: 200}}/>
         <Header />
-        <Text id="site">{this.state.sites[0]}</Text>
-        <Text id="previousSite">
-          {this.state.history[this.state.history.length - 1]}
-        </Text>
-        <PreviousSite />
-        <CurrentSite />
+        <PreviousSite id='previousSite'
+          site={this.state.history[this.state.history.length - 1]}
+        />
+        <CurrentSite id='currentSite'
+          site={ this.state.sites[0]}
+        />
 
         <Button
           onPress={event => {
@@ -68,8 +67,8 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "orange",
-    alignItems: "center",
-    justifyContent: "center",
-    }
+    backgroundColor: 'orange',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });

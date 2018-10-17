@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Text, View, StyleSheet } from "react-native";
+import React, { Component } from 'react';
+import { Text, View, StyleSheet } from 'react-native';
 
 class Header extends Component {
   render() {
@@ -15,8 +15,8 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 40,
     textAlign: 'center',
-    fontWeight: 'bold'
-  }
+    fontWeight: 'bold',
+  },
 });
 
 export default Header;

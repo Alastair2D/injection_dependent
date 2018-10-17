@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 class CurrentSite extends Component {
-
   constructor(props) {
     super(props);
   }
@@ -10,7 +9,7 @@ class CurrentSite extends Component {
   render() {
     return (
       <View>
-        <Text id="site" >{ this.props.site }</Text>
+        <Text id="site" style={styles.current}>{ this.props.site }</Text>
       </View>
     );
   }
@@ -18,8 +17,8 @@ class CurrentSite extends Component {
 
 const styles = StyleSheet.create({
   current: {
-    fontSize: 40,
-  }
-})
+    fontSize: 30,
+  },
+});
 
 export default CurrentSite;
