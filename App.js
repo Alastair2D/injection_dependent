@@ -18,7 +18,7 @@ export default class App extends React.Component {
   };
 
   skipButtonClick = () => {
-    alert("Skipped");
+
   };
 
   nextSite() {
@@ -38,6 +38,7 @@ export default class App extends React.Component {
 
   handleSkip() {
     this.nextSite();
+    alert("Skipped");
   }
 
   render() {

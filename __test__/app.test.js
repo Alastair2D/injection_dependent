@@ -1,7 +1,6 @@
 import { shallow } from "enzyme";
 import React from "react";
 import { Button } from "react-native";
-import sinon from "sinon";
 import App from "../App";
 import CurrentSite from "../src/CurrentSite";
 import PreviousSite from "../src/PreviousSite";
@@ -116,8 +115,9 @@ describe("App", () => {
   });
 
   describe("Skip button", () => {
-    it('Appears on the page', () => {
+    it('Shows the next site', () => {
       const app = shallow(<App />);
+      window.alert = jest.fn()
       app.find("#skip").simulate('press')
       const text = app
         .find("#currentSite")
@@ -126,6 +126,12 @@ describe("App", () => {
         .dive()
         .text();
       expect(text).toEqual("Left leg");
+    })
+    it('Shows an alert when skipped', () => {
+      const app = shallow(<App />);
+      window.alert = jest.fn()
+      app.find("#skip").simulate('press')
+      expect(window.alert).toHaveBeenCalledWith('Skipped')
     })
   });
 });
