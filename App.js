@@ -1,31 +1,31 @@
-import React from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
-import CurrentSite from "./src/CurrentSite";
-import PreviousSite from "./src/PreviousSite";
+import React from 'react';
+import { StyleSheet, Text, View, Button } from 'react-native';
+import CurrentSite from './src/CurrentSite';
+import PreviousSite from './src/PreviousSite';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      sites: ["Left arm", "Left leg", "Right arm", "Right leg"],
-      history: []
+      sites: ['Left arm', 'Left leg', 'Right arm', 'Right leg'],
+      history: [],
     };
   }
 
   confirmButtonClick = () => {
-    alert("Confirmed");
+    alert('Confirmed');
   };
 
   skipButtonClick = () => {
-    alert("Skipped");
+    alert('Skipped');
   };
 
   handleConfirmation() {
-    let newHistory = this.state.history.concat(this.state.sites[0]);
-    let rotatedSites = this.state.sites.slice(1).concat(this.state.sites[0]);
+    const newHistory = this.state.history.concat(this.state.sites[0]);
+    const rotatedSites = this.state.sites.slice(1).concat(this.state.sites[0]);
     this.setState({
       history: newHistory,
-      sites: rotatedSites
+      sites: rotatedSites,
     });
   }
 
@@ -63,8 +63,8 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
-  }
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
