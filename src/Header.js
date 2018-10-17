@@ -13,14 +13,14 @@ class Header extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "orange",
     alignItems: "center",
     justifyContent: "center",
-    width: 300
   },
   header: {
-    fontSize: 30,
-    textAlign: 'center'
+    fontSize: 40,
+    textAlign: 'center',
+    fontWeight: 'bold',
+    padding: 5
   }
 });
 
