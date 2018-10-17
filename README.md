@@ -1,5 +1,7 @@
 # Injection Dependent
 
+ [![Build Status](https://travis-ci.org/Alastair2D/injection_dependent.svg?branch=master)](https://travis-ci.org/Alastair2D/injection_dependent.svg?branch=master)
+
 This is our final project to finish the course at Makers. The intention of the project is to help those with type 1 diabetes manage the condition by creating a mobile app that tracks and advises on injection sites.
 
 ## Team
@@ -58,6 +60,10 @@ As a user,
 so I know the last injection site,
 I want to be able to see this.
 ```
+
+### UI Modelling
+
+![MVP UI Model](https://github.com/Alastair2D/injection_dependent/blob/Al_adding_images/images/MVP_D1.png)
 
 ## Useful links
 
