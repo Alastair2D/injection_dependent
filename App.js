@@ -37,28 +37,31 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-      <View />
-        <Header />
-        <PreviousSite id='previousSite'
-          site={this.state.history[this.state.history.length - 1]}
-        />
-        <CurrentSite id='currentSite'
-          site={ this.state.sites[0]}
-        />
+        <View>
+          <Header />
+          <PreviousSite id='previousSite'
+            site={this.state.history[this.state.history.length - 1]}
+          />
+          <CurrentSite id='currentSite'
+            site={ this.state.sites[0]}
+          />
+        </View>
 
-        <Button
-          onPress={event => {
-            this.handleConfirmation();
-          }}
-          id="confirm" title="Confirm"
-        />
+        <View style={styles.buttonContainer}>
+          <Button style={styles.button}
+            onPress={event => {
+              this.handleConfirmation();
+            }}
+            id="confirm" title="Confirm"
+          />
 
-        <Button
-          onPress={event => {
-            this.handleSkip();
-          }}
-          id="skip" title="Skip"
-        />
+          <Button style={styles.button}
+            onPress={event => {
+              this.handleSkip();
+            }}
+            id="skip" title="Skip"
+          />
+        </View>
       </View>
     );
   }
@@ -70,5 +73,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'orange',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  buttonContainer: {
+    flexDirection: 'row',
   },
 });

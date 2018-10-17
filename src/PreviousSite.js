@@ -14,6 +14,7 @@ class PreviousSite extends Component {
 const styles = StyleSheet.create({
   previous: {
     fontSize: 30,
+    textAlign: 'center',
   },
 });
 
