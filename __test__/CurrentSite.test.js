@@ -16,4 +16,5 @@ describe('CurrentSite', () => {
       .text();
     expect(text).toEqual("Left arm");
   })
+
 });

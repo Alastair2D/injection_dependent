@@ -38,9 +38,15 @@ describe("App", () => {
       expect(text).toEqual("Left arm");
     });
 
+
+    // User clicks confirm button 
+    // Site is updated
+    // Text visualisation of previous site is updated
+
+
     it("should change the site after clicking confirmed", () => {
       const app = shallow(<App />);
-      app.instance().handleConfirmation();
+      app.find("#confirm").simulate('press')
       const text = app
         .find("#currentSite")
         .dive()
@@ -65,16 +71,16 @@ describe("App", () => {
   });
 
   describe("History", () => {
-    it("should start with a blank history", () => {
-      const app = shallow(<App />);
-      const text = app
-        .find("#previousSite")
-        .dive()
-        .find('#site')
-        .dive()
-        .text();
-      expect(text).toEqual("");
-    });
+    // it("should start with a blank history", () => {
+    //   const app = shallow(<App />);
+    //   const text = app
+    //     .find("#previousSite")
+    //     .dive()
+    //     .find('#site')
+    //     .dive()
+    //     .text();
+    //   expect(text).toEqual("");
+    // });
     it("should know the previous injection site once confirmed", () => {
       const app = shallow(<App />);
       app.instance().handleConfirmation();

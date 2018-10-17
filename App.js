@@ -13,7 +13,8 @@ export default class App extends React.Component {
   }
 
   confirmButtonClick = () => {
-    alert("Confirmed");
+    this.handleConfirmation();
+    // alert("Confirmed");
   };
 
   skipButtonClick = () => {
@@ -42,15 +43,13 @@ export default class App extends React.Component {
 
         <Button
           onPress={event => {
-            event.preventDefault();
-            this.confirmButtonClick();
+            this.handleConfirmation();
           }}
-          title="Confirm"
+          id="confirm" title="Confirm"
         />
 
         <Button
           onPress={event => {
-            event.preventDefault();
             this.skipButtonClick();
           }}
           title="Skip"
