@@ -10,6 +10,17 @@ This is our final project to finish the course at Makers. The intention of the p
 [Alastair Edmonds](https://github.com/Alastair2D)   
 [Harry Pugh](https://github.com/hjpugh)
 
+## Team Goals
+
+* Learn React Native
+* Learn React Native testing framework (Jest and Enzyme)
+* Create something useful
+* Improve quality of life
+* TDD everything
+* Write code easy to read and change
+* Working together: pair programming, ensure knowledge sharing, communication
+* Agile rituals: sprint planning, daily stand-up, retro
+
 ## Technology
 
 This project was built with Javascript and [React Native](https://facebook.github.io/react-native/).   
