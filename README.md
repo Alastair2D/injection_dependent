@@ -59,6 +59,10 @@ so I know the last injection site,
 I want to be able to see this.
 ```
 
+### UI Modelling
+
+![MVP UI Model](https://github.com/Alastair2D/injection_dependent/blob/Al_adding_images/images/MVP_D1.png)
+
 ## Useful links
 
 [Group diary on Instagram](https://www.instagram.com/injection.dependent/?hl=en)   
