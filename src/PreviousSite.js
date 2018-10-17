@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 class CurrentSite extends Component {
   render() {
     return (
       <View>
-        <Text>Upper Arm Right</Text>
+        <Text style={styles.previous}>Upper Arm Right</Text>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  previous: {
+    fontSize: 20,
+  }
+});
 
 export default CurrentSite;

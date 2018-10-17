@@ -40,8 +40,8 @@ export default class App extends React.Component {
         <Text id="previousSite">
           {this.state.history[this.state.history.length - 1]}
         </Text>
-        <CurrentSite />
         <PreviousSite />
+        <CurrentSite />
 
         <Button
           onPress={event => {
@@ -65,9 +65,9 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     backgroundColor: "orange",
     alignItems: "center",
     justifyContent: "center",
-    height: 820
     }
 });
