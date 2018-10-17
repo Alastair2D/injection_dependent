@@ -5,7 +5,8 @@
     "collectCoverage": true,
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}",
-      "*.{js,jsx}"
+      "*.{js,jsx}",
+      "!setupTests.js"
     ],
     "preset": "react-native",
     "testEnvironment": "jsdom",
