@@ -1,25 +1,24 @@
 language: node_js
 
-# sudo: false 
+sudo: false 
 node_js:
   - "8.11.2"
   # - "stable"
 
 cache:
   directories:
-    - node_modules 
+   - node_modules 
 
-script: npm run ci
+script: 
+  - npm run ci
+  # - npm run lint
+  # - npm test
+
+install:
+  - npm install
 
   # apt:
   #   sources:
   #     - ubuntu-toolchain-r-test
   #   packages:
   #     - g++-4.8
-
-install:
-  - npm install
-
-script:
-  - npm run lint
-  - npm test
