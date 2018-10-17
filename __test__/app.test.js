@@ -30,13 +30,9 @@ describe("App", () => {
 
   describe("Recommended Site", () => {
     it("should render the text of the suggested injection location", () => {
-      const text = app
-        .find("#currentSite")
-        .dive()
-        .find('#site')
-        .dive()
-        .text();
-      expect(text).toEqual("Left arm");
+      const currentSite = app.find(CurrentSite);
+      expect(currentSite.length).toBe(1);
+      expect(currentSite.props().site).toBe("Left arm");
     });
   });
 
@@ -46,13 +42,9 @@ describe("App", () => {
     })
     it("should change the site after pressing Confirm", () => {
       app.find("#confirm").simulate('press')
-      const text = app
-        .find("#currentSite")
-        .dive()
-        .find('#site')
-        .dive()
-        .text();
-      expect(text).toEqual("Left leg");
+      const currentSite = app.find(CurrentSite);
+      expect(currentSite.length).toBe(1);
+      expect(currentSite.props().site).toBe("Left leg");
     });
     it("shows the alert when confirmed", () => {
       app.find("#confirm").simulate('press')
@@ -61,13 +53,9 @@ describe("App", () => {
     it("should change the site again after pressing Confirm a second time", () => {
       app.find("#confirm").simulate('press')
       app.find("#confirm").simulate('press')
-      const text = app
-        .find("#currentSite")
-        .dive()
-        .find('#site')
-        .dive()
-        .text();
-      expect(text).toEqual("Right arm");
+      const currentSite = app.find(CurrentSite);
+      expect(currentSite.length).toBe(1);
+      expect(currentSite.props().site).toBe("Right arm");
     })
   })
 
@@ -77,13 +65,9 @@ describe("App", () => {
     })
     it('Shows the next injection site', () => {
       app.find("#skip").simulate('press')
-      const text = app
-        .find("#currentSite")
-        .dive()
-        .find('#site')
-        .dive()
-        .text();
-      expect(text).toEqual("Left leg");
+      const currentSite = app.find(CurrentSite);
+      expect(currentSite.length).toBe(1);
+      expect(currentSite.props().site).toBe("Left leg");
     })
     it('Shows an alert when skipped', () => {
       app.find("#skip").simulate('press')
@@ -92,6 +76,19 @@ describe("App", () => {
   });
 
   describe("History", () => {
+    it("should know the previous injection site once confirmed", () => {
+      app.find("#confirm").simulate('press')
+      const previousSite = app.find(PreviousSite);
+      expect(previousSite.length).toBe(1);
+      expect(previousSite.props().site).toBe("Left arm");
+    });
+    it("should update previous injection site once confirmed again", () => {
+      app.find("#confirm").simulate('press')
+      app.find("#confirm").simulate('press')
+      const previousSite = app.find(PreviousSite);
+      expect(previousSite.length).toBe(1);
+      expect(previousSite.props().site).toBe("Left leg");
+    });
     // it("should start with a blank history", () => {
     //   const app = shallow(<App />);
     //   const text = app
@@ -102,27 +99,6 @@ describe("App", () => {
     //     .text();
     //   expect(text).toEqual("");
     // });
-    it("should know the previous injection site once confirmed", () => {
-      app.instance().handleConfirmation();
-      const text = app
-        .find("#previousSite")
-        .dive()
-        .find('#site')
-        .dive()
-        .text();
-      expect(text).toEqual("Left arm");
-    });
-    it("should update previous injection site once confirmed again", () => {
-      app.instance().handleConfirmation();
-      app.instance().handleConfirmation();
-      const text = app
-        .find("#previousSite")
-        .dive()
-        .find('#site')
-        .dive()
-        .text();
-      expect(text).toEqual("Left leg");
-    });
   });
 
 });
