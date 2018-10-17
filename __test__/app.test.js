@@ -1,5 +1,6 @@
 import { shallow } from "enzyme";
 import React from "react";
+import { Button } from "react-native";
 import sinon from "sinon";
 import App from "../App";
 import CurrentSite from "../src/CurrentSite";
@@ -62,20 +63,20 @@ describe("App", () => {
       expect(text).toEqual("Right arm");
     });
 
-    it("should generate alert after 'Confirm' pressed", () => {
-      const app = shallow(<App />);
-      const text = app
-      alert = jest.fn()
-      app.find("#confirm").simulate('press')
-        // .find("#currentSite")
-        // .dive()
-        // .find('#site')
-        // .dive()
-        // .text();
-      // expect(text).toEqual("Left leg");
-      // window.alert = jest.fn();
-      expect(alert).toHaveBeenCalledOnce('pressed');
-    });
+    // it("should generate alert after 'Confirm' pressed", () => {
+    //   const app = shallow(<App />);
+    //   const text = app
+    //   alert = jest.fn()
+    //   app.find("#confirm").simulate('press')
+    //     // .find("#currentSite")
+    //     // .dive()
+    //     // .find('#site')
+    //     // .dive()
+    //     // .text();
+    //   // expect(text).toEqual("Left leg");
+    //   // window.alert = jest.fn();
+    //   expect(alert).toHaveBeenCalledOnce('pressed');
+    // });
   });
 
   describe("History", () => {
@@ -112,5 +113,19 @@ describe("App", () => {
         .text();
       expect(text).toEqual("Left leg");
     });
+  });
+
+  describe("Skip button", () => {
+    it('Appears on the page', () => {
+      const app = shallow(<App />);
+      app.find("#skip").simulate('press')
+      const text = app
+        .find("#currentSite")
+        .dive()
+        .find('#site')
+        .dive()
+        .text();
+      expect(text).toEqual("Left leg");
+    })
   });
 });

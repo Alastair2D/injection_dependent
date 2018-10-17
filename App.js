@@ -21,13 +21,23 @@ export default class App extends React.Component {
     alert("Skipped");
   };
 
-  handleConfirmation() {
-    let newHistory = this.state.history.concat(this.state.sites[0]);
+  nextSite() {
     let rotatedSites = this.state.sites.slice(1).concat(this.state.sites[0]);
     this.setState({
-      history: newHistory,
       sites: rotatedSites
     });
+  }
+
+  handleConfirmation() {
+    let newHistory = this.state.history.concat(this.state.sites[0]);
+    this.setState({
+      history: newHistory
+    });
+    this.nextSite();
+  }
+
+  handleSkip() {
+    this.nextSite();
   }
 
   render() {
@@ -50,9 +60,9 @@ export default class App extends React.Component {
 
         <Button
           onPress={event => {
-            this.skipButtonClick();
+            this.handleSkip();
           }}
-          title="Skip"
+          id="skip" title="Skip"
         />
       </View>
     );
