@@ -1,7 +1,8 @@
-import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
-import CurrentSite from './src/CurrentSite';
-import PreviousSite from './src/PreviousSite';
+import React from "react";
+import { StyleSheet, Text, View, Button, Image } from "react-native";
+import CurrentSite from "./src/CurrentSite";
+import PreviousSite from "./src/PreviousSite";
+import Header from './src/Header'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -32,7 +33,9 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text id="welcome">Welcome to Injection Dependent</Text>
+      <View />
+        <Image source={require('./assets/makers-icon.png')} style={{width: 200, height: 200}}/>
+        <Header />
         <Text id="site">{this.state.sites[0]}</Text>
         <Text id="previousSite">
           {this.state.history[this.state.history.length - 1]}
@@ -62,9 +65,9 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    backgroundColor: "orange",
+    alignItems: "center",
+    justifyContent: "center",
+    height: 820
+  }
 });
