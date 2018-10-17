@@ -1,11 +1,17 @@
 import { shallow } from "enzyme";
 import React from "react";
 import { Button } from "react-native";
+import moment from 'moment';
+import MockDate from 'mockdate';
+import timekeeper from 'timekeeper';
 import App from "../App";
 import CurrentSite from "../src/CurrentSite";
 import PreviousSite from "../src/PreviousSite";
 
 describe("App", () => {
+    var frozentime = new Date(1539760000000)
+    timekeeper.freeze(frozentime)
+    // MockDate.set(moment('10/17/2018 08:00:00', moment.ISO_8601))
     let app
     beforeEach(() => {
       app = shallow(<App />)
@@ -31,8 +37,8 @@ describe("App", () => {
   describe("Recommended Site", () => {
     it("should render the text of the suggested injection location", () => {
       const currentSite = app.find(CurrentSite);
-      expect(currentSite.length).toBe(1);
-      expect(currentSite.props().site).toBe("Left arm");
+      expect(currentSite.length).toEqual(1);
+      expect(currentSite.props().site).toEqual("Left arm");
     });
   });
 
@@ -43,8 +49,8 @@ describe("App", () => {
     it("should change the site after pressing Confirm", () => {
       app.find("#confirm").simulate('press')
       const currentSite = app.find(CurrentSite);
-      expect(currentSite.length).toBe(1);
-      expect(currentSite.props().site).toBe("Left leg");
+      expect(currentSite.length).toEqual(1);
+      expect(currentSite.props().site).toEqual("Left leg");
     });
     it("shows the alert when confirmed", () => {
       app.find("#confirm").simulate('press')
@@ -54,8 +60,8 @@ describe("App", () => {
       app.find("#confirm").simulate('press')
       app.find("#confirm").simulate('press')
       const currentSite = app.find(CurrentSite);
-      expect(currentSite.length).toBe(1);
-      expect(currentSite.props().site).toBe("Right arm");
+      expect(currentSite.length).toEqual(1);
+      expect(currentSite.props().site).toEqual("Right arm");
     })
   })
 
@@ -66,8 +72,8 @@ describe("App", () => {
     it('Shows the next injection site', () => {
       app.find("#skip").simulate('press')
       const currentSite = app.find(CurrentSite);
-      expect(currentSite.length).toBe(1);
-      expect(currentSite.props().site).toBe("Left leg");
+      expect(currentSite.length).toEqual(1);
+      expect(currentSite.props().site).toEqual("Left leg");
     })
     it('Shows an alert when skipped', () => {
       app.find("#skip").simulate('press')
@@ -77,17 +83,21 @@ describe("App", () => {
 
   describe("History", () => {
     it("should know the previous injection site once confirmed", () => {
+      time = moment()
       app.find("#confirm").simulate('press')
       const previousSite = app.find(PreviousSite);
-      expect(previousSite.length).toBe(1);
-      expect(previousSite.props().site).toBe("Left arm");
+      expect(previousSite.length).toEqual(1);
+      expect(previousSite.props().site).toEqual("Left arm");
+      expect(previousSite.props().time).toEqual(time);
     });
     it("should update previous injection site once confirmed again", () => {
       app.find("#confirm").simulate('press')
+      time = moment()
       app.find("#confirm").simulate('press')
       const previousSite = app.find(PreviousSite);
-      expect(previousSite.length).toBe(1);
-      expect(previousSite.props().site).toBe("Left leg");
+      expect(previousSite.length).toEqual(1);
+      expect(previousSite.props().site).toEqual("Left leg");
+      expect(previousSite.props().time).toEqual(time);
     });
     // it("should start with a blank history", () => {
     //   const app = shallow(<App />);

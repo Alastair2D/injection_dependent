@@ -1,14 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
+import moment from 'moment'
 import CurrentSite from './src/CurrentSite';
 import PreviousSite from './src/PreviousSite';
+import injectionsites from './src/injectionsites';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      sites: ['Left arm', 'Left leg', 'Right arm', 'Right leg'],
-      history: [],
+      sites: injectionsites,
+      history: [{site: injectionsites[injectionsites.length - 1], time: moment()}]
     };
   }
 
@@ -20,7 +22,7 @@ export default class App extends React.Component {
   }
 
   handleConfirmation() {
-    let newHistory = this.state.history.concat(this.state.sites[0]);
+    let newHistory = this.state.history.concat({site: this.state.sites[0], time: moment()});
     this.setState({
       history: newHistory
     });
@@ -40,8 +42,9 @@ export default class App extends React.Component {
         <CurrentSite id='currentSite'
           site={ this.state.sites[0] }
         />
-      <PreviousSite id='previousSite'
-          site={ this.state.history[this.state.history.length - 1] }
+        <PreviousSite id='previousSite'
+          site={ this.state.history[this.state.history.length - 1].site }
+          time={ this.state.history[this.state.history.length - 1].time }
         />
 
         <Button

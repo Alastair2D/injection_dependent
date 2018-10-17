@@ -43,8 +43,10 @@
     "eslint-plugin-react-native": "^3.5.0",
     "jest": "^23.6.0",
     "jsdom": "^12.2.0",
+    "mockdate": "^2.0.2",
     "react-native-mock": "^0.3.1",
     "react-native-mock-render": "^0.1.2",
-    "react-test-renderer": "^16.5.2"
+    "react-test-renderer": "^16.5.2",
+    "timekeeper": "^2.1.2"
   }
 }
