@@ -14,7 +14,7 @@ export default class App extends React.Component {
 
   confirmButtonClick = () => {
     this.handleConfirmation();
-    // alert("Confirmed");
+    alert("Confirmed");
   };
 
   skipButtonClick = () => {

@@ -1,5 +1,6 @@
 import { shallow } from "enzyme";
 import React from "react";
+import sinon from "sinon";
 import App from "../App";
 import CurrentSite from "../src/CurrentSite";
 import PreviousSite from "../src/PreviousSite";
@@ -37,8 +38,7 @@ describe("App", () => {
         .text();
       expect(text).toEqual("Left arm");
     });
-
-    it("should change the site after clicking confirmed", () => {
+    it("should change the site after pressing Confirm", () => {
       const app = shallow(<App />);
       app.find("#confirm").simulate('press')
       const text = app
@@ -49,8 +49,7 @@ describe("App", () => {
         .text();
       expect(text).toEqual("Left leg");
     });
-
-    it("should change the site again after clicking confirmed a second time", () => {
+    it("should change the site again after pressing Confirm a second time", () => {
       const app = shallow(<App />);
       app.find("#confirm").simulate('press')
       app.find("#confirm").simulate('press')
@@ -61,6 +60,21 @@ describe("App", () => {
         .dive()
         .text();
       expect(text).toEqual("Right arm");
+    });
+
+    it("should generate alert after 'Confirm' pressed", () => {
+      const app = shallow(<App />);
+      const text = app
+      alert = jest.fn()
+      app.find("#confirm").simulate('press')
+        // .find("#currentSite")
+        // .dive()
+        // .find('#site')
+        // .dive()
+        // .text();
+      // expect(text).toEqual("Left leg");
+      // window.alert = jest.fn();
+      expect(alert).toHaveBeenCalledOnce('pressed');
     });
   });
 
