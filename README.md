@@ -4,31 +4,50 @@ This is our final project to finish the course at Makers. The intention of the p
 
 ## Team
 
-[Mathilde Ferrand](https://github.com/ChocolatineMathou)
-
-[Andrew Wood](https://github.com/andrewwood2)
-
-[James Malvern](https://github.com/jdm79)
-
-[Alastair Edmonds](https://github.com/Alastair2D)
-
+[Mathilde Ferrand](https://github.com/ChocolatineMathou)   
+[Andrew Wood](https://github.com/andrewwood2)   
+[James Malvern](https://github.com/jdm79)   
+[Alastair Edmonds](https://github.com/Alastair2D)   
 [Harry Pugh](https://github.com/hjpugh)
 
-## Resources
+## Team Goals
 
-[Instagram](https://www.instagram.com/injection.dependent/?hl=en)
+* Learn React Native
+* Learn React Native testing framework (Jest and Enzyme)
+* Create something useful
+* Improve quality of life
+* TDD everything
+* Write code easy to read and change
+* Working together: pair programming, ensure knowledge sharing, communication
+* Agile rituals: sprint planning, daily stand-up, retro
 
-[Trello](https://trello.com/injectiondependent)
+## Technology
 
-## How to Use
+This project was built with Javascript and [React Native](https://facebook.github.io/react-native/).   
+We used [Jest](https://jestjs.io/) and [Enzyme](https://github.com/airbnb/enzyme) testing frameworks. Jest provides test coverage as well.   
+[ESLint](https://github.com/Intellicode/eslint-plugin-react-native) has been set up as a style checking.
 
-First start by cloning this repo:
+## How to install and use
 
-```
-git clone https://github.com/Alastair2D/injection_dependent
-```
+### Download the project
+
+1. Cloning this project `git clone https://github.com/Alastair2D/injection_dependent`
+2. Change into the directory `cd injection_dependent`
+3. Install the dependencies with `npm install`
+
+### Run the test
+
+1. `npm test` will run the tests and get you the test coverage
+2. `npm run lint` will run eslint
+
+### Play with the project
+
+Download the [Expo client](https://expo.io/) on your iOS or Android phone and connect to the same wireless network as your computer. On your computer, run `npm start`. You should see a QR code in your terminal and/or your favourite browser. On Android, use the Expo app to scan the QR code. On iOS, scan the QR code with your camera to open the project in the Expo app.
+
 
 ## User Stories
+
+### MVP
 
 ```
 As a user,
@@ -39,3 +58,8 @@ As a user,
 so I know the last injection site,
 I want to be able to see this.
 ```
+
+## Useful links
+
+[Group diary on Instagram](https://www.instagram.com/injection.dependent/?hl=en)   
+[Tickets on Trello](https://trello.com/injectiondependent)
