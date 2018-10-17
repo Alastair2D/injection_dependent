@@ -18,16 +18,6 @@ describe("App", () => {
     expect(app.containsMatchingElement(<PreviousSite />)).toEqual(true);
   });
 
-  describe("#Text", () => {
-    it("should render the the text Welcome to React Native! in our first text tag", () => {
-      const text = app
-        .find("#welcome")
-        .dive()
-        .text();
-      expect(text).toEqual("Welcome to Injection Dependent");
-    });
-  });
-
   describe("Recommended Site", () => {
     it("should render the text of the suggested injection location", () => {
       const text = app
