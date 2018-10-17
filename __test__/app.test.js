@@ -38,12 +38,6 @@ describe("App", () => {
       expect(text).toEqual("Left arm");
     });
 
-
-    // User clicks confirm button 
-    // Site is updated
-    // Text visualisation of previous site is updated
-
-
     it("should change the site after clicking confirmed", () => {
       const app = shallow(<App />);
       app.find("#confirm").simulate('press')
@@ -58,8 +52,8 @@ describe("App", () => {
 
     it("should change the site again after clicking confirmed a second time", () => {
       const app = shallow(<App />);
-      app.instance().handleConfirmation();
-      app.instance().handleConfirmation();
+      app.find("#confirm").simulate('press')
+      app.find("#confirm").simulate('press')
       const text = app
         .find("#currentSite")
         .dive()
