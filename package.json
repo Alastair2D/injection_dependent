@@ -39,6 +39,7 @@
     "jsdom": "^12.2.0",
     "react-native-mock": "^0.3.1",
     "react-native-mock-render": "^0.1.2",
-    "react-test-renderer": "^16.5.2"
+    "react-test-renderer": "^16.5.2",
+    "sinon": "^7.0.0"
   }
 }
