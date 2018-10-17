@@ -2,36 +2,23 @@ import { shallow } from "enzyme";
 import React from "react";
 import { Button } from "react-native";
 import moment from 'moment';
-import MockDate from 'mockdate';
 import timekeeper from 'timekeeper';
 import App from "../App";
 import CurrentSite from "../src/CurrentSite";
 import PreviousSite from "../src/PreviousSite";
 
 describe("App", () => {
-    var frozentime = new Date(1539760000000)
-    timekeeper.freeze(frozentime)
-    // MockDate.set(moment('10/17/2018 08:00:00', moment.ISO_8601))
-    let app
-    beforeEach(() => {
-      app = shallow(<App />)
-    })
+  timekeeper.freeze(new Date(1539760000000))
+  let app
+  beforeEach(() => {
+    app = shallow(<App />)
+  })
   it("renders a current site component", () => {
     expect(app.containsMatchingElement(<CurrentSite />)).toEqual(true);
   });
 
   it("renders a previous site component", () => {
     expect(app.containsMatchingElement(<PreviousSite />)).toEqual(true);
-  });
-
-  describe("#Text", () => {
-    it("should render the the text Welcome to React Native! in our first text tag", () => {
-      const text = app
-        .find("#welcome")
-        .dive()
-        .text();
-      expect(text).toEqual("Welcome to Injection Dependent");
-    });
   });
 
   describe("Recommended Site", () => {
