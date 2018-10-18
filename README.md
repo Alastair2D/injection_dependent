@@ -1,6 +1,6 @@
 # Injection Dependent
 
- [![Build Status](https://travis-ci.org/Alastair2D/injection_dependent.svg?branch=master)](https://travis-ci.org/Alastair2D/injection_dependent.svg?branch=master)
+ [![Build Status](https://travis-ci.org/Alastair2D/injection_dependent.svg?branch=master)](https://travis-ci.org/Alastair2D/injection_dependent.svg?branch=master)    ![Scrutinizer](https://img.shields.io/scrutinizer/g/filp/whoops.svg)    ![npm bundle size (minified)](https://img.shields.io/bundlephobia/min/react.svg)  ![License](https://img.shields.io/github/license/mashape/apistatus.svg)
 
 This is our final project to finish the course at Makers. The intention of the project is to help those with type 1 diabetes manage the condition by creating a mobile app that tracks and advises on injection sites.
 
