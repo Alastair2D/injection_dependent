@@ -6,6 +6,7 @@ import timekeeper from 'timekeeper';
 import App from "../App";
 import CurrentSite from "../src/CurrentSite";
 import PreviousSite from "../src/PreviousSite";
+import injectionsites from "../src/injectionsites";
 
 describe("App", () => {
   timekeeper.freeze(new Date(1539760000000))
@@ -25,7 +26,7 @@ describe("App", () => {
     it("should render the text of the suggested injection location", () => {
       const currentSite = app.find(CurrentSite);
       expect(currentSite.length).toEqual(1);
-      expect(currentSite.props().site).toEqual("Left arm");
+      expect(currentSite.props().site).toEqual(injectionsites[0]);
     });
   });
 
@@ -37,7 +38,7 @@ describe("App", () => {
       app.find("#confirm").simulate('press')
       const currentSite = app.find(CurrentSite);
       expect(currentSite.length).toEqual(1);
-      expect(currentSite.props().site).toEqual("Left leg");
+      expect(currentSite.props().site).toEqual(injectionsites[1]);
     });
     it("shows the alert when confirmed", () => {
       app.find("#confirm").simulate('press')
@@ -48,7 +49,7 @@ describe("App", () => {
       app.find("#confirm").simulate('press')
       const currentSite = app.find(CurrentSite);
       expect(currentSite.length).toEqual(1);
-      expect(currentSite.props().site).toEqual("Right arm");
+      expect(currentSite.props().site).toEqual(injectionsites[2]);
     })
   })
 
@@ -60,7 +61,7 @@ describe("App", () => {
       app.find("#skip").simulate('press')
       const currentSite = app.find(CurrentSite);
       expect(currentSite.length).toEqual(1);
-      expect(currentSite.props().site).toEqual("Left leg");
+      expect(currentSite.props().site).toEqual(injectionsites[1]);
     })
     it('Shows an alert when skipped', () => {
       app.find("#skip").simulate('press')
@@ -74,7 +75,7 @@ describe("App", () => {
       app.find("#confirm").simulate('press')
       const previousSite = app.find(PreviousSite);
       expect(previousSite.length).toEqual(1);
-      expect(previousSite.props().site).toEqual("Left arm");
+      expect(previousSite.props().site).toEqual(injectionsites[0]);
       expect(previousSite.props().time).toEqual(time);
     });
     it("should update previous injection site once confirmed again", () => {
@@ -83,7 +84,7 @@ describe("App", () => {
       app.find("#confirm").simulate('press')
       const previousSite = app.find(PreviousSite);
       expect(previousSite.length).toEqual(1);
-      expect(previousSite.props().site).toEqual("Left leg");
+      expect(previousSite.props().site).toEqual(injectionsites[1]);
       expect(previousSite.props().time).toEqual(time);
     });
     // it("should start with a blank history", () => {
