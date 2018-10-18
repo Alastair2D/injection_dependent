@@ -5,8 +5,10 @@
     "collectCoverage": true,
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}",
+      "screens/*.{js,jsx}",
       "*.{js,jsx}",
-      "!setupTests.js"
+      "!setupTests.js",
+      "!App.js"
     ],
     "preset": "react-native",
     "testEnvironment": "jsdom",
