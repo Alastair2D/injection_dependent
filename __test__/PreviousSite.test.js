@@ -1,21 +1,17 @@
 import {shallow} from 'enzyme';
 import React from 'react';
+import moment from 'moment'
 import PreviousSite from '../src/PreviousSite';
 
 describe('PreviousSite', () => {
-  it('renders something', () => {
-    let wrapper = shallow(<PreviousSite />);
-    expect(wrapper.length > 0).toBe(true);
-  });
-  it('renders text of previous site location', () => {
-    const app = shallow(<PreviousSite site={"Left arm"} />);
+  it('renders text of previous site location and time', () => {
+    const time = moment()
+    const calTime = time.calendar()
+    const app = shallow(<PreviousSite site={"Left arm"} time={time}/>);
     const text = app
       .find("#site")
       .dive()
       .text();
-    expect(text).toEqual("Left arm");
+    expect(text).toEqual("Previous: Left arm, " + calTime);
   })
-
 });
-
-
