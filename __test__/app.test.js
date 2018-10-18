@@ -3,7 +3,7 @@ import React from "react";
 import { Button } from "react-native";
 import moment from 'moment';
 import timekeeper from 'timekeeper';
-import App from "../App";
+import App from "../App-old";
 import CurrentSite from "../src/CurrentSite";
 import PreviousSite from "../src/PreviousSite";
 import injectionsites from "../src/injectionsites";
