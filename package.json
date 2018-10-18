@@ -4,7 +4,7 @@
   "jest": {
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "src/**/*.{js,jsx}",
+      "components/**/*.{js,jsx}",
       "screens/*.{js,jsx}",
       "*.{js,jsx}",
       "!setupTests.js",

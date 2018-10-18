@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, View, Button } from 'react-native';
 import moment from 'moment';
-import CurrentSite from '../src/CurrentSite';
-import PreviousSite from '../src/PreviousSite';
-import Header from '../src/Header';
-import injectionsites from '../src/injectionsites';
+import CurrentSite from '../components/CurrentSite';
+import PreviousSite from '../components/PreviousSite';
+import Header from '../components/Header';
+import injectionsites from '../components/injectionsites';
 
 export default class HomeScreen extends React.Component {
   constructor(props) {

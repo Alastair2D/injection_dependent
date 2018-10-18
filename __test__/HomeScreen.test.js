@@ -4,9 +4,9 @@ import { Button } from "react-native";
 import moment from 'moment';
 import timekeeper from 'timekeeper';
 import HomeScreen from "../screens/HomeScreen";
-import CurrentSite from "../src/CurrentSite";
-import PreviousSite from "../src/PreviousSite";
-import injectionsites from "../src/injectionsites";
+import CurrentSite from "../components/CurrentSite";
+import PreviousSite from "../components/PreviousSite";
+import injectionsites from "../components/injectionsites";
 
 describe("Homescreen", () => {
   timekeeper.freeze(new Date(1539760000000))
