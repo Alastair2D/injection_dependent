@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
-import moment from 'moment'
+import { StyleSheet, View, Button } from 'react-native';
+import moment from 'moment';
 import CurrentSite from './src/CurrentSite';
 import PreviousSite from './src/PreviousSite';
 import Header from './src/Header';
@@ -11,7 +11,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       sites: injectionsites,
-      history: [{site: injectionsites[injectionsites.length - 1], time: moment()}]
+      history: [{ site: injectionsites[injectionsites.length - 1], time: moment() }],
     };
   }
 
@@ -23,7 +23,7 @@ export default class App extends React.Component {
   }
 
   handleConfirmation() {
-    const newHistory = this.state.history.concat({site: this.state.sites[0], time: moment()});
+    const newHistory = this.state.history.concat({ site: this.state.sites[0], time: moment() });
     this.setState({
       history: newHistory,
     });
@@ -41,28 +41,35 @@ export default class App extends React.Component {
       <View style={styles.container}>
         <View>
           <Header />
-          <CurrentSite id='currentSite'
-            site={ this.state.sites[0] }
+          <CurrentSite
+            id="currentSite"
+            site={this.state.sites[0]}
           />
-          <PreviousSite id='previousSite'
-            site={ this.state.history[this.state.history.length - 1].site }
-            time={ this.state.history[this.state.history.length - 1].time }
+          <PreviousSite
+            id="previousSite"
+            site={this.state.history[this.state.history.length - 1].site}
+            time={this.state.history[this.state.history.length - 1].time}
           />
         </View>
 
-        <View style={styles.buttonContainer}>
-          <Button style={styles.button}
+        <View
+          style={styles.buttonContainer}>
+          <Button
+            style={styles.button}
             onPress={event => {
               this.handleConfirmation();
             }}
-            id="confirm" title="Confirm"
+            id="confirm"
+            title="Confirm"
           />
 
-          <Button style={styles.button}
+          <Button
+            style={styles.button}
             onPress={event => {
               this.handleSkip();
             }}
-            id="skip" title="Skip"
+            id="skip"
+            title="Skip"
           />
         </View>
       </View>
