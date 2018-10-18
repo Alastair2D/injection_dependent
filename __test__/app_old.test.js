@@ -8,7 +8,7 @@ import CurrentSite from "../src/CurrentSite";
 import PreviousSite from "../src/PreviousSite";
 import injectionsites from "../src/injectionsites";
 
-describe("App", () => {
+describe("Homescreen", () => {
   timekeeper.freeze(new Date(1539760000000))
   let app
   beforeEach(() => {
@@ -88,7 +88,7 @@ describe("App", () => {
       expect(previousSite.props().time).toEqual(time);
     });
     // it("should start with a blank history", () => {
-    //   const app = shallow(<App />);
+    //   const app = shallow(<app />);
     //   const text = app
     //     .find("#previousSite")
     //     .dive()
