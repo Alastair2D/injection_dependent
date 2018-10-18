@@ -2,6 +2,12 @@
   "name": "empty-project-template",
   "main": "node_modules/expo/AppEntry.js",
   "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "*.{js,jsx}",
+      "!setupTests.js"
+    ],
     "preset": "react-native",
     "testEnvironment": "jsdom",
     "setupFiles": [
@@ -15,10 +21,14 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "eject": "expo eject",
-    "test": "jest"
+    "test": "jest",
+    "lint": "./node_modules/.bin/eslint src/**/*.js App.js"
   },
   "dependencies": {
+    "babel-eslint": "^10.0.1",
     "expo": "^30.0.1",
+    "expo-cli": "^2.2.0",
+    "moment": "^2.22.2",
     "react": "16.3.1",
     "react-dom": "^16.5.2",
     "react-native": "https://github.com/expo/react-native/archive/sdk-30.0.0.tar.gz"
@@ -26,10 +36,17 @@
   "devDependencies": {
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
+    "eslint": "^5.7.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-react-native": "^3.5.0",
     "jest": "^23.6.0",
     "jsdom": "^12.2.0",
     "react-native-mock": "^0.3.1",
     "react-native-mock-render": "^0.1.2",
-    "react-test-renderer": "^16.5.2"
+    "react-test-renderer": "^16.5.2",
+    "timekeeper": "^2.1.2"
   }
 }
