@@ -1,90 +1,62 @@
 import React from 'react';
-import { StyleSheet, View, Button } from 'react-native';
-import moment from 'moment';
-import CurrentSite from './src/CurrentSite';
-import PreviousSite from './src/PreviousSite';
-import Header from './src/Header';
-import injectionsites from './src/injectionsites';
+import { Platform, StatusBar, StyleSheet, View } from 'react-native';
+import { AppLoading, Asset, Font, Icon } from 'expo';
+import AppNavigator from './navigation/AppNavigator';
 
 export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      sites: injectionsites,
-      history: [{ site: injectionsites[injectionsites.length - 1], time: moment() }],
-    };
-  }
-
-  nextSite() {
-    const rotatedSites = this.state.sites.slice(1).concat(this.state.sites[0]);
-    this.setState({
-      sites: rotatedSites,
-    });
-  }
-
-  handleConfirmation() {
-    const newHistory = this.state.history.concat({ site: this.state.sites[0], time: moment() });
-    this.setState({
-      history: newHistory,
-    });
-    this.nextSite();
-    alert('Confirmed');
-  }
-
-  handleSkip() {
-    this.nextSite();
-    alert('Skipped');
-  }
+  state = {
+    isLoadingComplete: false,
+  };
 
   render() {
-    return (
-      <View style={styles.container}>
-        <View>
-          <Header />
-          <CurrentSite
-            id="currentSite"
-            site={this.state.sites[0]}
-          />
-          <PreviousSite
-            id="previousSite"
-            site={this.state.history[this.state.history.length - 1].site}
-            time={this.state.history[this.state.history.length - 1].time}
-          />
+    if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
+      return (
+        <AppLoading
+          startAsync={this._loadResourcesAsync}
+          onError={this._handleLoadingError}
+          onFinish={this._handleFinishLoading}
+        />
+      );
+    } else {
+      return (
+        <View style={styles.container}>
+          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+          <AppNavigator />
         </View>
-
-        <View
-          style={styles.buttonContainer}>
-          <Button
-            style={styles.button}
-            onPress={event => {
-              this.handleConfirmation();
-            }}
-            id="confirm"
-            title="Confirm"
-          />
-
-          <Button
-            style={styles.button}
-            onPress={event => {
-              this.handleSkip();
-            }}
-            id="skip"
-            title="Skip"
-          />
-        </View>
-      </View>
-    );
+      );
+    }
   }
+
+  _loadResourcesAsync = async () => {
+    return Promise.all([
+      Asset.loadAsync([
+        require('./assets/images/robot-dev.png'),
+        require('./assets/images/robot-prod.png'),
+      ]),
+      Font.loadAsync({
+        // This is the font that we are using for our tab bar
+        ...Icon.Ionicons.font,
+        // We include SpaceMono because we use it in HomeScreen.js. Feel free
+        // to remove this if you are not using it in your app
+        'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
+      }),
+    ]);
+  };
+
+  _handleLoadingError = error => {
+    // In this case, you might want to report the error to your error
+    // reporting service, for example Sentry
+    console.warn(error);
+  };
+
+  _handleFinishLoading = () => {
+    this.setState({ isLoadingComplete: true });
+  };
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'orange',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  buttonContainer: {
-    flexDirection: 'row',
+    backgroundColor: '#fff',
   },
 });
