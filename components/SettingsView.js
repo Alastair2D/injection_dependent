@@ -6,22 +6,22 @@ class SettingsView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      legsChecked: false,
-      armsChecked: false,
-      abdomenChecked: false,
-      buttocksChecked: false,
-      thighsChecked: false,
+      checked: false,
+      // armsChecked: false,
+      // abdomenChecked: false,
+      // buttocksChecked: false,
+      // thighsChecked: false,
     };
 
     this.check = this.check.bind(this);
   }
 
   check() {
-    this.setState({legsChecked: !this.state.checked});
-    this.setState({armsChecked: !this.state.checked});
-    this.setState({abdomenChecked: !this.state.checked});
-    this.setState({buttocksChecked: !this.state.checked});
-    this.setState({thighsChecked: !this.state.checked});
+    this.setState({checked: !this.state.checked});
+    // this.setState({armsChecked: !this.state.checked});
+    // this.setState({abdomenChecked: !this.state.checked});
+    // this.setState({buttocksChecked: !this.state.checked});
+    // this.setState({thighsChecked: !this.state.checked});
   }
 
   render() {
@@ -33,7 +33,9 @@ class SettingsView extends Component {
         title="legs"
         onPress={event => {
           this.check()}}
-        legsChecked={this.state.legsChecked}
+        checkedIcon='check-square-o'
+        uncheckedIcon='square-o'
+        checked={this.state.checked}
         />
 
       <CheckBox
@@ -41,7 +43,9 @@ class SettingsView extends Component {
         title="arms"
         onPress={event => {
           this.check()}}
-        armsChecked={this.state.armsChecked}
+        checkedIcon='check-square-o'
+        uncheckedIcon='square-o'
+        checked={this.state.checked}
       />
 
       <CheckBox
@@ -49,7 +53,9 @@ class SettingsView extends Component {
        title="abdomen"
        onPress={event => {
          this.check()}}
-       abdomenChecked={this.state.abdomenChecked}
+       checkedIcon='check-square-o'
+       uncheckedIcon='square-o'
+       checked={this.state.checked}
        />
 
      <CheckBox
@@ -57,7 +63,9 @@ class SettingsView extends Component {
        title="buttocks"
        onPress={event => {
          this.check()}}
-       buttocksChecked={this.state.buttocksChecked}
+       checkedIcon='check-square-o'
+       uncheckedIcon='square-o'
+       checked={this.state.checked}
        />
 
      <CheckBox
@@ -65,7 +73,9 @@ class SettingsView extends Component {
        title="thighs"
        onPress={event => {
          this.check()}}
-       thighsChecked={this.state.thighsChecked}
+       checkedIcon='check-square-o'
+       uncheckedIcon='square-o'
+       checked={this.state.checked}
        />
       </View>
     )

@@ -1,4 +1,5 @@
 import React from 'react';
+import SettingsView from '../components/SettingsView';
 
 export default class SettingsScreen extends React.Component {
   static navigationOptions = {
