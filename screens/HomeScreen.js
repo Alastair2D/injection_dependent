@@ -46,6 +46,10 @@ export default class HomeScreen extends React.Component {
       <View style={styles.container}>
         <View>
           <Header />
+          <Image
+            source={{ uri: "../images/Abs/leftAbs1.png" }}
+            style={styles.image}
+          />
           <CurrentSite id="currentSite" site={this.state.sites[0]} />
           <PreviousSite
             id="previousSite"
@@ -87,5 +91,10 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flexDirection: "row"
+  },
+  image: {
+    width: 110,
+    height: 200,
+    padding: 10
   }
 });
