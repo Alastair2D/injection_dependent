@@ -16,17 +16,17 @@ export default class HomeScreen extends React.Component {
   }
 
   nextSite() {
-    // const rotatedSites = this.state.sites.slice(1).concat(this.state.sites[0]);
-    this.setState(prevState => ({
-      sites: prevState.sites.slice(1).concat(prevState.sites[0]),
-    }));
+    const rotatedSites = this.state.sites.slice(1).concat(this.state.sites[0]);
+    this.setState({
+      sites: rotatedSites,
+    });
   }
 
   handleConfirmation() {
-    // const newHistory = this.state.history.concat({ site: this.state.sites[0], time: moment() });
-    this.setState(prevState => ({
-      history: prevState.history.concat({ site: prevState.sites[0], time: moment() }),
-    }));
+    const newHistory = this.state.history.concat({ site: this.state.sites[0], time: moment() });
+    this.setState({
+      history: newHistory,
+    });
     this.nextSite();
     alert('Confirmed');
   }
@@ -52,10 +52,11 @@ export default class HomeScreen extends React.Component {
           />
         </View>
 
-        <View style={styles.buttonContainer}>
+        <View
+          style={styles.buttonContainer}>
           <Button
             style={styles.button}
-            onPress={() => {
+            onPress={event => {
               this.handleConfirmation();
             }}
             id="confirm"
@@ -64,7 +65,7 @@ export default class HomeScreen extends React.Component {
 
           <Button
             style={styles.button}
-            onPress={() => {
+            onPress={event => {
               this.handleSkip();
             }}
             id="skip"
