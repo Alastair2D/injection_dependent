@@ -19,6 +19,9 @@ class SettingsView extends Component {
   check() {
     this.setState({legsChecked: !this.state.checked});
     this.setState({armsChecked: !this.state.checked});
+    this.setState({abdomenChecked: !this.state.checked});
+    this.setState({buttocksChecked: !this.state.checked});
+    this.setState({thighsChecked: !this.state.checked});
   }
 
   render() {
@@ -40,6 +43,30 @@ class SettingsView extends Component {
           this.check()}}
         armsChecked={this.state.armsChecked}
       />
+
+      <CheckBox
+       id="abdomen"
+       title="abdomen"
+       onPress={event => {
+         this.check()}}
+       abdomenChecked={this.state.abdomenChecked}
+       />
+
+     <CheckBox
+       id="buttocks"
+       title="buttocks"
+       onPress={event => {
+         this.check()}}
+       buttocksChecked={this.state.buttocksChecked}
+       />
+
+     <CheckBox
+       id="thighs"
+       title="thighs"
+       onPress={event => {
+         this.check()}}
+       thighsChecked={this.state.thighsChecked}
+       />
       </View>
     )
   }
