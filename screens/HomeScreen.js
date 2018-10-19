@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Button } from "react-native";
+import { StyleSheet, View, Button, Image } from "react-native";
 import moment from "moment";
 import CurrentSite from "../components/CurrentSite";
 import PreviousSite from "../components/PreviousSite";
@@ -46,6 +46,7 @@ export default class HomeScreen extends React.Component {
       <View style={styles.container}>
         <View>
           <Header />
+          <Image uri="../images/Abs/leftAbs1.png" />
           <CurrentSite id="currentSite" site={this.state.sites[0]} />
           <PreviousSite
             id="previousSite"

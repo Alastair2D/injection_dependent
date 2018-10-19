@@ -11,10 +11,10 @@ describe("HistoryScreen", () => {
   });
 
   describe("Components", () => {
-    it("renders the HistoryTable component", () => {
-      expect(historyscreen.containsMatchingElement(<HistoryTable />)).toEqual(true)
-    })    
+    it("renders a table component", () => {
+      expect(historyscreen.containsMatchingElement(<HistoryTable />)).toEqual(
+        true
+      );
+    });
   });
-
-
 });
