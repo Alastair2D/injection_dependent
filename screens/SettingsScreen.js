@@ -1,5 +1,6 @@
 import React from 'react';
-import { ExpoConfigView } from '@expo/samples';
+import { Image } from "react-native";
+
 
 export default class SettingsScreen extends React.Component {
   static navigationOptions = {
@@ -7,8 +8,29 @@ export default class SettingsScreen extends React.Component {
   };
 
   render() {
-    /* Go ahead and delete ExpoConfigView and replace it with your
-     * content, we just wanted to give you a quick view of your config */
-    return <ExpoConfigView />;
+    return(
+      <Image
+        source={{ uri: "../images/Abs/leftAbs1.png" }}
+        style={styles.image}
+      />
+    ) 
   }
 }
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "orange",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  buttonContainer: {
+    flexDirection: "row"
+  },
+  image: {
+    width: 110,
+    height: 200,
+    padding: 10
+  }
+});
