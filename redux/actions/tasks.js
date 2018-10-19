@@ -10,3 +10,9 @@ export function nextInjSite() {
         type: 'tasks-next-injection-site'
     };
 }
+
+export function resetDefaults() {
+    return {
+        type: 'tasks-reset-defaults'
+    };
+}

@@ -7,7 +7,6 @@ import HomeScreen from "../screens/HomeScreen";
 import CurrentSite from "../components/CurrentSite";
 import PreviousSite from "../components/PreviousSite";
 import injectionsites from "../components/injectionsites";
-import { Provider } from 'react-redux';
 import store from '../redux/store';
 
 describe("Homescreen", () => {
@@ -15,6 +14,7 @@ describe("Homescreen", () => {
   let hs
   beforeEach(() => {
     hs = shallow(<HomeScreen store={store}/>).dive()
+    hs.instance().props.resetDefaults()
   })
   it("renders a current site component", () => {
     expect(hs.containsMatchingElement(<CurrentSite />)).toEqual(true);

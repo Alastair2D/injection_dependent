@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { StyleSheet, View, Button } from 'react-native';
 
 import { connect } from 'react-redux'
-import { saveInj, nextInjSite } from '../redux/actions/tasks';
+import { saveInj, nextInjSite, resetDefaults } from '../redux/actions/tasks';
 
 import moment from 'moment';
 import CurrentSite from '../components/CurrentSite';
@@ -106,6 +106,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         saveInj: (inj) => { dispatch(saveInj(inj)); },
         nextInjSite: () => { dispatch(nextInjSite()); },
+        resetDefaults: () => { dispatch(resetDefaults()); },
     };
 }
 

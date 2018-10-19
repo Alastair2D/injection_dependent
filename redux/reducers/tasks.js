@@ -18,7 +18,10 @@ export default function tasksReducer (state = defaultState, action) {
             return {
               sites: [ ...state.sites.slice(1), state.sites[0] ],
               history: state.history
-            }
+            };
+
+        case 'tasks-reset-defaults':
+            return defaultState;
 
         default:
             return state;
