@@ -12,7 +12,7 @@ export default class HistoryScreen extends React.Component {
         <HistoryTable />
       </ScrollView>
     );
-  }
+  h
 }
 
 const styles = StyleSheet.create({
