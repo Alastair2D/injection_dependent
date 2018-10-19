@@ -5,11 +5,13 @@ import CurrentSite from "../components/CurrentSite";
 import PreviousSite from "../components/PreviousSite";
 import Header from "../components/Header";
 import injectionsites from "../components/injectionsites";
+import BodyImages from "../components/BodyImages";
 
 export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      imgNum: 0,
       sites: injectionsites,
       history: [
         { site: injectionsites[injectionsites.length - 1], time: moment() }
@@ -42,14 +44,12 @@ export default class HomeScreen extends React.Component {
   }
 
   render() {
+    let bI = <BodyImages />;
     return (
       <View style={styles.container}>
         <View>
           <Header />
-          <Image
-            source={{ uri: "../images/Abs/leftAbs1.png" }}
-            style={styles.image}
-          />
+          {bI.state.imagePaths[this.state.imgNum]}
           <CurrentSite id="currentSite" site={this.state.sites[0]} />
           <PreviousSite
             id="previousSite"
@@ -95,6 +95,7 @@ const styles = StyleSheet.create({
   image: {
     width: 110,
     height: 200,
-    padding: 10
+    padding: 10,
+    alignSelf: "center"
   }
 });
