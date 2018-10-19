@@ -7,6 +7,11 @@ export default class HistoryScreen extends React.Component {
     title: "History"
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
   render() {
     return (
       <ScrollView style={styles.container}>
