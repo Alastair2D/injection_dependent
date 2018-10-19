@@ -4,9 +4,11 @@
   "jest": {
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "src/**/*.{js,jsx}",
+      "components/**/*.{js,jsx}",
+      "screens/*.{js,jsx}",
       "*.{js,jsx}",
-      "!setupTests.js"
+      "!setupTests.js",
+      "!App.js"
     ],
     "preset": "react-native",
     "testEnvironment": "jsdom",
@@ -22,16 +24,18 @@
     "ios": "expo start --ios",
     "eject": "expo eject",
     "test": "jest",
-    "lint": "./node_modules/.bin/eslint src/**/*.js App.js"
+    "lint": "./node_modules/.bin/eslint components/*.js App.js screens/*.js"
   },
   "dependencies": {
     "babel-eslint": "^10.0.1",
+    "@expo/samples": "2.1.1",
     "expo": "^30.0.1",
     "expo-cli": "^2.2.0",
     "moment": "^2.22.2",
     "react": "16.3.1",
     "react-dom": "^16.5.2",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-30.0.0.tar.gz"
+    "react-native": "https://github.com/expo/react-native/archive/sdk-30.0.0.tar.gz",
+    "react-navigation": "^2.16.0"
   },
   "devDependencies": {
     "enzyme": "^3.7.0",

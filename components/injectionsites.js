@@ -38,7 +38,7 @@ const injectionsites = [
   'Right buttock: 1',
   'Right buttock: 2',
   'Right buttock: 3',
-  'Right buttock: 4'
-]
+  'Right buttock: 4',
+];
 
 export default injectionsites;

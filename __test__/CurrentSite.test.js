@@ -1,6 +1,6 @@
 import {shallow} from 'enzyme';
 import React from 'react';
-import CurrentSite from '../src/CurrentSite';
+import CurrentSite from '../components/CurrentSite';
 
 describe('CurrentSite', () => {
   it('renders something', () => {

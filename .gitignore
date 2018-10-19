@@ -1,4 +1,6 @@
 node_modules/**/*
 .expo/*
+.expo/**/*
 npm-debug.*
 coverage/
+.DS_Store

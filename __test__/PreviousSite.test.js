@@ -1,7 +1,7 @@
 import {shallow} from 'enzyme';
 import React from 'react';
 import moment from 'moment'
-import PreviousSite from '../src/PreviousSite';
+import PreviousSite from '../components/PreviousSite';
 
 describe('PreviousSite', () => {
   it('renders text of previous site location and time', () => {
