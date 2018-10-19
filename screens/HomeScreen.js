@@ -5,6 +5,8 @@ import CurrentSite from "../components/CurrentSite";
 import PreviousSite from "../components/PreviousSite";
 import Header from "../components/Header";
 import injectionsites from "../components/injectionsites";
+import BodyImages from "../components/BodyImages";
+
 
 export default class HomeScreen extends React.Component {
   constructor(props) {
@@ -46,6 +48,7 @@ export default class HomeScreen extends React.Component {
       <View style={styles.container}>
         <View>
           <Header />
+          <BodyImages />
           <Image
             source={{ uri: "../images/Abs/leftAbs1.png" }}
             style={styles.image}

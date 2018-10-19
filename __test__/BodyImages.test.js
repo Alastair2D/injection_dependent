@@ -3,8 +3,9 @@ import React from "react";
 import BodyImages from "../components/BodyImages";
 
 describe("BodyImages", () => {
-  it("renders an image", () => {
+  it("recognises Hello World Div", () => {
     let bi = shallow(<BodyImages />);
-    expect(bi.instance().contains(<div>Hello World</div>)).to.equal(true);
+    expect(bi.containsMatchingElement(<div><Text>Hello World</Text></div>)).toEqual(true);
   });
+
 });

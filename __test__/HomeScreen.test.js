@@ -18,9 +18,11 @@ describe("Homescreen", () => {
   it("renders a current site component", () => {
     expect(hs.containsMatchingElement(<CurrentSite />)).toEqual(true);
   });
-
   it("renders a previous site component", () => {
     expect(hs.containsMatchingElement(<PreviousSite />)).toEqual(true);
+  });
+  it("renders the images component", () => {
+    expect(hs.containsMatchingElement(<BodyImages />)).toEqual(true);
   });
 
   describe("Recommended Site", () => {
