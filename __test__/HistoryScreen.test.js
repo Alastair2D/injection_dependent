@@ -3,18 +3,19 @@ import { Text } from "react-native";
 import React from "react";
 import HistoryScreen from "../screens/HistoryScreen";
 
-import CurrentSite from "../components/CurrentSite";
+import HistoryTable from "../components/HistoryTable";
 
 describe("HistoryScreen", () => {
   beforeEach(() => {
     historyscreen = shallow(<HistoryScreen />);
   });
 
-  xdescribe("Components", () => {
-    it("renders a text component", () => {
-      expect(historyscreen.containsMatchingElement(<Text />).toEqual(true));
-    });
+  describe("Components", () => {
+    it("renders the HistoryTable component", () => {
+      expect(historyscreen.containsMatchingElement(<HistoryTable />)).toEqual(true)
+    })    
   });
 
 
 });
+
