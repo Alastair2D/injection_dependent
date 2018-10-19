@@ -16,6 +16,8 @@
     "no-use-before-define": "off",
     "react/prefer-stateless-function": 0,
     "react/jsx-one-expression-per-line": 0,
-    "object-curly-newline": ["error", {"ImportDeclaration": "never"}]
+    "object-curly-newline": ["error", {"ImportDeclaration": "never"}],
+    "react/destructuring-assignment": 0,
+    "react/prop-types": 0
     }
 }

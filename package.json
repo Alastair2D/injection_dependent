@@ -24,7 +24,7 @@
     "ios": "expo start --ios",
     "eject": "expo eject",
     "test": "jest",
-    "lint": "./node_modules/.bin/eslint src/**/*.js App.js"
+    "lint": "./node_modules/.bin/eslint components/*.js App.js screens/*.js"
   },
   "dependencies": {
     "babel-eslint": "^10.0.1",
