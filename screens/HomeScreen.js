@@ -1,32 +1,29 @@
 import React from 'react';
 import { StyleSheet, View, Button } from 'react-native';
+
+import { connect } from 'react-redux'
+import { saveInj, nextInjSite } from './reducer';
+import * as taskActions from '../redux/actions/tasks';
+
 import moment from 'moment';
 import CurrentSite from '../components/CurrentSite';
 import PreviousSite from '../components/PreviousSite';
 import Header from '../components/Header';
-import injectionsites from '../components/injectionsites';
+// import injectionsites from '../components/injectionsites';
 
-export default class HomeScreen extends React.Component {
+class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      sites: injectionsites,
-      history: [{ site: injectionsites[injectionsites.length - 1], time: moment() }],
-    };
   }
 
   nextSite() {
     // const rotatedSites = this.state.sites.slice(1).concat(this.state.sites[0]);
-    this.setState(prevState => ({
-      sites: prevState.sites.slice(1).concat(prevState.sites[0]),
-    }));
+    this.props.nextInjSite()
   }
 
   handleConfirmation() {
     // const newHistory = this.state.history.concat({ site: this.state.sites[0], time: moment() });
-    this.setState(prevState => ({
-      history: prevState.history.concat({ site: prevState.sites[0], time: moment() }),
-    }));
+    this.props.saveInj({ site: this.props.sites[0], time: moment() });
     this.nextSite();
     alert('Confirmed');
   }
@@ -43,12 +40,12 @@ export default class HomeScreen extends React.Component {
           <Header />
           <CurrentSite
             id="currentSite"
-            site={this.state.sites[0]}
+            site={this.props.sites[0]}
           />
           <PreviousSite
             id="previousSite"
-            site={this.state.history[this.state.history.length - 1].site}
-            time={this.state.history[this.state.history.length - 1].time}
+            site={this.props.history[this.props.history.length - 1].site}
+            time={this.props.history[this.props.history.length - 1].time}
           />
         </View>
 
@@ -76,6 +73,17 @@ export default class HomeScreen extends React.Component {
   }
 }
 
+// this.state = {
+//   sites: injectionsites,
+//   history: [{ site: injectionsites[injectionsites.length - 1], time: moment() }],
+// };
+
+HomeScreen.propTypes = {
+    sites: PropTypes.arrayOf(PropTypes.strings).isRequired,
+    saveInj: PropTypes.func.isRequired,
+    nextInjSite: PropTypes.func.isRequired
+};
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -87,3 +95,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
 });
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    sites: state.tasks.sites
+    history: state.tasks.history
+  };
+}
+
+const mapDispatchToProps = {
+  saveInj,
+  nextInjSite,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
