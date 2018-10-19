@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import { StyleSheet, View, Button } from 'react-native';
 
 import { connect } from 'react-redux'
-import { saveInj, nextInjSite } from './reducer';
-import * as taskActions from '../redux/actions/tasks';
+import { saveInj, nextInjSite } from '../redux/actions/tasks';
 
 import moment from 'moment';
 import CurrentSite from '../components/CurrentSite';
@@ -18,7 +17,7 @@ class HomeScreen extends React.Component {
 
   nextSite() {
     // const rotatedSites = this.state.sites.slice(1).concat(this.state.sites[0]);
-    this.props.nextInjSite()
+    this.props.nextInjSite();
   }
 
   handleConfirmation() {
@@ -78,11 +77,11 @@ class HomeScreen extends React.Component {
 //   history: [{ site: injectionsites[injectionsites.length - 1], time: moment() }],
 // };
 
-HomeScreen.propTypes = {
-    sites: PropTypes.arrayOf(PropTypes.strings).isRequired,
-    saveInj: PropTypes.func.isRequired,
-    nextInjSite: PropTypes.func.isRequired
-};
+// HomeScreen.propTypes = {
+//     // sites: PropTypes.arrayOf(PropTypes.strings).isRequired,
+//     saveInj: PropTypes.func.isRequired,
+//     nextInjSite: PropTypes.func.isRequired
+// };
 
 const styles = StyleSheet.create({
   container: {
@@ -98,14 +97,16 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    sites: state.tasks.sites
+    sites: state.tasks.sites,
     history: state.tasks.history
   };
 }
 
-const mapDispatchToProps = {
-  saveInj,
-  nextInjSite,
-};
+const mapDispatchToProps = (dispatch) => {
+    return {
+        saveInj: (inj) => { dispatch(saveInj(inj)); },
+        nextInjSite: () => { dispatch(nextInjSite()); },
+    };
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);

@@ -5,7 +5,6 @@ import AppNavigator from './navigation/AppNavigator';
 
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import reducer from './reducer';
 import store from './redux/store';
 
 export default class App extends React.Component {

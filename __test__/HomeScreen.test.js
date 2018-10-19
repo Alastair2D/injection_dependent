@@ -7,12 +7,13 @@ import HomeScreen from "../screens/HomeScreen";
 import CurrentSite from "../components/CurrentSite";
 import PreviousSite from "../components/PreviousSite";
 import injectionsites from "../components/injectionsites";
+import store from '../redux/store';
 
 describe("Homescreen", () => {
   timekeeper.freeze(new Date(1539760000000))
   let hs
   beforeEach(() => {
-    hs = shallow(<HomeScreen />)
+    hs = shallow(<HomeScreen store={store}/>)
   })
   it("renders a current site component", () => {
     expect(hs.containsMatchingElement(<CurrentSite />)).toEqual(true);
