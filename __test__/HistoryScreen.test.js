@@ -8,8 +8,15 @@ describe("HistoryScreen", () => {
   beforeEach(() => {
     historyscreen = shallow(<HistoryScreen />)
   })
-
-  it("renders a current site component", () => {
-    expect(historyscreen.containsMatchingElement(<CurrentSite />)).toEqual(true);
+  
+  describe('Components', () => )
+    it("renders a current site component", () => {
+      expect(historyscreen.containsMatchingElement(<CurrentSite />)).toEqual(true);
   })
+
+  
+
+
+
+
 })
