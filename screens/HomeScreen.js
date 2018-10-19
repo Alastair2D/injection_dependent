@@ -46,7 +46,6 @@ export default class HomeScreen extends React.Component {
       <View style={styles.container}>
         <View>
           <Header />
-          <Image uri="../images/Abs/leftAbs1.png" />
           <CurrentSite id="currentSite" site={this.state.sites[0]} />
           <PreviousSite
             id="previousSite"

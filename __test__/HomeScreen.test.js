@@ -23,10 +23,6 @@ describe("Homescreen", () => {
     expect(hs.containsMatchingElement(<PreviousSite />)).toEqual(true);
   });
 
-  it("renders the images component", () => {
-    expect(hs.containsMatchingElement(<BodyImages />)).toEqual(true);
-  });
-
   describe("Recommended Site", () => {
     it("should render the text of the suggested injection location", () => {
       const currentSite = hs.find(CurrentSite);
