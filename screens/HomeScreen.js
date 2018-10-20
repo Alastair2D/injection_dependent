@@ -21,7 +21,7 @@ export default class HomeScreen extends React.Component {
     };
   }
 
-  onSwipeRight(gestureState) {
+  onSwipeLeft(gestureState) {
     this.handleSkip();
   }
 
@@ -49,13 +49,13 @@ export default class HomeScreen extends React.Component {
   render() {
     const config = {
       velocityThreshold: 0.05,
-      directionalOffsetThreshold: 80
+      directionalOffsetThreshold: 200
     };
     return (
       <View style={styles.container}>
         <View>
           <Header />
-          <GestureRecognizer onSwipeRight={state => this.onSwipeRight(state)} confog={config}>
+          <GestureRecognizer onSwipeLeft={state => this.onSwipeLeft(state)} config={config}>
             <BodyImages imgNum={this.state.sites[0].imgNum} />
           </GestureRecognizer>
           <CurrentSite id="currentSite" site={this.state.sites[0]} />

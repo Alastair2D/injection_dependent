@@ -15,7 +15,10 @@
     "setupFiles": [
       "./setupTests.js"
     ],
-    "verbose": true
+    "verbose": true,
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   },
   "private": true,
   "scripts": {
@@ -24,6 +27,8 @@
     "ios": "expo start --ios",
     "eject": "expo eject",
     "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "lint": "./node_modules/.bin/eslint components/*.js App.js screens/*.js"
   },
   "dependencies": {
@@ -42,6 +47,7 @@
   "devDependencies": {
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
+    "enzyme-to-json": "^3.3.4",
     "eslint": "^5.7.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
