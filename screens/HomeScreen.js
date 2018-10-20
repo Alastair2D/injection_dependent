@@ -49,7 +49,7 @@ export default class HomeScreen extends React.Component {
       <View style={styles.container}>
         <View>
           <Header />
-          <BodyImages imgNum={this.state.currentImage} />
+          <BodyImages imgNum={this.state.sites[0].imgNum} />
           <CurrentSite id="currentSite" site={this.state.sites[0]} />
           <PreviousSite
             id="previousSite"
