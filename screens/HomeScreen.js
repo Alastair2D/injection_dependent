@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Button, Image } from "react-native";
+import { StyleSheet, View, Button } from "react-native";
 import moment from "moment";
 import CurrentSite from "../components/CurrentSite";
 import PreviousSite from "../components/PreviousSite";
@@ -14,7 +14,6 @@ export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentImage: 0,
       sites: injectionsites,
       history: [
         { site: injectionsites[injectionsites.length - 1], time: moment() }
@@ -22,16 +21,11 @@ export default class HomeScreen extends React.Component {
     };
   }
 
-  nextSite() {
-    // const rotatedSites = this.state.sites.slice(1).concat(this.state.sites[0]);
-    this.setState(prevState => ({
-      currentImage: prevState.currentImage + 1,
-      sites: prevState.sites.slice(1).concat(prevState.sites[0])
-    }));
+  onSwipeRight(gestureState) {
+    this.handleSkip();
   }
 
   handleConfirmation() {
-    // const newHistory = this.state.history.concat({ site: this.state.sites[0], time: moment() });
     this.setState(prevState => ({
       history: prevState.history.concat({
         site: prevState.sites[0],
@@ -46,8 +40,10 @@ export default class HomeScreen extends React.Component {
     this.nextSite();
   }
 
-  onSwipeRight(gestureState) {
-    this.handleSkip();
+  nextSite() {
+    this.setState(prevState => ({
+      sites: prevState.sites.slice(1).concat(prevState.sites[0])
+    }));
   }
 
   render() {
