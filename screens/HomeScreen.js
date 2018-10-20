@@ -72,17 +72,6 @@ export default class HomeScreen extends React.Component {
             time={this.state.history[this.state.history.length - 1].time}
           />
         </View>
-        <View
-          style={styles.buttonContainer}>
-          <Button
-            style={styles.button}
-            onPress={event => {
-              this.handleConfirmation();
-            }}
-            id="confirm"
-            title="Confirm"
-          />
-        </View>
       </View>
     );
   }
