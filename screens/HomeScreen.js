@@ -53,7 +53,7 @@ export default class HomeScreen extends React.Component {
           <CurrentSite id="currentSite" site={this.state.sites[0]} />
           <PreviousSite
             id="previousSite"
-            site={this.state.history[this.state.history.length - 1].site}
+            site={this.state.history[this.state.history.length - 1].site.part}
             time={this.state.history[this.state.history.length - 1].time}
           />
         </View>
