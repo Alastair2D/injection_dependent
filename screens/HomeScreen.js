@@ -6,6 +6,9 @@ import PreviousSite from "../components/PreviousSite";
 import Header from "../components/Header";
 import injectionsites from "../components/injectionsites";
 import BodyImages from "../components/BodyImages";
+import GestureRecognizer, {
+  swipeDirections
+} from "react-native-swipe-gestures";
 
 export default class HomeScreen extends React.Component {
   constructor(props) {

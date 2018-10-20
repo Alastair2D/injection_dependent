@@ -52,6 +52,7 @@
     "jsdom": "^12.2.0",
     "react-native-mock": "^0.3.1",
     "react-native-mock-render": "^0.1.2",
+    "react-native-swipe-gestures": "^1.0.2",
     "react-test-renderer": "^16.5.2",
     "timekeeper": "^2.1.2"
   }
