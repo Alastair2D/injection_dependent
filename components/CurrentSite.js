@@ -13,7 +13,7 @@ class CurrentSite extends Component {
 
 const styles = StyleSheet.create({
   current: {
-    fontSize: 30,
+    fontSize: 20,
     textAlign: 'center',
   },
 });
