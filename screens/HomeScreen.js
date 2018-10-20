@@ -25,6 +25,10 @@ export default class HomeScreen extends React.Component {
     this.handleSkip();
   }
 
+  onSwipeRight(gestureState) {
+    this.handleConfirmation();
+  }
+
   handleConfirmation() {
     this.setState(prevState => ({
       history: prevState.history.concat({
@@ -55,7 +59,10 @@ export default class HomeScreen extends React.Component {
       <View style={styles.container}>
         <View>
           <Header />
-          <GestureRecognizer onSwipeLeft={state => this.onSwipeLeft(state)} config={config}>
+          <GestureRecognizer onSwipeLeft={state => this.onSwipeLeft(state)}
+            onSwipeRight={state => this.onSwipeRight(state)} 
+            config={config}
+          >
             <BodyImages imgNum={this.state.sites[0].imgNum} />
           </GestureRecognizer>
           <CurrentSite id="currentSite" site={this.state.sites[0]} />
