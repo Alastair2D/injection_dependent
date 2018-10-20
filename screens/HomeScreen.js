@@ -1,39 +1,47 @@
-import React from 'react';
-import { StyleSheet, View, Button } from 'react-native';
-import moment from 'moment';
-import CurrentSite from '../components/CurrentSite';
-import PreviousSite from '../components/PreviousSite';
-import Header from '../components/Header';
-import injectionsites from '../components/injectionsites';
+import React from "react";
+import { StyleSheet, View, Button, Image } from "react-native";
+import moment from "moment";
+import CurrentSite from "../components/CurrentSite";
+import PreviousSite from "../components/PreviousSite";
+import Header from "../components/Header";
+import injectionsites from "../components/injectionsites";
+import BodyImages from "../components/BodyImages";
 
 export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      currentImage: 0,
       sites: injectionsites,
-      history: [{ site: injectionsites[injectionsites.length - 1], time: moment() }],
+      history: [
+        { site: injectionsites[injectionsites.length - 1], time: moment() }
+      ]
     };
   }
 
   nextSite() {
-    const rotatedSites = this.state.sites.slice(1).concat(this.state.sites[0]);
-    this.setState({
-      sites: rotatedSites,
-    });
+    // const rotatedSites = this.state.sites.slice(1).concat(this.state.sites[0]);
+    this.setState(prevState => ({
+      currentImage: prevState.currentImage + 1,
+      sites: prevState.sites.slice(1).concat(prevState.sites[0])
+    }));
   }
 
   handleConfirmation() {
-    const newHistory = this.state.history.concat({ site: this.state.sites[0], time: moment() });
-    this.setState({
-      history: newHistory,
-    });
+    // const newHistory = this.state.history.concat({ site: this.state.sites[0], time: moment() });
+    this.setState(prevState => ({
+      history: prevState.history.concat({
+        site: prevState.sites[0],
+        time: moment()
+      })
+    }));
     this.nextSite();
-    alert('Confirmed');
+    alert("Confirmed");
   }
 
   handleSkip() {
     this.nextSite();
-    alert('Skipped');
+    alert("Skipped");
   }
 
   render() {
@@ -41,13 +49,11 @@ export default class HomeScreen extends React.Component {
       <View style={styles.container}>
         <View>
           <Header />
-          <CurrentSite
-            id="currentSite"
-            site={this.state.sites[0]}
-          />
+          <BodyImages imgNum={this.state.sites[0].imgNum} />
+          <CurrentSite id="currentSite" site={this.state.sites[0]} />
           <PreviousSite
             id="previousSite"
-            site={this.state.history[this.state.history.length - 1].site}
+            site={this.state.history[this.state.history.length - 1].site.part}
             time={this.state.history[this.state.history.length - 1].time}
           />
         </View>
@@ -80,11 +86,17 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'orange',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "orange",
+    alignItems: "center",
+    justifyContent: "center"
   },
   buttonContainer: {
-    flexDirection: 'row',
+    flexDirection: "row"
   },
+  image: {
+    width: 110,
+    height: 200,
+    padding: 10,
+    alignSelf: "center"
+  }
 });
