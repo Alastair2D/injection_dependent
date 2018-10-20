@@ -54,22 +54,6 @@ describe("Homescreen", () => {
     });
   });
 
-  describe("Skip button", () => {
-    beforeEach(() => {
-      window.alert = jest.fn();
-    });
-    it("Shows the next injection site", () => {
-      hs.find("#skip").simulate("press");
-      const currentSite = hs.find(CurrentSite);
-      expect(currentSite.length).toEqual(1);
-      expect(currentSite.props().site).toEqual(injectionsites[1]);
-    });
-    it("Shows an alert when skipped", () => {
-      hs.find("#skip").simulate("press");
-      expect(window.alert).toHaveBeenCalledWith("Skipped");
-    });
-  });
-
   describe("History", () => {
     it("should know the previous injection site once confirmed", () => {
       time = moment();

@@ -76,15 +76,6 @@ export default class HomeScreen extends React.Component {
             id="confirm"
             title="Confirm"
           />
-
-          <Button
-            style={styles.button}
-            onPress={event => {
-              this.handleSkip();
-            }}
-            id="skip"
-            title="Skip"
-          />
         </View>
       </View>
     );
