@@ -5,7 +5,6 @@ export default class BodyImages extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      imgNum: 0,
       imgPaths: {
         0: require("../images/Thigh/leftThigh1.png"),
         1: require("../images/Thigh/leftThigh2.png"),
@@ -56,7 +55,7 @@ export default class BodyImages extends Component {
       <View>
         <Image
           style={styles.image}
-          source={this.state.imgPaths[this.state.imgNum]}
+          source={this.state.imgPaths[this.props.imgNum]}
         />
       </View>
     );
