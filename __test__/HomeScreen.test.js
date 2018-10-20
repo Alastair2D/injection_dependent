@@ -76,7 +76,7 @@ describe("Homescreen", () => {
       hs.find("#confirm").simulate("press");
       const previousSite = hs.find(PreviousSite);
       expect(previousSite.length).toEqual(1);
-      expect(previousSite.props().site).toEqual(injectionsites[0]);
+      expect(previousSite.props().site).toEqual(injectionsites[0].part);
       expect(previousSite.props().time).toEqual(time);
     });
     it("should update previous injection site once confirmed again", () => {
@@ -85,7 +85,7 @@ describe("Homescreen", () => {
       hs.find("#confirm").simulate("press");
       const previousSite = hs.find(PreviousSite);
       expect(previousSite.length).toEqual(1);
-      expect(previousSite.props().site).toEqual(injectionsites[1]);
+      expect(previousSite.props().site).toEqual(injectionsites[1].part);
       expect(previousSite.props().time).toEqual(time);
     });
     // it("should start with a blank history", () => {
