@@ -1,17 +1,19 @@
 import React from "react";
-import { StyleSheet, View, Button, Image } from "react-native";
+import { StyleSheet, View, Button } from "react-native";
 import moment from "moment";
 import CurrentSite from "../components/CurrentSite";
 import PreviousSite from "../components/PreviousSite";
 import Header from "../components/Header";
 import injectionsites from "../components/injectionsites";
 import BodyImages from "../components/BodyImages";
+import GestureRecognizer, {
+  swipeDirections
+} from "react-native-swipe-gestures";
 
 export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentImage: 0,
       sites: injectionsites,
       history: [
         { site: injectionsites[injectionsites.length - 1], time: moment() }
@@ -19,16 +21,11 @@ export default class HomeScreen extends React.Component {
     };
   }
 
-  nextSite() {
-    // const rotatedSites = this.state.sites.slice(1).concat(this.state.sites[0]);
-    this.setState(prevState => ({
-      currentImage: prevState.currentImage + 1,
-      sites: prevState.sites.slice(1).concat(prevState.sites[0])
-    }));
+  onSwipeRight(gestureState) {
+    this.handleSkip();
   }
 
   handleConfirmation() {
-    // const newHistory = this.state.history.concat({ site: this.state.sites[0], time: moment() });
     this.setState(prevState => ({
       history: prevState.history.concat({
         site: prevState.sites[0],
@@ -41,7 +38,12 @@ export default class HomeScreen extends React.Component {
 
   handleSkip() {
     this.nextSite();
-    alert("Skipped");
+  }
+
+  nextSite() {
+    this.setState(prevState => ({
+      sites: prevState.sites.slice(1).concat(prevState.sites[0])
+    }));
   }
 
   render() {
@@ -49,7 +51,9 @@ export default class HomeScreen extends React.Component {
       <View style={styles.container}>
         <View>
           <Header />
-          <BodyImages imgNum={this.state.sites[0].imgNum} />
+          <GestureRecognizer onSwipeRight={state => this.onSwipeRight(state)}>
+            <BodyImages imgNum={this.state.sites[0].imgNum} />
+          </GestureRecognizer>
           <CurrentSite id="currentSite" site={this.state.sites[0]} />
           <PreviousSite
             id="previousSite"
@@ -57,24 +61,15 @@ export default class HomeScreen extends React.Component {
             time={this.state.history[this.state.history.length - 1].time}
           />
         </View>
-
-        <View style={styles.buttonContainer}>
+        <View
+          style={styles.buttonContainer}>
           <Button
             style={styles.button}
-            onPress={() => {
+            onPress={event => {
               this.handleConfirmation();
             }}
             id="confirm"
             title="Confirm"
-          />
-
-          <Button
-            style={styles.button}
-            onPress={() => {
-              this.handleSkip();
-            }}
-            id="skip"
-            title="Skip"
           />
         </View>
       </View>
