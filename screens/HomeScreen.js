@@ -11,7 +11,7 @@ export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      imgNum: 0,
+      currentImage: <BodyImages />,
       sites: injectionsites,
       history: [
         { site: injectionsites[injectionsites.length - 1], time: moment() }
@@ -44,12 +44,11 @@ export default class HomeScreen extends React.Component {
   }
 
   render() {
-    let bI = <BodyImages />;
     return (
       <View style={styles.container}>
         <View>
           <Header />
-          {bI.state.imagePaths[this.state.imgNum]}
+          {this.state.currentImage}
           <CurrentSite id="currentSite" site={this.state.sites[0]} />
           <PreviousSite
             id="previousSite"
