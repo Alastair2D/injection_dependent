@@ -31,28 +31,28 @@ describe("Homescreen", () => {
     });
   });
 
-  describe("Confirm Button", () => {
-    beforeEach(() => {
-      window.alert = jest.fn();
-    });
-    it("should change the site after pressing Confirm", () => {
-      hs.find("#confirm").simulate("press");
-      const currentSite = hs.find(CurrentSite);
-      expect(currentSite.length).toEqual(1);
-      expect(currentSite.props().site).toEqual(injectionsites[1]);
-    });
-    it("shows the alert when confirmed", () => {
-      hs.find("#confirm").simulate("press");
-      expect(window.alert).toHaveBeenCalledWith("Confirmed");
-    });
-    it("should change the site again after pressing Confirm a second time", () => {
-      hs.find("#confirm").simulate("press");
-      hs.find("#confirm").simulate("press");
-      const currentSite = hs.find(CurrentSite);
-      expect(currentSite.length).toEqual(1);
-      expect(currentSite.props().site).toEqual(injectionsites[2]);
-    });
-  });
+  // describe("Confirm Button", () => {
+  //   beforeEach(() => {
+  //     window.alert = jest.fn();
+  //   });
+  //   it("should change the site after pressing Confirm", () => {
+  //     hs.find("#confirm").simulate("press");
+  //     const currentSite = hs.find(CurrentSite);
+  //     expect(currentSite.length).toEqual(1);
+  //     expect(currentSite.props().site).toEqual(injectionsites[1]);
+  //   });
+  //   it("shows the alert when confirmed", () => {
+  //     hs.find("#confirm").simulate("press");
+  //     expect(window.alert).toHaveBeenCalledWith("Confirmed");
+  //   });
+  //   it("should change the site again after pressing Confirm a second time", () => {
+  //     hs.find("#confirm").simulate("press");
+  //     hs.find("#confirm").simulate("press");
+  //     const currentSite = hs.find(CurrentSite);
+  //     expect(currentSite.length).toEqual(1);
+  //     expect(currentSite.props().site).toEqual(injectionsites[2]);
+  //   });
+  // });
 
   describe("History", () => {
     it("should know the previous injection site once confirmed", () => {
