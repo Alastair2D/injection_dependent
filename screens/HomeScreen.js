@@ -47,11 +47,15 @@ export default class HomeScreen extends React.Component {
   }
 
   render() {
+    const config = {
+      velocityThreshold: 0.05,
+      directionalOffsetThreshold: 80
+    };
     return (
       <View style={styles.container}>
         <View>
           <Header />
-          <GestureRecognizer onSwipeRight={state => this.onSwipeRight(state)}>
+          <GestureRecognizer onSwipeRight={state => this.onSwipeRight(state)} confog={config}>
             <BodyImages imgNum={this.state.sites[0].imgNum} />
           </GestureRecognizer>
           <CurrentSite id="currentSite" site={this.state.sites[0]} />
