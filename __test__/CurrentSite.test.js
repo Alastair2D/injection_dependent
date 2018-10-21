@@ -6,6 +6,7 @@ describe('CurrentSite', () => {
   const exampleSite = { part: 'Left Hip(2)', active: true, imgNum: 9 };
   it('renders something', () => {
     const wrapper = shallow(<CurrentSite site={exampleSite} />);
+    
     expect(wrapper.length > 0).toBe(true);
   });
 
@@ -15,6 +16,7 @@ describe('CurrentSite', () => {
       .find('#site')
       .dive()
       .text();
+
     expect(text).toEqual('Left Hip(2)');
   });
 });

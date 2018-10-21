@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BodyImages renders correctly 1`] = `
+<Component>
+  <Image
+    style={
+      Object {
+        "alignSelf": "center",
+        "height": 280,
+        "padding": 10,
+        "width": 180,
+      }
+    }
+  />
+</Component>
+`;

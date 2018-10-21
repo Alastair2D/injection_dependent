@@ -9,6 +9,7 @@ describe('#Welcome', () => {
       .find('#welcome')
       .dive()
       .text();
+
     expect(text).toEqual('Welcome to Injection Dependent');
   });
 });

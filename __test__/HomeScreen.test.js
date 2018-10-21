@@ -25,6 +25,7 @@ describe('Homescreen', () => {
   describe('Recommended Site', () => {
     it('should render the text of the suggested injection location', () => {
       const currentSite = hs.find(CurrentSite);
+
       expect(currentSite.length).toEqual(1);
       expect(currentSite.props().site).toEqual(injectionsites[0]);
     });
@@ -34,12 +35,14 @@ describe('Homescreen', () => {
     it('swipe right to confirm', () => {
       hs.instance().onSwipeRight();
       const currentSite = hs.find(CurrentSite);
+
       expect(currentSite.length).toEqual(1);
       expect(currentSite.props().site).toEqual(injectionsites[1]);
-    })
+    });
     it('should change the site after confirmation', () => {
       hs.instance().handleConfirmation();
       const currentSite = hs.find(CurrentSite);
+
       expect(currentSite.length).toEqual(1);
       expect(currentSite.props().site).toEqual(injectionsites[1]);
     });
@@ -47,15 +50,17 @@ describe('Homescreen', () => {
       hs.instance().handleConfirmation();
       hs.instance().handleConfirmation();
       const currentSite = hs.find(CurrentSite);
+
       expect(currentSite.length).toEqual(1);
       expect(currentSite.props().site).toEqual(injectionsites[2]);
     });
   });
 
-  xdescribe('Skipping', () => {
+  describe('Skipping', () => {
     it('handleSkip', () => {
       hs.instance().handleSkip();
       const currentSite = hs.find(CurrentSite);
+
       expect(currentSite.length).toEqual(1);
       expect(currentSite.props().site).toEqual(injectionsites[1]);
     });
@@ -64,15 +69,17 @@ describe('Homescreen', () => {
       hs.instance().handleSkip();
       hs.instance().handleSkip();
       hs.instance().handleSkip();
+      // hs.instance().onSwipeLeft();
       expect(hs.instance().state.history[0].site.part === pS).toEqual(true);
     });
-  })
+  });
 
   describe('History', () => {
     it('should know the previous injection site once confirmed', () => {
       const time = moment();
       hs.instance().handleConfirmation();
       const previousSite = hs.find(PreviousSite);
+
       expect(previousSite.length).toEqual(1);
       expect(previousSite.props().site).toEqual(injectionsites[0].part);
       expect(previousSite.props().time).toEqual(time);
@@ -82,6 +89,7 @@ describe('Homescreen', () => {
       const time = moment();
       hs.instance().handleConfirmation();
       const previousSite = hs.find(PreviousSite);
+
       expect(previousSite.length).toEqual(1);
       expect(previousSite.props().site).toEqual(injectionsites[1].part);
       expect(previousSite.props().time).toEqual(time);

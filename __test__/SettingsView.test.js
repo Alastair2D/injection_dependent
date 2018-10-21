@@ -10,6 +10,7 @@ describe('Sites', () => {
       .find('#sites')
       .dive()
       .text();
+
     expect(text).toEqual('Sites');
   });
 
@@ -17,6 +18,7 @@ describe('Sites', () => {
     const app = shallow(<SettingsView />);
     app.find('#legs').simulate('press');
     const checkBox = app.find(CheckBox).at(0);
+
     expect(checkBox.length).toEqual(1);
     expect(checkBox.props().checked).toEqual(true);
   });
@@ -35,6 +37,7 @@ describe('Sites', () => {
     const app = shallow(<SettingsView />);
     app.find('#abdomen').simulate('press');
     const checkBox = app.find(CheckBox).at(2);
+
     expect(checkBox.length).toEqual(1);
     expect(checkBox.props().checked).toEqual(true);
   });
@@ -43,6 +46,7 @@ describe('Sites', () => {
     const app = shallow(<SettingsView />);
     app.find('#buttocks').simulate('press');
     const checkBox = app.find(CheckBox).at(3);
+
     expect(checkBox.length).toEqual(1);
     expect(checkBox.props().checked).toEqual(true);
   });
@@ -51,6 +55,7 @@ describe('Sites', () => {
     const app = shallow(<SettingsView />);
     app.find('#thighs').simulate('press');
     const checkBox = app.find(CheckBox).at(4);
+    
     expect(checkBox.length).toEqual(1);
     expect(checkBox.props().checked).toEqual(true);
   });
