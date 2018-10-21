@@ -11,7 +11,7 @@ import PreviousSite from '../components/PreviousSite';
 import Header from '../components/Header';
 // import injectionsites from '../components/injectionsites';
 
-class HomeScreen extends React.Component {
+export class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -106,9 +106,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         saveInj: (inj) => { dispatch(saveInj(inj)); },
-        nextInjSite: () => { dispatch(nextInjSite()); },
-        resetSites: () => { dispatch(resetSites()); },
-        resetHistory: () => { dispatch(resetHistory()); },
+        nextInjSite: () => { dispatch(nextInjSite()); }
     };
 }
 

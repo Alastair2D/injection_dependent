@@ -6,6 +6,8 @@
     "collectCoverageFrom": [
       "components/**/*.{js,jsx}",
       "screens/*.{js,jsx}",
+      "redux/actions/*.js",
+      "redux/reducers/*.js",
       "*.{js,jsx}",
       "!setupTests.js",
       "!App.js"
