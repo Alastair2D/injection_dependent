@@ -12,6 +12,6 @@ describe('PreviousSite', () => {
       .find("#site")
       .dive()
       .text();
-    expect(text).toEqual("Previous: Left arm, " + calTime);
+    expect(text).toEqual(`Previous: Left arm,\n${calTime}`);
   })
 });
