@@ -6,81 +6,52 @@ class SettingsView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      checked: false,
-      // armsChecked: false,
-      // abdomenChecked: false,
-      // buttocksChecked: false,
-      // thighsChecked: false,
+      checkboxes: [{
+        id: 'legs',
+        title: 'legs',
+        checked: false,
+      }, {
+        id: 'arms',
+        title: 'arms',
+        checked: false,
+      }, {
+        id: 'abdomen',
+        title: 'abdomen',
+        checked: false,
+      }, {
+        id: 'buttocks',
+        title: 'buttocks',
+        checked: false,
+      }, {
+        id: 'thighs',
+        title: 'thighs',
+        checked: false,
+      }]
     };
-
-    this.check = this.check.bind(this);
   }
 
-  check() {
-    this.setState({checked: !this.state.checked});
-    // this.setState({armsChecked: !this.state.checked});
-    // this.setState({abdomenChecked: !this.state.checked});
-    // this.setState({buttocksChecked: !this.state.checked});
-    // this.setState({thighsChecked: !this.state.checked});
+  check(id) {
+    const changedCheckbox = this.state.checkboxes.find((cb) => cb.id === id);
+    changedCheckbox.checked = !changedCheckbox.checked;
+    const checkboxes = Object.assign({}, this.state.checkboxes, changedCheckbox);
+    this.setState({ checkboxes });
   }
 
   render() {
     return (
-      <View>
-      <Text id="sites">Sites</Text>
-      <CheckBox
-        id="legs"
-        title="legs"
-        onPress={event => {
-          this.check()}}
-        checkedIcon='check-square-o'
-        uncheckedIcon='square-o'
-        checked={this.state.checked}
-        />
-
-      <CheckBox
-        id="arms"
-        title="arms"
-        onPress={event => {
-          this.check()}}
-        checkedIcon='check-square-o'
-        uncheckedIcon='square-o'
-        checked={this.state.checked}
-      />
-
-      <CheckBox
-       id="abdomen"
-       title="abdomen"
-       onPress={event => {
-         this.check()}}
-       checkedIcon='check-square-o'
-       uncheckedIcon='square-o'
-       checked={this.state.checked}
-       />
-
-     <CheckBox
-       id="buttocks"
-       title="buttocks"
-       onPress={event => {
-         this.check()}}
-       checkedIcon='check-square-o'
-       uncheckedIcon='square-o'
-       checked={this.state.checked}
-       />
-
-     <CheckBox
-       id="thighs"
-       title="thighs"
-       onPress={event => {
-         this.check()}}
-       checkedIcon='check-square-o'
-       uncheckedIcon='square-o'
-       checked={this.state.checked}
-       />
-      </View>
+      this.state.checkboxes.map((cb) => {
+        return (
+          <CheckBox
+            key={cb.id}
+            id={cb.id}
+            title={cb.title}
+            checked={cb.checked}
+            onPress={() => this.check(cb.id)}
+          />
+        )
+      })
     )
   }
-
 };
 
 export default SettingsView;
