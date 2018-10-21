@@ -38,6 +38,8 @@
     "react-dom": "^16.5.2",
     "react-native": "https://github.com/expo/react-native/archive/sdk-30.0.0.tar.gz",
     "react-navigation": "^2.16.0",
+    "react-native-elements": "^0.19.1",
+    "react-native-table-component": "^1.1.8",
     "react-redux": "^5.0.7",
     "redux": "^4.0.1"
   },
@@ -54,6 +56,7 @@
     "jsdom": "^12.2.0",
     "react-native-mock": "^0.3.1",
     "react-native-mock-render": "^0.1.2",
+    "react-native-swipe-gestures": "^1.0.2",
     "react-test-renderer": "^16.5.2",
     "timekeeper": "^2.1.2"
   }

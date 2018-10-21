@@ -5,7 +5,7 @@ class CurrentSite extends Component {
   render() {
     return (
       <View>
-        <Text id="site" style={styles.current}>{ this.props.site }</Text>
+        <Text id="site" style={styles.current}>{ this.props.site.part }</Text>
       </View>
     );
   }
@@ -13,7 +13,7 @@ class CurrentSite extends Component {
 
 const styles = StyleSheet.create({
   current: {
-    fontSize: 30,
+    fontSize: 20,
     textAlign: 'center',
   },
 });

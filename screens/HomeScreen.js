@@ -1,5 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { StyleSheet, View, Button } from 'react-native';
+import GestureRecognizer, {
+  swipeDirections
+} from "react-native-swipe-gestures";
 
 import { connect } from 'react-redux'
 import { saveInj, resetHistory } from '../redux/actions/history';
@@ -9,6 +12,8 @@ import moment from 'moment';
 import CurrentSite from '../components/CurrentSite';
 import PreviousSite from '../components/PreviousSite';
 import Header from '../components/Header';
+import BodyImages from "../components/BodyImages";
+
 // import injectionsites from '../components/injectionsites';
 
 export class HomeScreen extends React.Component {
@@ -21,23 +26,33 @@ export class HomeScreen extends React.Component {
     this.props.nextInjSite();
   }
 
+  onSwipeRight(gestureState) {
+    this.handleSkip();
+  }
+
   handleConfirmation() {
     // const newHistory = this.state.history.concat({ site: this.state.sites[0], time: moment() });
     this.props.saveInj({ site: this.props.sites[0], time: moment() });
     this.nextSite();
-    alert('Confirmed');
+    alert("Confirmed");
   }
 
   handleSkip() {
     this.nextSite();
-    alert('Skipped');
   }
 
   render() {
+    const config = {
+      velocityThreshold: 0.05,
+      directionalOffsetThreshold: 80
+    };
     return (
       <View style={styles.container}>
         <View>
           <Header />
+          <GestureRecognizer onSwipeRight={state => this.onSwipeRight(state)} config={config}>
+            <BodyImages imgNum={this.props.sites[0].imgNum} />
+          </GestureRecognizer>
           <CurrentSite
             id="currentSite"
             site={this.props.sites[0]}
@@ -48,24 +63,15 @@ export class HomeScreen extends React.Component {
             time={this.props.history[this.props.history.length - 1].time}
           />
         </View>
-
-        <View style={styles.buttonContainer}>
+        <View
+          style={styles.buttonContainer}>
           <Button
             style={styles.button}
-            onPress={() => {
+            onPress={event => {
               this.handleConfirmation();
             }}
             id="confirm"
             title="Confirm"
-          />
-
-          <Button
-            style={styles.button}
-            onPress={() => {
-              this.handleSkip();
-            }}
-            id="skip"
-            title="Skip"
           />
         </View>
       </View>
@@ -87,13 +93,19 @@ export class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'orange',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "orange",
+    alignItems: "center",
+    justifyContent: "center"
   },
   buttonContainer: {
-    flexDirection: 'row',
+    flexDirection: "row"
   },
+  image: {
+    width: 110,
+    height: 200,
+    padding: 10,
+    alignSelf: "center"
+  }
 });
 
 const mapStateToProps = (state, ownProps) => {
