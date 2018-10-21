@@ -2,7 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { StyleSheet, View, Button } from 'react-native';
 
 import { connect } from 'react-redux'
-import { saveInj, nextInjSite, resetDefaults } from '../redux/actions/tasks';
+import { saveInj, resetHistory } from '../redux/actions/history';
+import { nextInjSite, resetSites } from '../redux/actions/sites';
 
 import moment from 'moment';
 import CurrentSite from '../components/CurrentSite';
@@ -97,8 +98,8 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    sites: state.tasks.sites,
-    history: state.tasks.history
+    sites: state.sites,
+    history: state.history
   };
 }
 
@@ -106,7 +107,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         saveInj: (inj) => { dispatch(saveInj(inj)); },
         nextInjSite: () => { dispatch(nextInjSite()); },
-        resetDefaults: () => { dispatch(resetDefaults()); },
+        resetSites: () => { dispatch(resetSites()); },
+        resetHistory: () => { dispatch(resetHistory()); },
     };
 }
 

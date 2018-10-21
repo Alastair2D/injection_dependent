@@ -14,8 +14,13 @@ describe("Homescreen", () => {
   let hs
   beforeEach(() => {
     hs = shallow(<HomeScreen store={store}/>).dive()
-    hs.instance().props.resetDefaults()
   })
+
+  // afterEach(() => {
+  //   hs.instance().props.resetSites()
+  //   hs.instance().props.resetHistory()
+  // })
+
   it("renders a current site component", () => {
     expect(hs.containsMatchingElement(<CurrentSite />)).toEqual(true);
   });

@@ -1,9 +1,11 @@
 // Useful if we end up with more than one reducer
 import { combineReducers } from 'redux';
-import tasks from './tasks';
+import sites from './sites';
+import history from './history';
 
 const reducers = combineReducers({
-    tasks
+    sites,
+    history
 });
 
 export default reducers;
