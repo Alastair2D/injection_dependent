@@ -11,7 +11,7 @@ Object.keys(document.defaultView).forEach((property) => {
     global[property] = document.defaultView[property];
   }
 });
-configure({adapter: new Adapter()});
+configure({ adapter: new Adapter() });
 
 
 Enzyme.configure({ adapter: new Adapter() });

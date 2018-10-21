@@ -27,20 +27,21 @@ class SettingsView extends Component {
   render() {
     return (
       <View>
-      <Text id="sites">Sites</Text>
+      <Text id='sites'>Sites</Text>
       <CheckBox
-        id="legs"
-        title="legs"
+        id='legs'
+        title='legs'
         onPress={event => {
-          this.check()}}
+          this.check()
+        }}
         checkedIcon='check-square-o'
         uncheckedIcon='square-o'
         checked={this.state.checked}
         />
 
       <CheckBox
-        id="arms"
-        title="arms"
+        id='arms'
+        title='arms'
         onPress={event => {
           this.check()}}
         checkedIcon='check-square-o'
@@ -49,8 +50,8 @@ class SettingsView extends Component {
       />
 
       <CheckBox
-       id="abdomen"
-       title="abdomen"
+       id='abdomen'
+       title='abdomen'
        onPress={event => {
          this.check()}}
        checkedIcon='check-square-o'
@@ -59,8 +60,8 @@ class SettingsView extends Component {
        />
 
      <CheckBox
-       id="buttocks"
-       title="buttocks"
+       id='buttocks'
+       title='buttocks'
        onPress={event => {
          this.check()}}
        checkedIcon='check-square-o'
@@ -69,8 +70,8 @@ class SettingsView extends Component {
        />
 
      <CheckBox
-       id="thighs"
-       title="thighs"
+       id='thighs'
+       title='thighs'
        onPress={event => {
          this.check()}}
        checkedIcon='check-square-o'

@@ -1,6 +1,5 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import { Button } from 'react-native';
 import moment from 'moment';
 import timekeeper from 'timekeeper';
 import HomeScreen from '../screens/HomeScreen';
@@ -71,7 +70,7 @@ describe('Homescreen', () => {
 
   describe('History', () => {
     it('should know the previous injection site once confirmed', () => {
-      time = moment();
+      const time = moment();
       hs.instance().handleConfirmation();
       const previousSite = hs.find(PreviousSite);
       expect(previousSite.length).toEqual(1);
@@ -80,7 +79,7 @@ describe('Homescreen', () => {
     });
     it('should update previous injection site once confirmed again', () => {
       hs.instance().handleConfirmation();
-      time = moment();
+      const time = moment();
       hs.instance().handleConfirmation();
       const previousSite = hs.find(PreviousSite);
       expect(previousSite.length).toEqual(1);

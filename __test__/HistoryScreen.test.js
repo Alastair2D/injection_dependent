@@ -1,19 +1,17 @@
-import { shallow } from "enzyme";
-import { Text } from "react-native";
-import React from "react";
-import HistoryScreen from "../screens/HistoryScreen";
-import HistoryTable from "../components/HistoryTable";
+import { shallow } from 'enzyme';
+import React from 'react';
+import HistoryScreen from '../screens/HistoryScreen';
+import HistoryTable from '../components/HistoryTable';
 
-describe("HistoryScreen", () => {
+describe('HistoryScreen', () => {
+  let historyScreen;
   beforeEach(() => {
-    historyscreen = shallow(<HistoryScreen />);
+    historyScreen = shallow(<HistoryScreen />);
   });
 
-  describe("Components", () => {
-    it("renders a table component", () => {
-      expect(historyscreen.containsMatchingElement(<HistoryTable />)).toEqual(
-        true
-      );
+  describe('Components', () => {
+    it('renders a table component', () => {
+      expect(historyScreen.containsMatchingElement(<HistoryTable />)).toEqual(true);
     });
   });
 });

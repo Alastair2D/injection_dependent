@@ -1,14 +1,14 @@
-import React from "react";
-import { StyleSheet, View, Button } from "react-native";
-import moment from "moment";
-import CurrentSite from "../components/CurrentSite";
-import PreviousSite from "../components/PreviousSite";
-import Header from "../components/Header";
-import injectionsites from "../components/injectionsites";
-import BodyImages from "../components/BodyImages";
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import moment from 'moment';
+import CurrentSite from '../components/CurrentSite';
+import PreviousSite from '../components/PreviousSite';
+import Header from '../components/Header';
+import injectionsites from '../components/injectionsites';
+import BodyImages from '../components/BodyImages';
 import GestureRecognizer, {
   swipeDirections
-} from "react-native-swipe-gestures";
+} from 'react-native-swipe-gestures';
 
 export default class HomeScreen extends React.Component {
   constructor(props) {
@@ -21,11 +21,11 @@ export default class HomeScreen extends React.Component {
     };
   }
 
-  onSwipeLeft(gestureState) {
+  onSwipeLeft() {
     this.handleSkip();
   }
 
-  onSwipeRight(gestureState) {
+  onSwipeRight() {
     this.handleConfirmation();
   }
 
@@ -37,7 +37,7 @@ export default class HomeScreen extends React.Component {
       })
     }));
     this.nextSite();
-    alert("Confirmed");
+    alert('Confirmed');
   }
 
   handleSkip() {
@@ -59,15 +59,16 @@ export default class HomeScreen extends React.Component {
       <View style={styles.container}>
         <View>
           <Header />
-          <GestureRecognizer onSwipeLeft={state => this.onSwipeLeft(state)}
-            onSwipeRight={state => this.onSwipeRight(state)} 
+          <GestureRecognizer
+            onSwipeLeft={state => this.onSwipeLeft(state)}
+            onSwipeRight={state => this.onSwipeRight(state)}
             config={config}
           >
             <BodyImages imgNum={this.state.sites[0].imgNum} />
           </GestureRecognizer>
-          <CurrentSite id="currentSite" site={this.state.sites[0]} />
+          <CurrentSite id='currentSite' site={this.state.sites[0]} />
           <PreviousSite
-            id="previousSite"
+            id='previousSite'
             site={this.state.history[this.state.history.length - 1].site.part}
             time={this.state.history[this.state.history.length - 1].time}
           />
@@ -80,17 +81,17 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "orange",
-    alignItems: "center",
-    justifyContent: "center"
+    backgroundColor: 'orange',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   buttonContainer: {
-    flexDirection: "row"
+    flexDirection: 'row'
   },
   image: {
     width: 110,
     height: 200,
     padding: 10,
-    alignSelf: "center"
+    alignSelf: 'center'
   }
 });
