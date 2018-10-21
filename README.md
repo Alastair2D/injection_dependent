@@ -59,6 +59,14 @@ I want the app to generate a suggestion.
 As a user,
 so I know the last injection site,
 I want to be able to see this.
+
+As a user,
+so I can see previous sites used,
+I want to be able to view confirmation history.
+
+As a user,
+so I can avoid certain sites,
+I want to be able to configure this in settings.
 ```
 
 ### UI Modelling
