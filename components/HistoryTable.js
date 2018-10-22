@@ -11,23 +11,11 @@ import {
 } from "react-native-table-component";
 
 export default class HistoryTable extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      tableHead: ["Date", "Site"],
-      tableData: [
-        ["12/01/1997", "Left Leg 4"],
-        ["13/01/1997", "Right Leg 1"],
-        ["13/01/1997", "Right Leg 2"]
-      ]
-    };
-  }
-
   organiseData() {
     formattedData = this.props.history.map((injection) => {
       return [injection.time.calendar(), injection.site.part]
     })
-    return formattedData
+    return formattedData.reverse()
   }
 
   render() {
@@ -36,7 +24,7 @@ export default class HistoryTable extends Component {
       <View style={styles.container}>
         <Table borderStyle={{ borderWidth: 2, borderColor: "#c8e1ff" }}>
           <Row
-            data={state.tableHead}
+            data={["Date", "Site"]}
             style={styles.head}
             textStyle={styles.text}
           />
