@@ -9,6 +9,7 @@ import PreviousSite from "../components/PreviousSite";
 import injectionsites from "../components/injectionsites";
 // import store from '../redux/store';
 import BodyImages from "../components/BodyImages";
+import GestureRecognizer, { swipeDirections } from "react-native-swipe-gestures";
 
 describe("Homescreen", () => {
   timekeeper.freeze(new Date(1539760000000))
@@ -70,16 +71,12 @@ describe("Homescreen", () => {
   })
 
   describe("Skip button", () => {
-    beforeEach(() => {
-      window.alert = jest.fn()
-    })
     it('should call the Next action on press', () => {
-      hs.instance().onSwipeRight('gestureState')
+      hs.find(GestureRecognizer).simulate('swipeRight')
       const currentSite = hs.find(CurrentSite);
       expect(currentSite.length).toEqual(1);
       expect(mockNextInjSite.mock.calls.length).toBe(1)
       expect(mockSaveInj.mock.calls.length).toBe(0)
-      // expect(currentSite.props().site).toEqual(injectionsites[1]);
     })
   });
 });

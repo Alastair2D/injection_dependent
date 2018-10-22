@@ -28,8 +28,13 @@ describe("ConnectedHomeScreen", () => {
     expect(homescreen.props().sites[0].part).toEqual("Thigh")
   });
 
-  // it("adds history reset action to props", () => {
-  //   historyscreen.props().resetHistory()
-  //   expect(store.isActionDispatched(resetHistory)).toBe(true);
-  // })
+  it("adds saveInj action to props", () => {
+    homescreen.props().saveInj('test')
+    expect(store.getActions()).toEqual([{"item": "test", "type": "history-save-injection"}]);
+  })
+
+  it("adds saveInj action to props", () => {
+    homescreen.props().nextInjSite()
+    expect(store.getActions()).toEqual([{"type": "sites-next-injection-site"}]);
+  })
 });
