@@ -1,52 +1,66 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { CheckBox } from 'react-native-elements';
+import injectionsites from './injectionsites'
 
 class SettingsView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      checkboxes: [{
-        id: 'legs',
-        title: 'legs',
-        checked: false,
-      }, {
-        id: 'arms',
-        title: 'arms',
-        checked: false,
-      }, {
-        id: 'abdomen',
-        title: 'abdomen',
-        checked: false,
-      }, {
-        id: 'buttocks',
-        title: 'buttocks',
-        checked: false,
-      }, {
-        id: 'thighs',
-        title: 'thighs',
-        checked: false,
-      }]
+      sites: injectionsites,
+      // checkboxes: [{
+      //   title: injectionsites[0].part,
+      //   checked: sites[0].active,
+      // }, {
+      //   title: injectionsites[8].part,
+      //   checked: sites[8].active,
+      // }, {
+      //   title: injectionsites[16].part,
+      //   checked: injectionsites[16].active,
+      // }, {
+      //   title: injectionsites[24].part,
+      //   checked: injectionsites[24].active,
+      // }, {
+      //   title: injectionsites[32].part,
+      //   checked: injectionsites[32].active,
+      // }],
     };
   }
 
-  check(id) {
-    const changedCheckbox = this.state.checkboxes.find((cb) => cb.id === id);
-    changedCheckbox.checked = !changedCheckbox.checked;
-    const checkboxes = Object.assign({}, this.state.checkboxes, changedCheckbox);
-    this.setState({ checkboxes });
+  onlyUnique(self) {
+    let uniqueParts = []
+    let uniqueSites = []
+    self.forEach((site, index) => {
+      if ( !uniqueParts.includes(site.part) ) {
+      uniqueParts.push(site.part)
+      uniqueSites.push(site)
+      }
+    })
+    return uniqueSites;
+  }
+
+  check(title, checked) {
+    let injsitesNew = this.state.sites.map((site) => {
+      if (site.part === title) {
+        site.active = !checked
+      }
+      return site
+    })
+    this.setState({
+      sites: injsitesNew
+    })
   }
 
   render() {
     return (
-      this.state.checkboxes.map((cb) => {
+      this.onlyUnique(this.state.sites).map((cb) => {
         return (
           <CheckBox
-            key={cb.id}
-            id={cb.id}
-            title={cb.title}
-            checked={cb.checked}
-            onPress={() => this.check(cb.id)}
+            key={cb.part}
+            id={cb.part}
+            title={cb.part}
+            checked={cb.active}
+            onPress={() => this.check(cb.part, cb.active)}
           />
         )
       })

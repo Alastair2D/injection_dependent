@@ -15,7 +15,7 @@ describe('Sites', () => {
 
   it('changes the state for legs checkbox', () => {
     const app = shallow(<SettingsView />);
-    app.find("#legs").simulate('press');
+    app.find("#Thigh").simulate('press');
     const checkBox = app.find(CheckBox).at(0);
     console.log(checkBox.props());
     console.log(checkBox.props().checked);
