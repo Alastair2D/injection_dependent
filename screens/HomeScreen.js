@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Button, Image } from "react-native";
+import { StyleSheet, View, Button, Image, Text } from "react-native";
 import moment from "moment";
 import CurrentSite from "../components/CurrentSite";
 import PreviousSite from "../components/PreviousSite";

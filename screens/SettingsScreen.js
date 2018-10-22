@@ -1,14 +1,15 @@
 import React from 'react';
-import { Image } from "react-native";
+import { Image, StyleSheet } from "react-native";
 
 
 export default class SettingsScreen extends React.Component {
   static navigationOptions = {
-    title: 'app.json',
+    title: 'Settings',
   };
 
   render() {
     return(
+      <BI2 />
       <Image
         source={{ uri: "../images/Abs/leftAbs1.png" }}
         style={styles.image}

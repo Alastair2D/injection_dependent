@@ -5,8 +5,8 @@ export default class BodyImages extends Component {
 
 
   render() {
-    return(
-      <div><Text>Hello World</Text></div>
-    )
+    return (
+      <div><Image source={{ uri: '../images/Abs/leftAbs1.png'}}/></div>
+      
   }
 }
