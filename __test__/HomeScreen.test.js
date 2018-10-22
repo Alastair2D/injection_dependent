@@ -41,6 +41,21 @@ describe("Homescreen", () => {
       expect(previousSite.props().site).toEqual(injectionsites[injectionsites.length - 1]);
       expect(previousSite.props().time).toEqual(time);
     });
+    it("wont render a site that is not active", () => {
+      inactive = [
+        { part: 'Thigh', side: 'Left', quadrant: 1, active: false, imgNum: 0 },
+        { part: 'Thigh', side: 'Left', quadrant: 2, active: true, imgNum: 1 }
+      ]
+      hs = shallow(<HomeScreen
+        saveInj={mockSaveInj}
+        nextInjSite={mockNextInjSite}
+        sites={inactive}
+        history={[{ site: injectionsites[injectionsites.length - 1], time: moment() }]}
+      />)
+      const currentSite = hs.find(CurrentSite);
+      expect(currentSite.length).toEqual(1);
+      expect(currentSite.props().site).toEqual(injectionsites[1]);
+    });
   });
 
   describe("Confirm Button", () => {
