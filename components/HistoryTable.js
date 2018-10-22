@@ -22,6 +22,14 @@ export default class HistoryTable extends Component {
       ]
     };
   }
+
+  organiseData() {
+    formattedData = this.props.history.map((injection) => {
+      return [injection.time.calendar(), injection.site.part]
+    })
+    return formattedData
+  }
+
   render() {
     const state = this.state;
     return (
@@ -32,7 +40,7 @@ export default class HistoryTable extends Component {
             style={styles.head}
             textStyle={styles.text}
           />
-          <Rows data={state.tableData} textStyle={styles.text} />
+          <Rows data={this.organiseData()} textStyle={styles.text} />
         </Table>
       </View>
     );

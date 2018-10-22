@@ -2,14 +2,17 @@ import React from "react";
 import { ScrollView, StyleSheet, Text } from "react-native";
 import HistoryTable from "../components/HistoryTable";
 
-export default class HistoryScreen extends React.Component {
+import { connect } from 'react-redux'
+import { resetHistory } from '../redux/actions/history';
+
+export class HistoryScreen extends React.Component {
   static navigationOptions = {
     title: "History"
   };
   render() {
     return (
       <ScrollView style={styles.container}>
-        <HistoryTable />
+        <HistoryTable history={this.props.history}/>
       </ScrollView>
     );
   }
@@ -22,3 +25,18 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff"
   }
 });
+
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    history: state.history
+  };
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        resetHistory: () => { dispatch(resetHistory()); }
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HistoryScreen);

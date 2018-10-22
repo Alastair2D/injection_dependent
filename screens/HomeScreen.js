@@ -17,10 +17,7 @@ import BodyImages from "../components/BodyImages";
 // import injectionsites from '../components/injectionsites';
 
 export class HomeScreen extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
+  
   nextSite() {
     // const rotatedSites = this.state.sites.slice(1).concat(this.state.sites[0]);
     this.props.nextInjSite();
