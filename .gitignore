@@ -4,3 +4,4 @@ node_modules/**/*
 npm-debug.*
 coverage/
 .DS_Store
+cache/*

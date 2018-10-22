@@ -1,10 +1,11 @@
 import { shallow } from "enzyme";
 import { Text } from "react-native";
 import React from "react";
-import HistoryScreen from "../screens/HistoryScreen";
+import { HistoryScreen } from "../screens/HistoryScreen";
 import HistoryTable from "../components/HistoryTable";
 
 describe("HistoryScreen", () => {
+  let historyscreen;
   beforeEach(() => {
     historyscreen = shallow(<HistoryScreen />);
   });
