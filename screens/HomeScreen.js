@@ -21,11 +21,11 @@ export default class HomeScreen extends React.Component {
     };
   }
 
-  onSwipeLeft() {
+  onSwipeLeft = () => {
     this.handleSkip();
   }
 
-  onSwipeRight() {
+  onSwipeRight = () => {
     this.handleConfirmation();
   }
 

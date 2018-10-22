@@ -57,12 +57,14 @@ describe('Homescreen', () => {
   });
 
   describe('Skipping', () => {
-    it('handleSkip', () => {
-      hs.instance().handleSkip();
-      const currentSite = hs.find(CurrentSite);
+    it('swipe left to skip', () => {
+      hs.instance().onSwipeRight();
+      const lastSite = hs.find(PreviousSite);
 
-      expect(currentSite.length).toEqual(1);
-      expect(currentSite.props().site).toEqual(injectionsites[1]);
+      hs.instance().onSwipeLeft();
+      hs.instance().onSwipeLeft();
+
+      expect(hs.find(PreviousSite)).toEqual(lastSite);
     });
     it('doesn\'t add the suggested site to history', () => {
       const pS = hs.instance().state.history[0].site.part;
