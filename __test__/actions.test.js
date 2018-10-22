@@ -1,5 +1,5 @@
 import { saveInj, resetHistory } from '../redux/actions/history';
-import { nextInjSite, resetSites } from '../redux/actions/sites';
+import { nextInjSite, resetSites, rotateNSites } from '../redux/actions/sites';
 
 describe('actions', () => {
   it('should create an action to save injection', () => {
@@ -24,7 +24,16 @@ describe('actions', () => {
     }
     expect(nextInjSite()).toEqual(expectedAction)
   })
-  
+
+  it('should rotate injection sites by n', () => {
+    const n = 5
+    const expectedAction = {
+      type: 'sites-rotate-n-sites',
+      number: n
+    }
+    expect(rotateNSites(n)).toEqual(expectedAction)
+  })
+
   it('should reset injection sites', () => {
     const expectedAction = {
       type: 'sites-reset-defaults'
