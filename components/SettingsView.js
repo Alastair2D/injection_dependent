@@ -8,22 +8,6 @@ class SettingsView extends Component {
     super(props);
     this.state = {
       sites: injectionsites,
-      // checkboxes: [{
-      //   title: injectionsites[0].part,
-      //   checked: sites[0].active,
-      // }, {
-      //   title: injectionsites[8].part,
-      //   checked: sites[8].active,
-      // }, {
-      //   title: injectionsites[16].part,
-      //   checked: injectionsites[16].active,
-      // }, {
-      //   title: injectionsites[24].part,
-      //   checked: injectionsites[24].active,
-      // }, {
-      //   title: injectionsites[32].part,
-      //   checked: injectionsites[32].active,
-      // }],
     };
   }
 
