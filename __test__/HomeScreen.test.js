@@ -7,6 +7,7 @@ import CurrentSite from '../components/CurrentSite';
 import PreviousSite from '../components/PreviousSite';
 import injectionsites from '../components/injectionsites';
 import BodyImages from '../components/BodyImages';
+import GestureRecognizer from 'react-native-swipe-gestures';
 
 describe('Homescreen', () => {
   timekeeper.freeze(new Date(1539760000000));
@@ -20,6 +21,12 @@ describe('Homescreen', () => {
 
   it('renders a previous site component', () => {
     expect(hs.containsMatchingElement(<PreviousSite />)).toEqual(true);
+  });
+
+  it('renders a BodyImage wrapped in a GestureRecognizer component', () => {
+    expect(hs.containsMatchingElement(
+      <GestureRecognizer><BodyImages /></GestureRecognizer>
+    )).toEqual(true);
   });
 
   describe('Recommended Site', () => {
