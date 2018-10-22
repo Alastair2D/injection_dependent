@@ -1,28 +1,31 @@
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 import React from "react";
 import { Button } from "react-native";
 import moment from 'moment';
 import timekeeper from 'timekeeper';
+import GestureRecognizer, { swipeDirections } from "react-native-swipe-gestures";
+
 import { HomeScreen } from "../screens/HomeScreen";
 import CurrentSite from "../components/CurrentSite";
 import PreviousSite from "../components/PreviousSite";
 import injectionsites from "../components/injectionsites";
-// import store from '../redux/store';
 import BodyImages from "../components/BodyImages";
-import GestureRecognizer, { swipeDirections } from "react-native-swipe-gestures";
 
 describe("Homescreen", () => {
   timekeeper.freeze(new Date(1539760000000))
   let hs
   let mockNextInjSite
   let mockSaveInj
+  let mockRotateNSites
 
   beforeEach(() => {
     mockNextInjSite = jest.fn();
     mockSaveInj = jest.fn();
+    mockRotateNSites = jest.fn();
     hs = shallow(<HomeScreen
       saveInj={mockSaveInj}
       nextInjSite={mockNextInjSite}
+      rotateNSites={mockRotateNSites}
       sites={injectionsites}
       history={[{ site: injectionsites[injectionsites.length - 1], time: moment() }]}
     />)
@@ -42,19 +45,20 @@ describe("Homescreen", () => {
       expect(previousSite.props().time).toEqual(time);
     });
     it("wont render a site that is not active", () => {
-      inactive = [
+      let inactive = [
         { part: 'Thigh', side: 'Left', quadrant: 1, active: false, imgNum: 0 },
         { part: 'Thigh', side: 'Left', quadrant: 2, active: true, imgNum: 1 }
       ]
       hs = shallow(<HomeScreen
-        saveInj={mockSaveInj}
-        nextInjSite={mockNextInjSite}
+        rotateNSites={mockRotateNSites}
         sites={inactive}
         history={[{ site: injectionsites[injectionsites.length - 1], time: moment() }]}
       />)
       const currentSite = hs.find(CurrentSite);
       expect(currentSite.length).toEqual(1);
-      expect(currentSite.props().site).toEqual(injectionsites[1]);
+      // expect(hs.props().sites[0].active).toBe(false)
+      expect(mockRotateNSites.mock.calls.length).toBe(1)
+      expect(currentSite.props().site).toEqual(inactive[1]);
     });
   });
 
