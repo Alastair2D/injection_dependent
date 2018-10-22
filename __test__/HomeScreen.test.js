@@ -65,11 +65,12 @@ describe('Homescreen', () => {
       expect(currentSite.props().site).toEqual(injectionsites[1]);
     });
     it('doesn\'t add the suggested site to history', () => {
-      const pS = hs.find(PreviousSite).props().site.part;
+      const pS = hs.instance().state.history[0].site.part;
+
       hs.instance().handleSkip();
       hs.instance().handleSkip();
       hs.instance().handleSkip();
-      // hs.instance().onSwipeLeft();
+
       expect(hs.instance().state.history[0].site.part === pS).toEqual(true);
     });
   });
