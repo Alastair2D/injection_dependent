@@ -34,9 +34,9 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-        resetHistory: () => { dispatch(resetHistory()); }
-    };
+  return {
+    resetHistory: () => { dispatch(resetHistory()); }
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HistoryScreen);
