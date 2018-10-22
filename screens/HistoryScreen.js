@@ -35,7 +35,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    resetHistory: () => { dispatch(resetHistory()); }
+    // resetHistory: () => { dispatch(resetHistory()); }
   };
 }
 
