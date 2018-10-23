@@ -7,38 +7,33 @@ import Header from '../components/Header';
 import injectionsites from '../components/injectionsites';
 import BodyImages from '../components/BodyImages';
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
-import { ToggleSwitch } from 'toggle-switch-react-native';
+
+import Switch from "react-switch";
+import ToggleSwitch from '../components/ToggleSwitch';
 
 import { connect } from 'react-redux'
 import { saveInj, resetHistory } from '../redux/actions/history';
 import { nextInjSite, resetSites, rotateNSites } from '../redux/actions/sites';
 
-
 export class HomeScreen extends React.Component {
-
   nextSite() {
     // const rotatedSites = this.state.sites.slice(1).concat(this.state.sites[0]);
     this.props.nextInjSite();
   }
-
   onSwipeLeft = () => {
     this.handleSkip();
   }
-
   onSwipeRight = () => {
     this.handleConfirmation();
   }
-
   handleConfirmation() {
     // const newHistory = this.state.history.concat({ site: this.state.sites[0], time: moment() });
     this.props.saveInj({ site: this.props.sites[0], time: moment() });
     this.nextSite();
   }
-
   handleSkip() {
     this.nextSite();
   }
-
   skipUntilActive() {
     let self = this
     let i
@@ -50,6 +45,7 @@ export class HomeScreen extends React.Component {
     }
   }
 
+
   render() {
     const config = {
       velocityThreshold: 0.05,
@@ -57,7 +53,6 @@ export class HomeScreen extends React.Component {
     };
     return (
       <View style={styles.container}>
-        <View>
           <Header />
           <GestureRecognizer
             onSwipeLeft={state => this.onSwipeLeft(state)}
@@ -76,15 +71,14 @@ export class HomeScreen extends React.Component {
             time={this.props.history[this.props.history.length - 1].time}
           />
           <ToggleSwitch
-            isOn={false}
-            onColor='green'
-            offColor='red'
-            label='toggle_switch'
-            labelStyle={{color: 'black', fontWeight: '900'}}
-            size='medium'
-            onToggle= { (isOn) => console.log('changed to : ', isOn) }
-            />
-        </View>
+          htmlFor="normal-switch"/>
+          <span>Switch with default style</span>
+          <Switch
+            onChange={this.handleChange}
+            checked={this.state.checked}
+            id="normal-switch"
+          />
+          />;
       </View>
     );
   }

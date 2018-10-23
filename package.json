@@ -39,6 +39,7 @@
     "expo": "^30.0.1",
     "expo-cli": "^2.2.0",
     "moment": "^2.22.2",
+    "prop-types": "^15.6.2",
     "react": "16.3.1",
     "react-dom": "^16.5.2",
     "react-native": "https://github.com/expo/react-native/archive/sdk-30.0.0.tar.gz",
@@ -46,6 +47,7 @@
     "react-native-table-component": "^1.1.8",
     "react-navigation": "^2.16.0",
     "react-redux": "^5.0.7",
+    "react-switch": "^3.0.4",
     "react-test-renderer": "^16.5.2",
     "redux": "^4.0.1",
     "toggle-switch-react-native": "^2.0.2"
