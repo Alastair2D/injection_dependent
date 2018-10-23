@@ -5,7 +5,9 @@ class CurrentSite extends Component {
   render() {
     return (
       <View>
-        <Text id="site" style={styles.current}>{ this.props.site.part }</Text>
+        <Text id="site" style={styles.current}>
+          { this.props.site.side } { this.props.site.part } { this.props.site.quadrant }
+        </Text>
       </View>
     );
   }

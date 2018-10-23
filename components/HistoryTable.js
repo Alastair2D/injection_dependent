@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
 
 export default class HistoryTable extends Component {
+<<<<<<< HEAD
   constructor(props) {
     super(props);
     this.state = {
@@ -13,6 +14,13 @@ export default class HistoryTable extends Component {
         ['13/01/1997', 'Right Leg 2']
       ]
     };
+=======
+  organiseData() {
+    formattedData = this.props.history.map((injection) => {
+      return [injection.time.calendar(), injection.site.part]
+    })
+    return formattedData.reverse()
+>>>>>>> development
   }
 
   render() {
@@ -21,11 +29,11 @@ export default class HistoryTable extends Component {
       <View style={styles.container}>
         <Table borderStyle={{ borderWidth: 2, borderColor: '#c8e1ff' }}>
           <Row
-            data={state.tableHead}
+            data={["Date", "Site"]}
             style={styles.head}
             textStyle={styles.text}
           />
-          <Rows data={state.tableData} textStyle={styles.text} />
+          <Rows data={this.organiseData()} textStyle={styles.text} />
         </Table>
       </View>
     );

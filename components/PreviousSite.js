@@ -6,9 +6,13 @@ class PreviousSite extends Component {
     return (
       <View>
         <Text id="site" style={styles.previous}>
+<<<<<<< HEAD
         Previous: { this.props.site },
           {'\n'}
           {this.props.time.calendar()}
+=======
+        Previous: { this.props.site.side } { this.props.site.part } { this.props.site.quadrant }, {this.props.time.calendar()}
+>>>>>>> development
         </Text>
       </View>
     );

@@ -1,9 +1,10 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 import CurrentSite from '../components/CurrentSite';
+import injectionsites from "../components/injectionsites";
 
 describe('CurrentSite', () => {
-  const exampleSite = { part: 'Left Hip(2)', active: true, imgNum: 9 };
+  const exampleSite = injectionsites[0];
   it('renders something', () => {
     const wrapper = shallow(<CurrentSite site={exampleSite} />);
     
@@ -16,6 +17,11 @@ describe('CurrentSite', () => {
       .find('#site')
       .dive()
       .text();
+<<<<<<< HEAD
+=======
+    expect(text).toEqual('Left Thigh 1');
+  })
+>>>>>>> development
 
     expect(text).toEqual('Left Hip(2)');
   });
