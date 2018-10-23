@@ -6,15 +6,13 @@ import PreviousSite from '../components/PreviousSite';
 import Header from '../components/Header';
 import injectionsites from '../components/injectionsites';
 import BodyImages from '../components/BodyImages';
-import GestureRecognizer, {
-  swipeDirections
-} from 'react-native-swipe-gestures';
+import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
+import { ToggleSwitch } from 'toggle-switch-react-native';
 
 import { connect } from 'react-redux'
 import { saveInj, resetHistory } from '../redux/actions/history';
 import { nextInjSite, resetSites, rotateNSites } from '../redux/actions/sites';
 
-// import injectionsites from '../components/injectionsites';
 
 export class HomeScreen extends React.Component {
 
@@ -77,6 +75,15 @@ export class HomeScreen extends React.Component {
             site={this.props.history[this.props.history.length - 1].site}
             time={this.props.history[this.props.history.length - 1].time}
           />
+          <ToggleSwitch
+            isOn={false}
+            onColor='green'
+            offColor='red'
+            label='toggle_switch'
+            labelStyle={{color: 'black', fontWeight: '900'}}
+            size='medium'
+            onToggle= { (isOn) => console.log('changed to : ', isOn) }
+            />
         </View>
       </View>
     );
