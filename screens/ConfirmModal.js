@@ -11,7 +11,7 @@ export class ModalConfirm extends Component {
   };
 
   setModalVisible(visible) {
-    this.setState({modalVisible: visible})
+    this.setState({ modalVisible: visible });
   }
 
   render() {
@@ -51,7 +51,7 @@ export class ModalConfirm extends Component {
           onPress={() => {
             this.setModalVisible(true);
           }}>
-          <Text style={{textAlign: 'center'}}>Click to confirm</Text>
+          <Text style={{ textAlign: 'center' }}>Click to confirm</Text>
         </TouchableHighlight>
       </View>
     )
@@ -66,23 +66,23 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   show: {
-    marginTop: 0
+    marginTop: 0,
   },
 });
 
 const mapStateToProps = (state, ownProps) => {
   return {
     sites: state.sites,
-    history: state.history
+    history: state.history,
   };
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-        saveInj: (inj) => { dispatch(saveInj(inj)); },
-        nextInjSite: () => { dispatch(nextInjSite()); },
-        rotateNSites: (n) => { dispatch(rotateNSites(n)); }
-    };
+  return {
+    saveInj: (inj) => { dispatch(saveInj(inj)); },
+    nextInjSite: () => { dispatch(nextInjSite()); },
+    rotateNSites: (n) => { dispatch(rotateNSites(n)); }
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModalConfirm);
