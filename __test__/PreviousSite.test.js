@@ -1,6 +1,6 @@
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 import React from 'react';
-import moment from 'moment'
+import moment from 'moment';
 import PreviousSite from '../components/PreviousSite';
 import injectionsites from "../components/injectionsites";
 
@@ -10,7 +10,7 @@ describe('PreviousSite', () => {
     const calTime = time.calendar()
     const app = shallow(<PreviousSite site={ injectionsites[0] } time={time}/>);
     const text = app
-      .find("#site")
+      .find('#site')
       .dive()
       .text();
     expect(text).toEqual("Previous: Left Thigh 1, " + calTime);

@@ -1,28 +1,20 @@
-import React, { Component } from "react";
-import { StyleSheet, View } from "react-native";
-import {
-  Table,
-  TableWrapper,
-  Row,
-  Rows,
-  Col,
-  Cols,
-  Cell
-} from "react-native-table-component";
+import React, { Component } from 'react';
+import { StyleSheet, View } from 'react-native';
+import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
+import injectionsites from './injectionsites';
 
 export default class HistoryTable extends Component {
   organiseData() {
-    formattedData = this.props.history.map((injection) => {
-      return [injection.time.calendar(), injection.site.part]
+    const formattedData = this.props.history.map((injection) => {
+      return [injection.time.calendar(), `${injection.side} ${injection.part} ${injection.quadrant}`];
     })
     return formattedData.reverse()
   }
 
   render() {
-    const state = this.state;
     return (
       <View style={styles.container}>
-        <Table borderStyle={{ borderWidth: 2, borderColor: "#c8e1ff" }}>
+        <Table borderStyle={{ borderWidth: 2, borderColor: '#c8e1ff' }}>
           <Row
             data={["Date", "Site"]}
             style={styles.head}
@@ -36,7 +28,7 @@ export default class HistoryTable extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 16, paddingTop: 30, backgroundColor: "#fff" },
-  head: { height: 40, backgroundColor: "#f1f8ff" },
+  container: { flex: 1, padding: 16, paddingTop: 30, backgroundColor: '#fff' },
+  head: { height: 40, backgroundColor: '#f1f8ff' },
   text: { margin: 6 }
 });

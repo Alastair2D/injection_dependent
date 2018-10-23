@@ -7,14 +7,12 @@ import HistoryTable from "../components/HistoryTable";
 describe("HistoryScreen", () => {
   let historyscreen;
   beforeEach(() => {
-    historyscreen = shallow(<HistoryScreen />);
+    historyScreen = shallow(<HistoryScreen />);
   });
 
-  describe("Components", () => {
-    it("renders a table component", () => {
-      expect(historyscreen.containsMatchingElement(<HistoryTable />)).toEqual(
-        true
-      );
+  describe('Components', () => {
+    it('renders a table component', () => {
+      expect(historyScreen.containsMatchingElement(<HistoryTable />)).toEqual(true);
     });
   });
 });

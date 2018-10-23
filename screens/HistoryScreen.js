@@ -1,14 +1,15 @@
-import React from "react";
-import { ScrollView, StyleSheet, Text } from "react-native";
-import HistoryTable from "../components/HistoryTable";
+import React from 'react';
+import { ScrollView, StyleSheet } from 'react-native';
+import HistoryTable from '../components/HistoryTable';
 
 import { connect } from 'react-redux'
 import { resetHistory } from '../redux/actions/history';
 
 export class HistoryScreen extends React.Component {
   static navigationOptions = {
-    title: "History"
+    title: 'History'
   };
+
   render() {
     return (
       <ScrollView style={styles.container}>
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 15,
-    backgroundColor: "#fff"
+    backgroundColor: '#fff'
   }
 });
 
