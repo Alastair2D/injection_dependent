@@ -1,5 +1,6 @@
 import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet, Button } from 'react-native';
+import axios from 'axios'
 import HistoryTable from '../components/HistoryTable';
 
 import { connect } from 'react-redux'
@@ -10,10 +11,34 @@ export class HistoryScreen extends React.Component {
     title: 'History'
   };
 
+  saveData() {
+    axios.post(`http://localhost:9292/injections`)
+  }
+
+  loadData() {
+    axios.get(`http://localhost:9292/injections?user_id=${1}`)
+    .then(response => {
+      console.log(response);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  }
+
   render() {
     return (
       <ScrollView style={styles.container}>
         <HistoryTable history={this.props.history}/>
+        <Button
+          title={'Save'}
+          id={'save'}
+          onPress={this.saveData()}
+        />
+        <Button
+          title={'Load'}
+          id={'load'}
+          onPress={this.loadData()}
+        />
       </ScrollView>
     );
   }
