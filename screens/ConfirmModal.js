@@ -30,8 +30,16 @@ export class ModalConfirm extends Component {
           <View style={styles.container}>
             <View>
               <Text>
-                Confirm injection site: {this.props.sites[0].side} {this.props.sites[0].part} {this.props.sites[0].quadrant}
+                Confirm injection site: {this.props.sites[0].side} {this.props.sites[0].part} {this.props.sites[0].quadrant} {'\n'}
               </Text>
+
+              <TouchableHighlight
+                onPress={() => {
+                  this.setModalVisible(!this.setModalVisible);
+                }}
+              >
+                <Text style={styles.text}>Cancel {'\n'}</Text>
+              </TouchableHighlight>
 
               <TouchableHighlight
                 onPress={() => {
@@ -39,7 +47,7 @@ export class ModalConfirm extends Component {
                   this.props.saveInj({ site: this.props.sites[0], time: moment() });
                 }}
               >
-                <Text style={{ textAlign: 'center' }}>Confirm</Text>
+                <Text style={styles.text}>Confirm</Text>
               </TouchableHighlight>
             </View>
           </View>
@@ -50,7 +58,7 @@ export class ModalConfirm extends Component {
             this.setModalVisible(true);
           }}
         >
-          <Text style={{ textAlign: 'center' }}>Confirm this Site</Text>
+          <Text style={styles.text}>Confirm this Site</Text>
         </TouchableHighlight>
       </View>
     )
@@ -67,6 +75,9 @@ const styles = StyleSheet.create({
   show: {
     marginTop: 22
   },
+  text: {
+    textAlign: 'center',
+  }
 });
 
 const mapStateToProps = (state, ownProps) => {
