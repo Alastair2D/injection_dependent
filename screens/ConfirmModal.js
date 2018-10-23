@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import moment from 'moment';
-import {Modal, Text, TouchableHighlight, View, Alert, StyleSheet} from 'react-native';
+import { Modal, Text, TouchableHighlight, View, Alert, StyleSheet } from 'react-native';
+import { connect } from 'react-redux';
 import { saveInj, resetHistory } from '../redux/actions/history';
 import { nextInjSite, resetSites, rotateNSites } from '../redux/actions/sites';
-import { connect } from 'react-redux'
 
 export class ModalConfirm extends Component {
   state = {
@@ -11,7 +11,7 @@ export class ModalConfirm extends Component {
   };
 
   setModalVisible(visible) {
-    this.setState({modalVisible: visible})
+    this.setState({ modalVisible: visible });
   }
 
   render() {
@@ -25,17 +25,21 @@ export class ModalConfirm extends Component {
           onRequestClose={() => {
             // this is for Android
             Alert.alert('Modal has been closed.');
-          }}>
+          }}
+        >
           <View style={styles.container}>
             <View>
-              <Text>Confirm injection site: {this.props.sites[0].part} {this.props.sites[0].quadrant}</Text>
+              <Text>
+                Confirm injection site: {this.props.sites[0].side} {this.props.sites[0].part} {this.props.sites[0].quadrant}
+              </Text>
 
               <TouchableHighlight
                 onPress={() => {
                   this.setModalVisible(!this.state.modalVisible);
                   this.props.saveInj({ site: this.props.sites[0], time: moment() });
-                }}>
-                <Text>Confirm</Text>
+                }}
+              >
+                <Text style={{ textAlign: 'center' }}>Confirm</Text>
               </TouchableHighlight>
             </View>
           </View>
@@ -44,8 +48,9 @@ export class ModalConfirm extends Component {
         <TouchableHighlight
           onPress={() => {
             this.setModalVisible(true);
-          }}>
-          <Text style={{textAlign: 'center'}}>Show Modal</Text>
+          }}
+        >
+          <Text style={{ textAlign: 'center' }}>Confirm this Site</Text>
         </TouchableHighlight>
       </View>
     )
@@ -72,11 +77,11 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-        saveInj: (inj) => { dispatch(saveInj(inj)); },
-        nextInjSite: () => { dispatch(nextInjSite()); },
-        rotateNSites: (n) => { dispatch(rotateNSites(n)); }
-    };
-}
+  return {
+    saveInj: (inj) => { dispatch(saveInj(inj)); },
+    nextInjSite: () => { dispatch(nextInjSite()); },
+    rotateNSites: (n) => { dispatch(rotateNSites(n)); }
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModalConfirm);
