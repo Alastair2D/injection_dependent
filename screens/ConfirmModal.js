@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import moment from 'moment';
-import {Modal, Text, TouchableHighlight, View, Alert, StyleSheet} from 'react-native';
-import { saveInj, resetHistory } from '../redux/actions/history';
-import { nextInjSite, resetSites, rotateNSites } from '../redux/actions/sites';
-import { connect } from 'react-redux'
+import {Modal, Text, TouchableHighlight, View, Alert, StyleSheet } from 'react-native';
+import { connect } from 'react-redux';
+import { saveInj } from '../redux/actions/history';
+import { nextInjSite, rotateNSites } from '../redux/actions/sites';
 
 export class ModalConfirm extends Component {
   state = {
