@@ -1,5 +1,5 @@
 import { saveInj, resetHistory } from '../redux/actions/history';
-import { nextInjSite, resetSites, rotateNSites } from '../redux/actions/sites';
+import { nextInjSite, checkSites, resetSites, rotateNSites } from '../redux/actions/sites';
 
 describe('actions', () => {
   it('should create an action to save injection', () => {
@@ -39,5 +39,16 @@ describe('actions', () => {
       type: 'sites-reset-defaults'
     }
     expect(resetSites()).toEqual(expectedAction)
+  })
+
+  it('should change the state of the checkbox', () => {
+    const part = 'Thigh'
+    const previousCheckedStatus = true
+    const expectedAction = {
+      type: 'sites-checked',
+      part: part,
+      previousCheckedStatus: previousCheckedStatus
+    }
+    expect(checkSites(part, previousCheckedStatus)).toEqual(expectedAction)
   })
 })

@@ -16,3 +16,11 @@ export function resetSites() {
     type: 'sites-reset-defaults'
   };
 }
+
+export function checkSites(part, previousCheckedStatus) {
+  return {
+    type: 'sites-checked',
+    part: part,
+    previousCheckedStatus: previousCheckedStatus
+  };
+}

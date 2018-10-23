@@ -18,6 +18,15 @@ export default function sitesReducer (state = defaultSites, action) {
         case 'sites-reset-defaults':
             return defaultSites;
 
+        case 'sites-checked':
+            let injSitesNew = state.map((site) => {
+              if (site.part === action.part) {
+                site.active = !action.previousCheckedStatus
+              }
+              return site
+            })
+            return injSitesNew
+
         default:
             return state;
     }
