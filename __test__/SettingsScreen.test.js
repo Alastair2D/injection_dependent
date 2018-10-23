@@ -24,10 +24,8 @@ describe('SettingsScreen', () => {
 
   it('changes the state for arms checkbox', () => {
     let checkbox = app.find("#Arm");
-    console.log(checkbox.props());
     checkbox.simulate('press');
     checkbox = app.find("#Arm");
-    console.log(checkbox.props());
     expect(checkbox.length).toEqual(1);
     expect(mockCheckSites.mock.calls.length).toBe(1);
   });
