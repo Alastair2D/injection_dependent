@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import moment from 'moment';
 import {Modal, Text, TouchableHighlight, View, Alert, StyleSheet} from 'react-native';
 import { saveInj, resetHistory } from '../redux/actions/history';
 import { nextInjSite, resetSites, rotateNSites } from '../redux/actions/sites';
@@ -32,8 +33,9 @@ export class ModalConfirm extends Component {
               <TouchableHighlight
                 onPress={() => {
                   this.setModalVisible(!this.state.modalVisible);
+                  this.props.saveInj({ site: this.props.sites[0], time: moment() });
                 }}>
-                <Text>Hide Modal</Text>
+                <Text>Confirm</Text>
               </TouchableHighlight>
             </View>
           </View>
