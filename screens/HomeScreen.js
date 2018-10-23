@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import { StyleSheet, View } from 'react-native';
 import moment from 'moment';
 import CurrentSite from '../components/CurrentSite';
@@ -7,10 +6,6 @@ import PreviousSite from '../components/PreviousSite';
 import Header from '../components/Header';
 import injectionsites from '../components/injectionsites';
 import BodyImages from '../components/BodyImages';
-=======
-import React, { Component, PropTypes } from 'react';
-import { StyleSheet, View, Button } from 'react-native';
->>>>>>> development
 import GestureRecognizer, {
   swipeDirections
 } from 'react-native-swipe-gestures';
@@ -18,12 +13,6 @@ import GestureRecognizer, {
 import { connect } from 'react-redux'
 import { saveInj, resetHistory } from '../redux/actions/history';
 import { nextInjSite, resetSites } from '../redux/actions/sites';
-
-import moment from 'moment';
-import CurrentSite from '../components/CurrentSite';
-import PreviousSite from '../components/PreviousSite';
-import Header from '../components/Header';
-import BodyImages from "../components/BodyImages";
 
 // import injectionsites from '../components/injectionsites';
 
@@ -62,7 +51,6 @@ export class HomeScreen extends React.Component {
       <View style={styles.container}>
         <View>
           <Header />
-<<<<<<< HEAD
           <GestureRecognizer
             onSwipeLeft={state => this.onSwipeLeft(state)}
             onSwipeRight={state => this.onSwipeRight(state)}
@@ -75,19 +63,6 @@ export class HomeScreen extends React.Component {
             id='previousSite'
             site={this.state.history[this.state.history.length - 1].site.part}
             time={this.state.history[this.state.history.length - 1].time}
-=======
-          <GestureRecognizer onSwipeRight={state => this.onSwipeRight(state)} config={config}>
-            <BodyImages imgNum={this.props.sites[0].imgNum} />
-          </GestureRecognizer>
-          <CurrentSite
-            id="currentSite"
-            site={this.props.sites[0]}
-          />
-          <PreviousSite
-            id="previousSite"
-            site={this.props.history[this.props.history.length - 1].site}
-            time={this.props.history[this.props.history.length - 1].time}
->>>>>>> development
           />
         </View>
       </View>

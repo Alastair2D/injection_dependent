@@ -45,7 +45,6 @@
     "react-navigation": "^2.16.0",
     "react-native-elements": "^0.19.1",
     "react-native-table-component": "^1.1.8",
-    "react-navigation": "^2.16.0",
     "react-test-renderer": "^16.5.2",
     "react-redux": "^5.0.7",
     "redux": "^4.0.1"

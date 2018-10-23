@@ -17,12 +17,6 @@ describe('CurrentSite', () => {
       .find('#site')
       .dive()
       .text();
-<<<<<<< HEAD
-=======
     expect(text).toEqual('Left Thigh 1');
   })
->>>>>>> development
-
-    expect(text).toEqual('Left Hip(2)');
-  });
 });
