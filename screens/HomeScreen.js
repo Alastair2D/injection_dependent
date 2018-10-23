@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { StyleSheet, View, Modal, Alert, TouchableHighlight } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import moment from 'moment';
 import CurrentSite from '../components/CurrentSite';
 import PreviousSite from '../components/PreviousSite';
@@ -28,7 +28,8 @@ export class HomeScreen extends React.Component {
   }
 
   onSwipeRight = () => {
-    this.handleConfirmation();
+    // this.handleConfirmation();
+    this.handleSkip();
   }
 
   handleConfirmation() {

@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 import {Modal, Text, TouchableHighlight, View, Alert, StyleSheet} from 'react-native';
+import { saveInj, resetHistory } from '../redux/actions/history';
+import { nextInjSite, resetSites, rotateNSites } from '../redux/actions/sites';
+import { connect } from 'react-redux'
 
-class ModalConfirm extends Component {
+export class ModalConfirm extends Component {
   state = {
     modalVisible: false,
   };
@@ -15,6 +18,7 @@ class ModalConfirm extends Component {
       <View style={styles.show}>
         <Modal
           animationType="fade"
+          presentationStyle="fullScreen"
           transparent={false}
           visible={this.state.modalVisible}
           onRequestClose={() => {
@@ -23,7 +27,7 @@ class ModalConfirm extends Component {
           }}>
           <View style={styles.container}>
             <View>
-              <Text>Confirm injection site</Text>
+              <Text>Confirm injection site: {this.props.sites[0].part} {this.props.sites[0].quadrant}</Text>
 
               <TouchableHighlight
                 onPress={() => {
@@ -58,4 +62,19 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ModalConfirm
+const mapStateToProps = (state, ownProps) => {
+  return {
+    sites: state.sites,
+    history: state.history
+  };
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        saveInj: (inj) => { dispatch(saveInj(inj)); },
+        nextInjSite: () => { dispatch(nextInjSite()); },
+        rotateNSites: (n) => { dispatch(rotateNSites(n)); }
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ModalConfirm);
