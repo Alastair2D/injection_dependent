@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { StyleSheet, View, Modal, Alert, TouchableHighlight } from 'react-native';
 import moment from 'moment';
-import ModalConfirm from './ConfirmModal';
 import CurrentSite from '../components/CurrentSite';
 import PreviousSite from '../components/PreviousSite';
 import Header from '../components/Header';
@@ -79,7 +78,6 @@ export class HomeScreen extends React.Component {
             time={this.props.history[this.props.history.length - 1].time}
           />
         </View>
-        <ModalConfirm />
       </View>
     );
   }

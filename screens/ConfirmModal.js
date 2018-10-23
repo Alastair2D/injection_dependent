@@ -14,15 +14,16 @@ class ModalConfirm extends Component {
     return (
       <View style={styles.show}>
         <Modal
-          animationType="slide"
+          animationType="fade"
           transparent={false}
           visible={this.state.modalVisible}
           onRequestClose={() => {
+            // this is for Android
             Alert.alert('Modal has been closed.');
           }}>
           <View style={styles.container}>
             <View>
-              <Text>Hello World!</Text>
+              <Text>Confirm injection site</Text>
 
               <TouchableHighlight
                 onPress={() => {
@@ -38,7 +39,7 @@ class ModalConfirm extends Component {
           onPress={() => {
             this.setModalVisible(true);
           }}>
-          <Text>Show Modal</Text>
+          <Text style={{textAlign: 'center'}}>Show Modal</Text>
         </TouchableHighlight>
       </View>
     )
