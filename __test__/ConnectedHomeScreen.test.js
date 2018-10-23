@@ -33,8 +33,13 @@ describe("ConnectedHomeScreen", () => {
     expect(store.getActions()).toEqual([{"item": "test", "type": "history-save-injection"}]);
   })
 
-  it("adds saveInj action to props", () => {
+  it("adds nextInjSite action to props", () => {
     homescreen.props().nextInjSite()
     expect(store.getActions()).toEqual([{"type": "sites-next-injection-site"}]);
+  })
+
+  it("adds rotateNSites action to props", () => {
+    homescreen.props().rotateNSites(5)
+    expect(store.getActions()).toEqual([{"type": "sites-rotate-n-sites", number: 5}]);
   })
 });

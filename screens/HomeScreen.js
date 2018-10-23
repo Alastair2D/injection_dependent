@@ -6,7 +6,7 @@ import GestureRecognizer, {
 
 import { connect } from 'react-redux'
 import { saveInj, resetHistory } from '../redux/actions/history';
-import { nextInjSite, resetSites } from '../redux/actions/sites';
+import { nextInjSite, resetSites, rotateNSites } from '../redux/actions/sites';
 
 import moment from 'moment';
 import CurrentSite from '../components/CurrentSite';
@@ -17,7 +17,7 @@ import BodyImages from "../components/BodyImages";
 // import injectionsites from '../components/injectionsites';
 
 export class HomeScreen extends React.Component {
-  
+
   nextSite() {
     // const rotatedSites = this.state.sites.slice(1).concat(this.state.sites[0]);
     this.props.nextInjSite();
@@ -38,6 +38,17 @@ export class HomeScreen extends React.Component {
     this.nextSite();
   }
 
+  skipUntilActive() {
+    let self = this
+    let i
+    for(i = 0; i < self.props.sites.length; i++) {
+      if (self.props.sites[i].active === true ) {
+        if (i != 0) { self.props.rotateNSites(i) }
+        return self.props.sites[i]
+      }
+    }
+  }
+
   render() {
     const config = {
       velocityThreshold: 0.05,
@@ -52,7 +63,7 @@ export class HomeScreen extends React.Component {
           </GestureRecognizer>
           <CurrentSite
             id="currentSite"
-            site={this.props.sites[0]}
+            site={this.skipUntilActive()}
           />
           <PreviousSite
             id="previousSite"
@@ -115,7 +126,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         saveInj: (inj) => { dispatch(saveInj(inj)); },
-        nextInjSite: () => { dispatch(nextInjSite()); }
+        nextInjSite: () => { dispatch(nextInjSite()); },
+        rotateNSites: (n) => { dispatch(rotateNSites(n)); }
     };
 }
 
