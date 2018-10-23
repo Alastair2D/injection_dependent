@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { CheckBox } from 'react-native-elements';
+import { connect } from 'react-redux';
+import { checkSites } from '../redux/actions/sites';
 import injectionsites from '../components/injectionsites'
 
-class SettingsScreen extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      sites: injectionsites,
-    };
-  }
+export class SettingsScreen extends React.Component {
+  static navigationOptions = {
+    title: 'Settings'
+  };
 
   onlyUnique(self) {
     let uniqueParts = []
@@ -23,30 +22,18 @@ class SettingsScreen extends Component {
     return uniqueSites;
   }
 
-  check(title, checked) {
-    let injsitesNew = this.state.sites.map((site) => {
-      if (site.part === title) {
-        site.active = !checked
-      }
-      return site
-    })
-    this.setState({
-      sites: injsitesNew
-    })
-  }
-
   render() {
     return (
       <View>
         {
-          this.onlyUnique(this.state.sites).map((cb) => {
+          this.onlyUnique(this.props.sites).map((cb) => {
           return (
             <CheckBox
               key={cb.part}
               id={cb.part}
               title={cb.part}
               checked={cb.active}
-              onPress={() => this.check(cb.part, cb.active)}
+              onPress={() => this.props.checkSites(cb.part, cb.active)}
             />
           )
         })
@@ -56,4 +43,16 @@ class SettingsScreen extends Component {
   }
 };
 
-export default SettingsScreen;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    sites: state.sites
+  };
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    checkSites: (part, previousCheckedStatus) => { dispatch(checkSites(part, previousCheckedStatus)); }
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SettingsScreen);
