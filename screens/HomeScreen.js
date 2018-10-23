@@ -12,12 +12,12 @@ import GestureRecognizer, {
 
 import { connect } from 'react-redux'
 import { saveInj, resetHistory } from '../redux/actions/history';
-import { nextInjSite, resetSites } from '../redux/actions/sites';
+import { nextInjSite, resetSites, rotateNSites } from '../redux/actions/sites';
 
 // import injectionsites from '../components/injectionsites';
 
 export class HomeScreen extends React.Component {
-  
+
   nextSite() {
     // const rotatedSites = this.state.sites.slice(1).concat(this.state.sites[0]);
     this.props.nextInjSite();
@@ -35,11 +35,21 @@ export class HomeScreen extends React.Component {
     // const newHistory = this.state.history.concat({ site: this.state.sites[0], time: moment() });
     this.props.saveInj({ site: this.props.sites[0], time: moment() });
     this.nextSite();
-    alert('Confirmed');
   }
 
   handleSkip() {
     this.nextSite();
+  }
+
+  skipUntilActive() {
+    let self = this
+    let i
+    for(i = 0; i < self.props.sites.length; i++) {
+      if (self.props.sites[i].active === true ) {
+        if (i != 0) { self.props.rotateNSites(i) }
+        return self.props.sites[i]
+      }
+    }
   }
 
   render() {
@@ -56,13 +66,16 @@ export class HomeScreen extends React.Component {
             onSwipeRight={state => this.onSwipeRight(state)}
             config={config}
           >
-            <BodyImages imgNum={this.state.sites[0].imgNum} />
+            <BodyImages imgNum={this.props.sites[0].imgNum} />
           </GestureRecognizer>
-          <CurrentSite id='currentSite' site={this.state.sites[0]} />
+          <CurrentSite
+            id="currentSite"
+            site={this.skipUntilActive()}
+          />
           <PreviousSite
             id='previousSite'
-            site={this.state.history[this.state.history.length - 1].site.part}
-            time={this.state.history[this.state.history.length - 1].time}
+            site={this.props.history[this.props.history.length - 1].site}
+            time={this.props.history[this.props.history.length - 1].time}
           />
         </View>
       </View>
@@ -109,7 +122,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         saveInj: (inj) => { dispatch(saveInj(inj)); },
-        nextInjSite: () => { dispatch(nextInjSite()); }
+        nextInjSite: () => { dispatch(nextInjSite()); },
+        rotateNSites: (n) => { dispatch(rotateNSites(n)); }
     };
 }
 

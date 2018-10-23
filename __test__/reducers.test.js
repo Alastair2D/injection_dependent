@@ -17,6 +17,17 @@ describe('sites reducer', () => {
       })
     ).toEqual({ sites: [2,3,4,5,1], history: [1] })
   })
+  it('should handle sites-rotate-n-sites', () => {
+    expect(
+      reducer({
+        sites: [1,2,3,4,5],
+        history: [1]
+      }, {
+        type: 'sites-rotate-n-sites',
+        number: 3
+      })
+    ).toEqual({ sites: [4,5,1,2,3], history: [1] })
+  })
   it('should handle site reset', () => {
     expect(reducer({
       sites: [3,4,5,1,2],

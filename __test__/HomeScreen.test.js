@@ -1,4 +1,3 @@
-
 import { shallow, mount } from "enzyme";
 import React from "react";
 import { Button } from "react-native";
@@ -63,25 +62,18 @@ describe("Homescreen", () => {
     });
   });
 
-  describe("Confirm Button", () => {
-    beforeEach(() => {
-      window.alert = jest.fn()
-    })
+  describe("Confirmation swipe right", () => {
     it("should call Save and Next actions after pressing Confirm", () => {
-      hs.find("#confirm").simulate('press')
+      hs.find(GestureRecognizer).simulate('swipeRight');
       const currentSite = hs.find(CurrentSite);
       expect(currentSite.length).toEqual(1);
       expect(mockNextInjSite.mock.calls.length).toBe(1)
       expect(mockSaveInj.mock.calls.length).toBe(1)
       // expect(currentSite.props().site).toEqual(injectionsites[1]);
     });
-    it("shows the alert when confirmed", () => {
-      hs.find("#confirm").simulate('press')
-      expect(window.alert).toHaveBeenCalledWith('Confirmed')
-    })
     it("should call Save and Next actions again after pressing a second time", () => {
-      hs.find("#confirm").simulate('press')
-      hs.find("#confirm").simulate('press')
+      hs.find(GestureRecognizer).simulate('swipeRight');
+      hs.find(GestureRecognizer).simulate('swipeRight');
       const currentSite = hs.find(CurrentSite);
       expect(currentSite.length).toEqual(1);
       expect(mockNextInjSite.mock.calls.length).toBe(2)
@@ -90,9 +82,9 @@ describe("Homescreen", () => {
     })
   })
 
-  describe("Skip button", () => {
+  describe("Skip swipe left", () => {
     it('should call the Next action on press', () => {
-      hs.find(GestureRecognizer).simulate('swipeRight')
+      hs.find(GestureRecognizer).simulate('swipeLeft')
       const currentSite = hs.find(CurrentSite);
       expect(currentSite.length).toEqual(1);
       expect(mockNextInjSite.mock.calls.length).toBe(1)
