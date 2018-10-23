@@ -36,6 +36,34 @@ describe('sites reducer', () => {
       type: 'sites-reset-defaults'
     })).toEqual({ sites: injectionsites, history: [1] })
   })
+
+  it('should handle site checked for one part', () => {
+    expect(
+      reducer({
+        sites: [{part: 3, active: true}],
+        history: [1]
+      }, {
+        type: 'sites-checked',
+        part: 3,
+        previousCheckedStatus: true
+      })
+    ).toEqual({ sites: [{part: 3, active: false}], history: [1] })
+  })
+
+  it('should handle site checked for several parts', () => {
+    expect(
+      reducer({
+        sites: [{part: 3, active: true}, {part: 3, active: true}, {part: 1, active: true}],
+        history: [1]
+      }, {
+        type: 'sites-checked',
+        part: 3,
+        previousCheckedStatus: true
+      })
+    ).toEqual({ sites: [{part: 3, active: false},
+              {part: 3, active: false},
+              {part: 1, active: true}], history: [1] })
+  })
 })
 
 describe('history reducer', () => {
