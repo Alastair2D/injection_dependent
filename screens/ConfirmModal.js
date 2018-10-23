@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return {
     sites: state.sites,
     history: state.history,
