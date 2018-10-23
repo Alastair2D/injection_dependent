@@ -18,15 +18,16 @@ describe("HistoryScreen", () => {
   });
 
   describe('DB save and load', () => {
-    // it('renders a save button', () => {
-    //   let axios = jest.fn()
-    //   historyScreen.find('#save').simulate('press')
-    //   expect(axios.post()).toHaveBeenCalledWith('http://localhost:9292/injections')
-    // })
-    it('renders a load button', () => {
-      let mockAxios = { get: jest.fn() }
+    beforeEach(() => {
+      let axios = mockAxios;
+      jest.setMock("axios", axios);
+    })
+    it('saveData calls axios post', () => {
+      historyScreen.find('#save').simulate('press')
+      expect(mockAxios.post).toHaveBeenCalledWith('http://localhost:9292/injections')
+    })
+    it('loadData calls axios get', () => {
       historyScreen.find('#load').simulate('press')
-      expect(mockAxios.get).toHaveBeenCalledTimes(1);
       expect(mockAxios.get).toHaveBeenCalledWith('http://localhost:9292/injections?user_id=1')
     })
   });

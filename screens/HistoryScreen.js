@@ -17,27 +17,22 @@ export class HistoryScreen extends React.Component {
 
   loadData() {
     axios.get(`http://localhost:9292/injections?user_id=${1}`)
-    .then(response => {
-      console.log(response);
-    })
-    .catch(error => {
-      console.log(error);
-    });
   }
+
 
   render() {
     return (
       <ScrollView style={styles.container}>
         <HistoryTable history={this.props.history}/>
         <Button
-          title={'Save'}
-          id={'save'}
-          onPress={this.saveData()}
-        />
-        <Button
           title={'Load'}
           id={'load'}
           onPress={this.loadData()}
+        />
+        <Button
+          title={'Save'}
+          id={'save'}
+          onPress={this.saveData()}
         />
       </ScrollView>
     );
