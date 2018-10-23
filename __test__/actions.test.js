@@ -43,10 +43,12 @@ describe('actions', () => {
 
   it('should change the state of the checkbox', () => {
     const part = 'Thigh'
-    const checked = true
+    const previousCheckedStatus = true
     const expectedAction = {
-      type: 'sites-checked'
+      type: 'sites-checked',
+      part: part,
+      previousCheckedStatus: previousCheckedStatus
     }
-    expect(checkSites()).toEqual(expectedAction)
+    expect(checkSites(part, previousCheckedStatus)).toEqual(expectedAction)
   })
 })
