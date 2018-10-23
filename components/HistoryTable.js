@@ -6,7 +6,7 @@ import injectionsites from './injectionsites';
 export default class HistoryTable extends Component {
   organiseData() {
     const formattedData = this.props.history.map((injection) => {
-      return [injection.time.calendar(), injectionsites.part, injectionsites.side, injectionsites.quadrant];
+      return [injection.time.calendar(), `${injection.side} ${injection.part} ${injection.quadrant}`];
     })
     return formattedData.reverse()
   }
