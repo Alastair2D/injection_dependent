@@ -10,6 +10,7 @@ export default class HistoryTable extends Component {
         injection.time.format('MMMM Do YYYY, h:mm a'),
         `${injection.site.side} ${injection.site.part} ${injection.site.quadrant}`,
       injection.dbsync.toString()];
+
     })
     return formattedData.reverse()
   }
