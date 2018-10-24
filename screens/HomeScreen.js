@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Switch } from 'react-native';
 import moment from 'moment';
 import CurrentSite from '../components/CurrentSite';
 import PreviousSite from '../components/PreviousSite';
@@ -7,7 +7,7 @@ import Header from '../components/Header';
 import ConfirmModal from '../components/ConfirmModal';
 import injectionsites from '../components/injectionsites';
 import BodyImages from '../components/BodyImages';
-import LongShortSwitch from '../components/LongShortSwitch';
+// import LongShortSwitch from '../components/LongShortSwitch';
 import GestureRecognizer, {
   swipeDirections
 } from 'react-native-swipe-gestures';
@@ -19,6 +19,12 @@ import { nextInjSite, resetSites, rotateNSites } from '../redux/actions/sites';
 // import injectionsites from '../components/injectionsites';
 
 export class HomeScreen extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      shortMed: true
+    }
+  }
 
   onSwipeLeft = () => {
     this.handleSkip();
@@ -39,7 +45,8 @@ export class HomeScreen extends React.Component {
     this.props.saveInj({
       site: this.props.sites[0],
       time: moment(),
-      dbsync: false
+      dbsync: false,
+      medType: (this.state.shortMed ? 'Short' : 'Long')
     });
     this.nextSite();
   }
@@ -83,7 +90,7 @@ export class HomeScreen extends React.Component {
             site={this.props.sites[0]}
             onConfirmation={() => this.handleConfirmation()}
           />
-          <LongShortSwitch />
+          <Switch value={this.state.shortMed} onValueChange={(value) => (this.setState({ shortMed: value })) } />
           <PreviousSite
             id='previousSite'
             site={this.props.history[this.props.history.length - 1].site}
