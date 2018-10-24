@@ -6,9 +6,13 @@ import injectionsites from './injectionsites';
 export default class HistoryTable extends Component {
   organiseData() {
     const formattedData = this.props.history.map((injection) => {
+<<<<<<< HEAD
       return [
         injection.time.format('MMMM Do YYYY, h:mm a'), 
         `${injection.site.side} ${injection.site.part} ${injection.site.quadrant}`];
+=======
+      return [injection.time.calendar(), `${injection.site.side} ${injection.site.part} ${injection.site.quadrant}`];
+>>>>>>> fe5269e143a8310de101f7440298dead92efe05b
     })
     return formattedData.reverse()
   }
