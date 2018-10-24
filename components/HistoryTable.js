@@ -7,7 +7,7 @@ export default class HistoryTable extends Component {
   organiseData() {
     const formattedData = this.props.history.map((injection) => {
       return [
-        injection.time.format('MMMM Do YYYY, h:mm a'), 
+        injection.time.format('MMMM Do YYYY, h:mm a'),
         `${injection.site.side} ${injection.site.part} ${injection.site.quadrant}`];
     })
     return formattedData.reverse()
