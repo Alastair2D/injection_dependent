@@ -6,7 +6,7 @@ class LongShortSwitch extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      insulinType: 'Short',
+      medType: 'Short',
       switchStatus: true
     };
   }
