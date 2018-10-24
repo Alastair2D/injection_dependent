@@ -9,7 +9,6 @@ import BodyImages from '../components/BodyImages';
 import GestureRecognizer, {
   swipeDirections
 } from 'react-native-swipe-gestures';
-import ToggleSwitch from 'toggle-switch-react-native';
 
 import { connect } from 'react-redux'
 import { saveInj, resetHistory } from '../redux/actions/history';
@@ -73,15 +72,6 @@ export class HomeScreen extends React.Component {
           <CurrentSite
             id="currentSite"
             site={this.skipUntilActive()}
-          />
-          <ToggleSwitch
-            isOn={false}
-            onColor='green'
-            offColor='red'
-            label='Example label'
-            labelStyle={{color: 'black', fontWeight: '900'}}
-            size='large'
-            onToggle={ this.props.isOn: !this.props.isOn }
           />
           <PreviousSite
             id='previousSite'
