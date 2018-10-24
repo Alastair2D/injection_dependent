@@ -1,10 +1,12 @@
 import { shallow } from "enzyme";
 import React from "react";
+import { createMockStore } from 'redux-test-utils';
 import { Button } from "react-native";
 import moment from 'moment';
 import timekeeper from 'timekeeper';
 import GestureRecognizer, { swipeDirections } from "react-native-swipe-gestures";
 
+import ConfirmModal from '../screens/ConfirmModal';
 import { HomeScreen } from "../screens/HomeScreen";
 import CurrentSite from "../components/CurrentSite";
 import PreviousSite from "../components/PreviousSite";
@@ -91,4 +93,11 @@ describe("Homescreen", () => {
       expect(mockSaveInj.mock.calls.length).toBe(0)
     })
   });
+
+  describe('ConfirmModal', () => {
+    it('renders a confirm modal', () => {
+      cM = hs.find(ConfirmModal);
+      expect(cM.length).toBe(1);
+    })
+  })
 });

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import moment from 'moment';
-import { Modal, Text, TouchableHighlight, View, Alert, StyleSheet } from 'react-native';
+import {Modal, Text, TouchableHighlight, View, Alert, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
-import { saveInj, resetHistory } from '../redux/actions/history';
-import { nextInjSite, resetSites, rotateNSites } from '../redux/actions/sites';
+import { saveInj } from '../redux/actions/history';
+import { nextInjSite, rotateNSites } from '../redux/actions/sites';
 
-class ModalConfirm extends Component {
+export class ConfirmModal extends Component {
   state = {
     modalVisible: false,
   };
@@ -49,6 +49,12 @@ class ModalConfirm extends Component {
               >
                 <Text style={styles.text}>Confirm</Text>
               </TouchableHighlight>
+              <TouchableHighlight
+                onPress={() => {
+                  this.setModalVisible(!this.state.modalVisible);
+                }}>
+                <Text>Cancel</Text>
+              </TouchableHighlight>
             </View>
           </View>
         </Modal>
@@ -73,7 +79,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   show: {
-    marginTop: 22
+    marginTop: 0,
   },
   text: {
     textAlign: 'center',
@@ -81,10 +87,10 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return {
     sites: state.sites,
-    history: state.history
+    history: state.history,
   };
 }
 
@@ -94,6 +100,6 @@ const mapDispatchToProps = (dispatch) => {
     nextInjSite: () => { dispatch(nextInjSite()); },
     rotateNSites: (n) => { dispatch(rotateNSites(n)); }
   };
-};
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(ModalConfirm);
+export default connect(mapStateToProps, mapDispatchToProps)(ConfirmModal);
