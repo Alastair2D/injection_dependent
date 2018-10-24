@@ -33,6 +33,7 @@ export default class ConfirmModal extends Component {
                 Confirm injection site: {this.props.site.side} {this.props.site.part} {this.props.site.quadrant} {'\n'}
               </Text>
               <TouchableHighlight
+                id={"finalConfirm"}
                 onPress={() => {
                   this.setModalVisible(!this.state.modalVisible);
                   this.props.onConfirmation();
@@ -41,6 +42,7 @@ export default class ConfirmModal extends Component {
                 <Text style={styles.text}>Confirm</Text>
               </TouchableHighlight>
               <TouchableHighlight
+                id={"cancel"}
                 onPress={() => {
                   this.setModalVisible(!this.state.modalVisible);
                 }}
@@ -52,6 +54,7 @@ export default class ConfirmModal extends Component {
         </Modal>
 
         <TouchableHighlight
+          id={"firstConfirm"}
           style={{marginTop: 40}}
           onPress={() => {
             this.setModalVisible(true);

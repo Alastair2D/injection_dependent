@@ -1,25 +1,32 @@
 import { shallow } from 'enzyme';
 import { createMockStore } from 'redux-test-utils';
 import React from 'react';
-import { Modal } from 'react-native';
+import { Modal, Text } from 'react-native';
 import moment from 'moment';
-import ConfirmModal from '../screens/ConfirmModal';
+import ConfirmModal from '../components/ConfirmModal';
+import injectionsites from '../components/injectionsites';
 
 describe('ConfirmModal', () => {
   let cM;
-  let store;
-  const sitesArray = [{ side: 'Left', part: 'Thigh', quadrant: '1' }, { side: 'Left', part: 'Thigh', quadrant: '2' }, { side: 'Left', part: 'Thigh', quadrant: '3' } ]
+  let site = injectionsites[0]
+
   beforeEach(() => {
-    store = createMockStore({
-      history: [{
-        time: moment(),
-        site: { part: 'Left Thigh' }
-      }]
-    });
-    cM = shallow(<ConfirmModal store={store} sites={sitesArray} />);
+    cM = shallow(<ConfirmModal site={site} />);
   });
-  it('renders site info', () => {
-    let cMText = cM.dive(<Modal/>);
-    expect(cMText.toEqual('Left Thigh 1'));
+
+  it('renders confirm this site button', () => {
+    const firstConfirm = cM.find("#firstConfirm");
+    expect(firstConfirm.length).toEqual(1);
+    const text = firstConfirm
+      .dive()
+      .find(Text)
+      .dive()
+      .text();
+    expect(text).toEqual('Confirm this site')
   });
+
+  // it('renders site info', () => {
+  //   let cMText = cM.dive(<Modal/>);
+  //   expect(cMText.toEqual('Left Thigh 1'));
+  // });
 })
