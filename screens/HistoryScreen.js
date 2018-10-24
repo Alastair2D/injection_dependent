@@ -1,12 +1,20 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Button } from 'react-native';
+import { ScrollView, StyleSheet, Button, Text } from 'react-native';
 import axios from 'axios'
 import HistoryTable from '../components/HistoryTable';
+import moment from 'moment'
 
 import { connect } from 'react-redux'
-import { resetHistory } from '../redux/actions/history';
+import { saveInj, resetHistory } from '../redux/actions/history';
 
 export class HistoryScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+
+    }
+  }
+
   static navigationOptions = {
     title: 'History'
   };
@@ -16,9 +24,17 @@ export class HistoryScreen extends React.Component {
   }
 
   loadData() {
+    self = this
     axios.get(`http://localhost:9292/injections?user_id=${1}`)
+    .then(data => {
+      for (i in data) {
+        data[i].forEach((inj) => {
+          // self.setState({ time: moment.unix(parseInt(inj.time, 10)/1000).calendar() })
+          self.props.saveInj({site: JSON.parse(inj.site), time: moment.unix(parseInt(inj.time, 10)/1000)})
+        })
+      }
+    })
   }
-
 
   render() {
     return (
@@ -27,12 +43,12 @@ export class HistoryScreen extends React.Component {
         <Button
           title={'Load'}
           id={'load'}
-          onPress={this.loadData()}
+          onPress={() => this.loadData()}
         />
         <Button
           title={'Save'}
           id={'save'}
-          onPress={this.saveData()}
+          onPress={() => this.saveData()}
         />
       </ScrollView>
     );
@@ -56,6 +72,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    saveInj: (inj) => { dispatch(saveInj(inj)); }
     // resetHistory: () => { dispatch(resetHistory()); }
   };
 }
