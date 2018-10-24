@@ -25,17 +25,29 @@ export class ConfirmModal extends Component {
           onRequestClose={() => {
             // this is for Android
             Alert.alert('Modal has been closed.');
-          }}>
+          }}
+        >
           <View style={styles.container}>
             <View>
-              <Text>Injection site: {this.props.sites[0].side} {this.props.sites[0].part} {this.props.sites[0].quadrant}</Text>
+              <Text>
+                Confirm injection site: {this.props.sites[0].side} {this.props.sites[0].part} {this.props.sites[0].quadrant} {'\n'}
+              </Text>
+
+              <TouchableHighlight
+                onPress={() => {
+                  this.setModalVisible(!this.setModalVisible);
+                }}
+              >
+                <Text style={styles.text}>Cancel {'\n'}</Text>
+              </TouchableHighlight>
 
               <TouchableHighlight
                 onPress={() => {
                   this.setModalVisible(!this.state.modalVisible);
                   this.props.saveInj({ site: this.props.sites[0], time: moment() });
-                }}>
-                <Text>Confirm</Text>
+                }}
+              >
+                <Text style={styles.text}>Confirm</Text>
               </TouchableHighlight>
               <TouchableHighlight
                 onPress={() => {
@@ -50,11 +62,12 @@ export class ConfirmModal extends Component {
         <TouchableHighlight
           onPress={() => {
             this.setModalVisible(true);
-          }}>
-          <Text style={{ textAlign: 'center' }}>Click to confirm</Text>
+          }}
+        >
+          <Text style={styles.text}>Confirm this Site</Text>
         </TouchableHighlight>
       </View>
-    )
+    );
   }
 }
 
@@ -68,6 +81,10 @@ const styles = StyleSheet.create({
   show: {
     marginTop: 0,
   },
+  text: {
+    textAlign: 'center',
+    fontSize: 20
+  }
 });
 
 const mapStateToProps = (state) => {
