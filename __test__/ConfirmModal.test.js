@@ -1,5 +1,4 @@
 import { shallow } from 'enzyme';
-import { createMockStore } from 'redux-test-utils';
 import React from 'react';
 import { Modal, Text } from 'react-native';
 import moment from 'moment';
@@ -8,10 +7,12 @@ import injectionsites from '../components/injectionsites';
 
 describe('ConfirmModal', () => {
   let cM;
-  let site = injectionsites[0]
+  let site = injectionsites[0];
+  let mockHandleConfirmation;
 
   beforeEach(() => {
-    cM = shallow(<ConfirmModal site={site} />);
+    mockHandleConfirmation = jest.fn();
+    cM = shallow(<ConfirmModal site={site} onConfirmation={mockHandleConfirmation} />);
   });
 
   it('renders confirm this site button', () => {
@@ -47,8 +48,11 @@ describe('ConfirmModal', () => {
     expect(text).toEqual('Confirm');
   })
 
-  // it('renders site info', () => {
-  //   let cMText = cM.dive(<Modal/>);
-  //   expect(cMText.toEqual('Left Thigh 1'));
-  // });
+  it('changes the state of modalVisible', () => {
+    let finalConfirm = cM.find("#finalConfirm");
+    finalConfirm.simulate('press');
+    finalConfirm = cM.find("#finalConfirm");
+    expect(finalConfirm.length).toEqual(1);
+    expect(mockHandleConfirmation.mock.calls.length).toBe(1)
+  });
 })
