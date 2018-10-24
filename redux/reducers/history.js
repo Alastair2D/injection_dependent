@@ -3,14 +3,14 @@ import moment from 'moment';
 
 // const defaultHistory = [{ site: injectionsites[injectionsites.length - 1], time: moment() }];
 
-export default function historyReducer (state = [{ site: injectionsites[injectionsites.length - 1], time: moment(), dbsync: true }], action) {
+export default function historyReducer (state = [{ site: injectionsites[injectionsites.length - 1], time: moment(), dbsync: true, medType: "Short" }], action) {
     switch (action.type) {
 
         case 'history-save-injection':
             return state.concat([action.item]);
 
         case 'history-reset-defaults':
-            return [{ site: injectionsites[injectionsites.length - 1], time: moment(), dbsync: true }];
+            return [{ site: injectionsites[injectionsites.length - 1], time: moment(), dbsync: true, medType: "Short" }];
 
         case 'history-sync-status':
           let syncStatusNew = state.map((inj) => {

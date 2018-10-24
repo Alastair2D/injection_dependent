@@ -36,7 +36,11 @@ export class HomeScreen extends React.Component {
 
   handleConfirmation() {
     // const newHistory = this.state.history.concat({ site: this.state.sites[0], time: moment() });
-    this.props.saveInj({ site: this.props.sites[0], time: moment(), dbsync: false });
+    this.props.saveInj({
+      site: this.props.sites[0],
+      time: moment(),
+      dbsync: false
+    });
     this.nextSite();
   }
 

@@ -38,12 +38,14 @@ export class HistoryScreen extends React.Component {
               user_id: this.state.user_id,
               site: JSON.stringify(inj.site),
               time: inj.time.unix() * 1000,
-              medtype: "short"
+              medtype: inj.medType
             }
           })
         }
       })
       this.props.updateSyncStatus();
+    } else {
+      this.setState({ user_id: 'Change me down here' })
     }
   }
 
@@ -56,23 +58,18 @@ export class HistoryScreen extends React.Component {
           self.props.saveInj({
             site: JSON.parse(inj.site),
             time: moment.unix(parseInt(inj.time, 10)/1000),
-            dbsync: true
+            dbsync: true,
+            medType: inj.medtype
           })
         })
       }
     })
   }
 
-  displayName() {
-    if (this.state.user_id != 'Enter username here...' && this.state.user_id != 'Change me down here') {
-      return this.state.user_id
-    }
-  }
-
   render() {
     return (
       <ScrollView style={styles.container}>
-        <Text>Hi {this.displayName()}</Text>
+
         <HistoryTable history={this.props.history} />
         <Button
           title={'Load'}
@@ -86,6 +83,7 @@ export class HistoryScreen extends React.Component {
           id={'save'}
           onPress={() => this.saveData()}
         />
+      <Text>Username: </Text>
       <TextInput name="username" id="username" placeholder={this.state.user_id}
               onChangeText={ (user_id) => this.setState({ user_id }) }/>
       </ScrollView>

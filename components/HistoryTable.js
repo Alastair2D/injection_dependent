@@ -9,7 +9,9 @@ export default class HistoryTable extends Component {
       return [
         injection.time.format('MMMM Do YYYY, h:mm a'),
         `${injection.site.side} ${injection.site.part} ${injection.site.quadrant}`,
-      injection.dbsync.toString()];
+        injection.medType,
+        injection.dbsync.toString()
+      ];
 
     })
     return formattedData.reverse()
@@ -20,7 +22,7 @@ export default class HistoryTable extends Component {
       <View style={styles.container}>
         <Table borderStyle={{ borderWidth: 2, borderColor: '#c8e1ff' }}>
           <Row
-            data={["Date", "Site", "Sync stateus"]}
+            data={["Date", "Site", "MedType", "Sync status"]}
             style={styles.head}
             textStyle={styles.text}
           />
