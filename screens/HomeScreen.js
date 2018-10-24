@@ -4,7 +4,7 @@ import moment from 'moment';
 import CurrentSite from '../components/CurrentSite';
 import PreviousSite from '../components/PreviousSite';
 import Header from '../components/Header';
-import ConfirmModal from './ConfirmModal';
+import ConfirmModal from '../components/ConfirmModal';
 import injectionsites from '../components/injectionsites';
 import BodyImages from '../components/BodyImages';
 import LongShortSwitch from '../components/LongShortSwitch';
@@ -36,7 +36,11 @@ export class HomeScreen extends React.Component {
 
   handleConfirmation() {
     // const newHistory = this.state.history.concat({ site: this.state.sites[0], time: moment() });
-    this.props.saveInj({ site: this.props.sites[0], time: moment() });
+    this.props.saveInj({
+      site: this.props.sites[0],
+      time: moment(),
+      dbsync: false
+    });
     this.nextSite();
   }
 
@@ -75,7 +79,10 @@ export class HomeScreen extends React.Component {
             id="currentSite"
             site={this.skipUntilActive()}
           />
-          <ConfirmModal />
+          <ConfirmModal
+            site={this.props.sites[0]}
+            onConfirmation={() => this.handleConfirmation()}
+          />
           <LongShortSwitch />
           <PreviousSite
             id='previousSite'
