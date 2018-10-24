@@ -1,7 +1,7 @@
 import { shallow } from "enzyme";
 import React from "react";
 import { createMockStore } from 'redux-test-utils';
-import { Button, Switch } from "react-native";
+import { Switch } from "react-native";
 import moment from 'moment';
 import timekeeper from 'timekeeper';
 import GestureRecognizer, { swipeDirections } from "react-native-swipe-gestures";
@@ -11,7 +11,6 @@ import ConfirmModal from '../components/ConfirmModal';
 import CurrentSite from "../components/CurrentSite";
 import PreviousSite from "../components/PreviousSite";
 import injectionsites from "../components/injectionsites";
-import BodyImages from "../components/BodyImages";
 
 describe("Homescreen", () => {
   timekeeper.freeze(new Date(1539760000000))
@@ -128,16 +127,9 @@ describe("Homescreen", () => {
     })
   })
 
-  describe("Skip on swipe", () => {
+  describe("Skip on swipe left", () => {
     it('should call the Next action on swipeLeft', () => {
       hs.find(GestureRecognizer).simulate('swipeLeft')
-      const currentSite = hs.find(CurrentSite);
-      expect(currentSite.length).toEqual(1);
-      expect(mockNextInjSite.mock.calls.length).toBe(1)
-      expect(mockSaveInj.mock.calls.length).toBe(0)
-    })
-    it('should call the Next action on swipeRight', () => {
-      hs.find(GestureRecognizer).simulate('swipeRight')
       const currentSite = hs.find(CurrentSite);
       expect(currentSite.length).toEqual(1);
       expect(mockNextInjSite.mock.calls.length).toBe(1)

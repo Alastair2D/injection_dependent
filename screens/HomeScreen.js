@@ -1,11 +1,10 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 import { StyleSheet, View, Switch } from 'react-native';
 import moment from 'moment';
 import CurrentSite from '../components/CurrentSite';
 import PreviousSite from '../components/PreviousSite';
 import Header from '../components/Header';
 import ConfirmModal from '../components/ConfirmModal';
-import injectionsites from '../components/injectionsites';
 import BodyImages from '../components/BodyImages';
 // import LongShortSwitch from '../components/LongShortSwitch';
 import GestureRecognizer, {
@@ -15,33 +14,23 @@ import GestureRecognizer, {
 import { connect } from 'react-redux'
 import { saveInj, resetHistory } from '../redux/actions/history';
 import { nextInjSite, resetSites, rotateNSites } from '../redux/actions/sites';
-
-// import injectionsites from '../components/injectionsites';
-
 export class HomeScreen extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       shortMed: true
-    }
+    };
   }
 
   onSwipeLeft = () => {
     this.handleSkip();
   }
 
-  onSwipeRight = () => {
-    // this.handleConfirmation();
-    this.handleSkip();
-  }
-
   nextSite() {
-    // const rotatedSites = this.state.sites.slice(1).concat(this.state.sites[0]);
     this.props.nextInjSite();
   }
 
   handleConfirmation() {
-    // const newHistory = this.state.history.concat({ site: this.state.sites[0], time: moment() });
     this.props.saveInj({
       site: this.props.sites[0],
       time: moment(),
@@ -57,11 +46,10 @@ export class HomeScreen extends React.Component {
 
   skipUntilActive() {
     let self = this
-    let i
-    for(i = 0; i < self.props.sites.length; i++) {
+    for (let i = 0; i < self.props.sites.length; i++) {
       if (self.props.sites[i].active === true ) {
-        if (i != 0) { self.props.rotateNSites(i) }
-        return self.props.sites[i]
+        if (i !== 0) { self.props.rotateNSites(i); }
+        return self.props.sites[i];
       }
     }
   }
@@ -77,7 +65,6 @@ export class HomeScreen extends React.Component {
           <Header />
           <GestureRecognizer
             onSwipeLeft={state => this.onSwipeLeft(state)}
-            onSwipeRight={state => this.onSwipeRight(state)}
             config={config}
           >
             <BodyImages imgNum={this.props.sites[0].imgNum} />
@@ -90,7 +77,7 @@ export class HomeScreen extends React.Component {
             site={this.props.sites[0]}
             onConfirmation={() => this.handleConfirmation()}
           />
-          <Switch value={this.state.shortMed} onValueChange={(value) => (this.setState({ shortMed: value })) } />
+          <Switch value={this.state.shortMed} onValueChange={value => (this.setState({ shortMed: value }))} />
           <PreviousSite
             id='previousSite'
             site={this.props.history[this.props.history.length - 1].site}
@@ -101,17 +88,6 @@ export class HomeScreen extends React.Component {
     );
   }
 }
-
-// this.state = {
-//   sites: injectionsites,
-//   history: [{ site: injectionsites[injectionsites.length - 1], time: moment() }],
-// };
-
-// HomeScreen.propTypes = {
-//     // sites: PropTypes.arrayOf(PropTypes.strings).isRequired,
-//     saveInj: PropTypes.func.isRequired,
-//     nextInjSite: PropTypes.func.isRequired
-// };
 
 const styles = StyleSheet.create({
   container: {
@@ -139,11 +115,11 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-        saveInj: (inj) => { dispatch(saveInj(inj)); },
-        nextInjSite: () => { dispatch(nextInjSite()); },
-        rotateNSites: (n) => { dispatch(rotateNSites(n)); }
-    };
+  return {
+    saveInj: (inj) => { dispatch(saveInj(inj)); },
+    nextInjSite: () => { dispatch(nextInjSite()); },
+    rotateNSites: (n) => { dispatch(rotateNSites(n)); }
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
