@@ -5,7 +5,7 @@ import HistoryTable from '../components/HistoryTable';
 import moment from 'moment'
 
 import { connect } from 'react-redux'
-import { saveInj, resetHistory } from '../redux/actions/history';
+import { saveInj, resetHistory, updateSyncStatus } from '../redux/actions/history';
 
 export class HistoryScreen extends React.Component {
   constructor(props) {
@@ -20,14 +20,19 @@ export class HistoryScreen extends React.Component {
   };
 
   saveData() {
-    axios.post(`http://localhost:9292/injections`, {
-      injection: {
-        user_id: "1",
-        site: JSON.stringify(this.props.history[0].site),
-        time: this.props.history[0].time.unix() * 1000,
-        medtype: "short"
+    this.props.history.forEach((inj) => {
+      if (inj.dbsync === false) {
+        axios.post(`http://localhost:9292/injections`, {
+          injection: {
+            user_id: "1",
+            site: JSON.stringify(inj.site),
+            time: inj.time.unix() * 1000,
+            medtype: "short"
+          }
+        })
       }
     })
+    this.props.updateSyncStatus();
   }
 
   loadData() {
@@ -36,7 +41,6 @@ export class HistoryScreen extends React.Component {
     .then(data => {
       for (i in data) {
         data[i].forEach((inj) => {
-          // self.setState({ time: moment.unix(parseInt(inj.time, 10)/1000).calendar() })
           self.props.saveInj({site: JSON.parse(inj.site), time: moment.unix(parseInt(inj.time, 10)/1000)})
         })
       }
@@ -79,7 +83,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    saveInj: (inj) => { dispatch(saveInj(inj)); }
+    saveInj: (inj) => { dispatch(saveInj(inj)); },
+    updateSyncStatus: () => { dispatch(updateSyncStatus()); }
     // resetHistory: () => { dispatch(resetHistory()); }
   };
 }
