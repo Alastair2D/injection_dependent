@@ -11,7 +11,7 @@ export class HistoryScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user_id: ''
+      user_id: 'Enter username here...'
     }
   }
 
@@ -19,20 +19,32 @@ export class HistoryScreen extends React.Component {
     title: 'History'
   };
 
+  prepareLoad() {
+    if (this.state.user_id != 'Enter username here...' && this.state.user_id != 'Change me down here') {
+      this.saveData()
+      this.props.resetHistory()
+      this.loadData()
+    } else {
+      this.setState({ user_id: 'Change me down here' })
+    }
+  }
+
   saveData() {
-    this.props.history.forEach((inj) => {
-      if (inj.dbsync === false) {
-        axios.post(`http://localhost:9292/injections`, {
-          injection: {
-            user_id: this.state.user_id,
-            site: JSON.stringify(inj.site),
-            time: inj.time.unix() * 1000,
-            medtype: "short"
-          }
-        })
-      }
-    })
-    this.props.updateSyncStatus();
+    if (this.state.user_id != 'Enter username here...' && this.state.user_id != 'Change me down here') {
+      this.props.history.forEach((inj) => {
+        if (inj.dbsync === false) {
+          axios.post(`http://localhost:9292/injections`, {
+            injection: {
+              user_id: this.state.user_id,
+              site: JSON.stringify(inj.site),
+              time: inj.time.unix() * 1000,
+              medtype: "short"
+            }
+          })
+        }
+      })
+      this.props.updateSyncStatus();
+    }
   }
 
   loadData() {
@@ -41,28 +53,32 @@ export class HistoryScreen extends React.Component {
     .then(data => {
       for (i in data) {
         data[i].forEach((inj) => {
-          self.props.saveInj({site: JSON.parse(inj.site), time: moment.unix(parseInt(inj.time, 10)/1000)})
+          self.props.saveInj({
+            site: JSON.parse(inj.site),
+            time: moment.unix(parseInt(inj.time, 10)/1000),
+            dbsync: true
+          })
         })
       }
     })
   }
 
-  updateUsername(value) {
-    this.setState( { user_id: value })
+  displayName() {
+    if (this.state.user_id != 'Enter username here...' && this.state.user_id != 'Change me down here') {
+      return this.state.user_id
+    }
   }
 
   render() {
     return (
       <ScrollView style={styles.container}>
-        <Text>Hi {this.state.user_id}</Text>
+        <Text>Hi {this.displayName()}</Text>
         <HistoryTable history={this.props.history} />
         <Button
           title={'Load'}
           id={'load'}
           onPress={ () => {
-            this.saveData()
-            this.props.resetHistory()
-            this.loadData()
+            this.prepareLoad()
           }}
         />
         <Button
@@ -70,8 +86,8 @@ export class HistoryScreen extends React.Component {
           id={'save'}
           onPress={() => this.saveData()}
         />
-      <TextInput name="username" id="username" placeholder="Enter username..."
-              onChangeText={ (user_id) => this.setState({ user_id: user_id }) }/>
+      <TextInput name="username" id="username" placeholder={this.state.user_id}
+              onChangeText={ (user_id) => this.setState({ user_id }) }/>
       </ScrollView>
     );
   }
