@@ -22,8 +22,30 @@ describe('ConfirmModal', () => {
       .find(Text)
       .dive()
       .text();
-    expect(text).toEqual('Confirm this site')
+    expect(text).toEqual('Confirm this site');
   });
+
+  it('renders cancel button', () => {
+    const cancel = cM.find("#cancel");
+    expect(cancel.length).toEqual(1);
+    const text = cancel
+      .dive()
+      .find(Text)
+      .dive()
+      .text();
+    expect(text).toEqual('Cancel');
+  });
+
+  it('renders confirm button', () => {
+    const finalConfirm = cM.find("#finalConfirm");
+    expect(finalConfirm.length).toEqual(1);
+    const text = finalConfirm
+      .dive()
+      .find(Text)
+      .dive()
+      .text();
+    expect(text).toEqual('Confirm');
+  })
 
   // it('renders site info', () => {
   //   let cMText = cM.dive(<Modal/>);
