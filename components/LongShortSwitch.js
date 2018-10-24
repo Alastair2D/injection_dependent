@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
-import ToggleSwitch from 'toggle-switch-react-native';
+import { ToggleSwitch } from 'toggle-switch-react-native';
 
 class LongShortSwitch extends Component {
   constructor(props) {
@@ -11,19 +11,15 @@ class LongShortSwitch extends Component {
     };
   }
 
-  // componentDidUpdate() {
-  //   return false;
-  // }
-
   flickSwitch = (status) => {
     if (status === true) {
       this.setState({
-        insulinType: 'Short',
+        medType: 'Short',
         switchStatus: true
       });
     } else {
       this.setState({
-        insulinType: 'Long',
+        medType: 'Long',
         switchStatus: false
       });
     }
