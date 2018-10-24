@@ -74,6 +74,7 @@ export class HomeScreen extends React.Component {
             id="currentSite"
             site={this.skipUntilActive()}
           />
+          <ConfirmModal />
           <PreviousSite
             id='previousSite'
             site={this.props.history[this.props.history.length - 1].site}
