@@ -32,15 +32,6 @@ export class ConfirmModal extends Component {
               <Text>
                 Confirm injection site: {this.props.sites[0].side} {this.props.sites[0].part} {this.props.sites[0].quadrant} {'\n'}
               </Text>
-
-              <TouchableHighlight
-                onPress={() => {
-                  this.setModalVisible(!this.setModalVisible);
-                }}
-              >
-                <Text style={styles.text}>Cancel {'\n'}</Text>
-              </TouchableHighlight>
-
               <TouchableHighlight
                 onPress={() => {
                   this.setModalVisible(!this.state.modalVisible);
@@ -52,8 +43,9 @@ export class ConfirmModal extends Component {
               <TouchableHighlight
                 onPress={() => {
                   this.setModalVisible(!this.state.modalVisible);
-                }}>
-                <Text>Cancel</Text>
+                }}
+              >
+                <Text style={styles.text}>Cancel</Text>
               </TouchableHighlight>
             </View>
           </View>
