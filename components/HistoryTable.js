@@ -8,7 +8,8 @@ export default class HistoryTable extends Component {
     const formattedData = this.props.history.map((injection) => {
       return [
         injection.time.format('MMMM Do YYYY, h:mm a'),
-        `${injection.site.side} ${injection.site.part} ${injection.site.quadrant}`];
+        `${injection.site.side} ${injection.site.part} ${injection.site.quadrant}`,
+      injection.dbsync.toString()];
     })
     return formattedData.reverse()
   }
@@ -18,7 +19,7 @@ export default class HistoryTable extends Component {
       <View style={styles.container}>
         <Table borderStyle={{ borderWidth: 2, borderColor: '#c8e1ff' }}>
           <Row
-            data={["Date", "Site"]}
+            data={["Date", "Site", "Sync stateus"]}
             style={styles.head}
             textStyle={styles.text}
           />

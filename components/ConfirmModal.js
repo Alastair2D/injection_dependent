@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { saveInj } from '../redux/actions/history';
 import { nextInjSite, rotateNSites } from '../redux/actions/sites';
 
-export class ConfirmModal extends Component {
+export default class ConfirmModal extends Component {
   state = {
     modalVisible: false,
   };
@@ -30,12 +30,12 @@ export class ConfirmModal extends Component {
           <View style={styles.container}>
             <View>
               <Text>
-                Confirm injection site: {this.props.sites[0].side} {this.props.sites[0].part} {this.props.sites[0].quadrant} {'\n'}
+                Confirm injection site: {this.props.site.side} {this.props.site.part} {this.props.site.quadrant} {'\n'}
               </Text>
               <TouchableHighlight
                 onPress={() => {
                   this.setModalVisible(!this.state.modalVisible);
-                  this.props.saveInj({ site: this.props.sites[0], time: moment() });
+                  this.props.onConfirmation();
                 }}
               >
                 <Text style={styles.text}>Confirm</Text>
@@ -52,11 +52,12 @@ export class ConfirmModal extends Component {
         </Modal>
 
         <TouchableHighlight
+          style={{marginTop: 40}}
           onPress={() => {
             this.setModalVisible(true);
           }}
         >
-          <Text style={styles.text}>Confirm this Site</Text>
+          <Text style={styles.text}>Confirm this site</Text>
         </TouchableHighlight>
       </View>
     );
@@ -78,20 +79,3 @@ const styles = StyleSheet.create({
     fontSize: 20
   }
 });
-
-const mapStateToProps = (state) => {
-  return {
-    sites: state.sites,
-    history: state.history,
-  };
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    saveInj: (inj) => { dispatch(saveInj(inj)); },
-    nextInjSite: () => { dispatch(nextInjSite()); },
-    rotateNSites: (n) => { dispatch(rotateNSites(n)); }
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ConfirmModal);

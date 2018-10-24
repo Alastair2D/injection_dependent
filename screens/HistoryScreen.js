@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Button, Text } from 'react-native';
+import { ScrollView, StyleSheet, Button, Text, TextInput } from 'react-native';
 import axios from 'axios'
 import HistoryTable from '../components/HistoryTable';
 import moment from 'moment'
@@ -11,7 +11,7 @@ export class HistoryScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      user_id: ''
     }
   }
 
@@ -24,7 +24,7 @@ export class HistoryScreen extends React.Component {
       if (inj.dbsync === false) {
         axios.post(`http://localhost:9292/injections`, {
           injection: {
-            user_id: "1",
+            user_id: this.state.user_id,
             site: JSON.stringify(inj.site),
             time: inj.time.unix() * 1000,
             medtype: "short"
@@ -37,7 +37,7 @@ export class HistoryScreen extends React.Component {
 
   loadData() {
     self = this
-    axios.get(`http://localhost:9292/injections?user_id=${1}`)
+    axios.get(`http://localhost:9292/injections?user_id=${this.state.user_id}`)
     .then(data => {
       for (i in data) {
         data[i].forEach((inj) => {
@@ -47,14 +47,19 @@ export class HistoryScreen extends React.Component {
     })
   }
 
+  updateUsername(value) {
+    this.setState( { user_id: value })
+  }
+
   render() {
     return (
       <ScrollView style={styles.container}>
-        <HistoryTable history={this.props.history}/>
+        <Text>Hi {this.state.user_id}</Text>
+        <HistoryTable history={this.props.history} />
         <Button
           title={'Load'}
           id={'load'}
-          onPress={() => {
+          onPress={ () => {
             this.saveData()
             this.props.resetHistory()
             this.loadData()
@@ -65,6 +70,8 @@ export class HistoryScreen extends React.Component {
           id={'save'}
           onPress={() => this.saveData()}
         />
+      <TextInput name="username" id="username" placeholder="Enter username..."
+              onChangeText={ (user_id) => this.setState({ user_id: user_id }) }/>
       </ScrollView>
     );
   }
