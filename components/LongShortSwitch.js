@@ -1,40 +1,47 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
-import { ToggleSwitch } from 'toggle-switch-react-native';
+import ToggleSwitch from 'toggle-switch-react-native';
 
 class LongShortSwitch extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      switchStatus: 'Short'
+      insulinType: 'Short',
+      switchStatus: true
     };
   }
 
-  flickSwitch = () => {
-    if (this.state.switchStatus === 'Short') {
+  // componentDidUpdate() {
+  //   return false;
+  // }
+
+  flickSwitch = (status) => {
+    if (status === true) {
       this.setState({
-        switchStatus: 'Long'
+        insulinType: 'Short',
+        switchStatus: true
       });
     } else {
       this.setState({
-        switchStatus: 'Short'
+        insulinType: 'Long',
+        switchStatus: false
       });
     }
   }
 
   render() {
-    let tS = <ToggleSwitch
-      isOn={true}
+    const tS = <ToggleSwitch
+      isOn={this.state.switchStatus}
       onColor='green'
       offColor='red'
-      label='Example label'
-      labelStyle={{color: 'black', fontWeight: '900'}}
+      label={this.state.insulinType}
+      labelStyle={{ color: 'black', fontWeight: '900' }}
       size='large'
-      onToggle={ this.flickSwitch() }
+      onToggle={() => this.flickSwitch(!this.state.switchStatus)}
     />
-    return(
+    return (
       <View>
-        {tS};
+        {tS}
       </View>
     );
   }

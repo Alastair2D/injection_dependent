@@ -6,6 +6,7 @@ import PreviousSite from '../components/PreviousSite';
 import Header from '../components/Header';
 import injectionsites from '../components/injectionsites';
 import BodyImages from '../components/BodyImages';
+import LongShortSwitch from '../components/LongShortSwitch';
 import GestureRecognizer, {
   swipeDirections
 } from 'react-native-swipe-gestures';
@@ -73,6 +74,7 @@ export class HomeScreen extends React.Component {
             id="currentSite"
             site={this.skipUntilActive()}
           />
+          <LongShortSwitch />
           <PreviousSite
             id='previousSite'
             site={this.props.history[this.props.history.length - 1].site}
