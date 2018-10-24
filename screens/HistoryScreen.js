@@ -33,7 +33,7 @@ export class HistoryScreen extends React.Component {
     if (this.state.user_id != 'Enter username here...' && this.state.user_id != 'Change me down here') {
       this.props.history.forEach((inj) => {
         if (inj.dbsync === false) {
-          axios.post(`http://localhost:9292/injections`, {
+          axios.post(`https://guarded-caverns-16437.herokuapp.com/injections`, {
             injection: {
               user_id: this.state.user_id,
               site: JSON.stringify(inj.site),
@@ -51,7 +51,7 @@ export class HistoryScreen extends React.Component {
 
   loadData() {
     self = this
-    axios.get(`http://localhost:9292/injections?user_id=${this.state.user_id}`)
+    axios.get(`https://guarded-caverns-16437.herokuapp.com/injections?user_id=${this.state.user_id}`)
     .then(data => {
       for (i in data) {
         data[i].forEach((inj) => {
