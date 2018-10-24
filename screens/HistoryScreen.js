@@ -20,7 +20,14 @@ export class HistoryScreen extends React.Component {
   };
 
   saveData() {
-    axios.post(`http://localhost:9292/injections`)
+    axios.post(`http://localhost:9292/injections`, {
+      injection: {
+        user_id: "1",
+        site: JSON.stringify(this.props.history[0].site),
+        time: this.props.history[0].time.unix() * 1000,
+        medtype: "short"
+      }
+    })
   }
 
   loadData() {
