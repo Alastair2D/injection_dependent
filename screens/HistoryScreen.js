@@ -54,7 +54,11 @@ export class HistoryScreen extends React.Component {
         <Button
           title={'Load'}
           id={'load'}
-          onPress={() => this.loadData()}
+          onPress={() => {
+            this.saveData()
+            this.props.resetHistory()
+            this.loadData()
+          }}
         />
         <Button
           title={'Save'}
@@ -84,8 +88,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     saveInj: (inj) => { dispatch(saveInj(inj)); },
-    updateSyncStatus: () => { dispatch(updateSyncStatus()); }
-    // resetHistory: () => { dispatch(resetHistory()); }
+    updateSyncStatus: () => { dispatch(updateSyncStatus()); },
+    resetHistory: () => { dispatch(resetHistory()); }
   };
 }
 
