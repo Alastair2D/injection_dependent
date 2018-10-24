@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { saveInj, resetHistory } from '../redux/actions/history';
 import { nextInjSite, resetSites, rotateNSites } from '../redux/actions/sites';
 
-export class ModalConfirm extends Component {
+class ModalConfirm extends Component {
   state = {
     modalVisible: false,
   };
@@ -61,7 +61,7 @@ export class ModalConfirm extends Component {
           <Text style={styles.text}>Confirm this Site</Text>
         </TouchableHighlight>
       </View>
-    )
+    );
   }
 }
 
@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
   },
   text: {
     textAlign: 'center',
+    fontSize: 20
   }
 });
 

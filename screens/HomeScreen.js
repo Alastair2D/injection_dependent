@@ -9,6 +9,7 @@ import BodyImages from '../components/BodyImages';
 import GestureRecognizer, {
   swipeDirections
 } from 'react-native-swipe-gestures';
+import ToggleSwitch from 'toggle-switch-react-native';
 
 import { connect } from 'react-redux'
 import { saveInj, resetHistory } from '../redux/actions/history';
@@ -18,11 +19,6 @@ import { nextInjSite, resetSites, rotateNSites } from '../redux/actions/sites';
 
 export class HomeScreen extends React.Component {
 
-  nextSite() {
-    // const rotatedSites = this.state.sites.slice(1).concat(this.state.sites[0]);
-    this.props.nextInjSite();
-  }
-
   onSwipeLeft = () => {
     this.handleSkip();
   }
@@ -30,6 +26,11 @@ export class HomeScreen extends React.Component {
   onSwipeRight = () => {
     // this.handleConfirmation();
     this.handleSkip();
+  }
+
+  nextSite() {
+    // const rotatedSites = this.state.sites.slice(1).concat(this.state.sites[0]);
+    this.props.nextInjSite();
   }
 
   handleConfirmation() {
@@ -72,6 +73,15 @@ export class HomeScreen extends React.Component {
           <CurrentSite
             id="currentSite"
             site={this.skipUntilActive()}
+          />
+          <ToggleSwitch
+            isOn={false}
+            onColor='green'
+            offColor='red'
+            label='Example label'
+            labelStyle={{color: 'black', fontWeight: '900'}}
+            size='large'
+            onToggle={ this.props.isOn: !this.props.isOn }
           />
           <PreviousSite
             id='previousSite'
