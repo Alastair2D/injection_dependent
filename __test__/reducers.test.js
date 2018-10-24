@@ -68,7 +68,7 @@ describe('sites reducer', () => {
 
 describe('history reducer', () => {
   timekeeper.freeze(new Date(1539760000000))
-  const defaultHistory = [{ site: injectionsites[injectionsites.length - 1], time: moment() }];
+  const defaultHistory = [{ site: injectionsites[injectionsites.length - 1], time: moment(), dbsync: false }];
 
   it('should return the initial state', () => {
     expect(reducer(undefined, {}).history).toEqual(defaultHistory)
