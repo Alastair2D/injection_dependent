@@ -8,8 +8,8 @@ import injectionsites from '../components/injectionsites';
 import BodyImages from '../components/BodyImages';
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 
-import Switch from "react-switch";
-import ToggleSwitch from '../components/ToggleSwitch';
+import ToggleSwitch from 'toggle-switch-react-native'
+// import ToggleSwitch from '../components/ToggleSwitch';
 
 import { connect } from 'react-redux'
 import { saveInj, resetHistory } from '../redux/actions/history';
@@ -71,13 +71,13 @@ export class HomeScreen extends React.Component {
             time={this.props.history[this.props.history.length - 1].time}
           />
           <ToggleSwitch
-          htmlFor="normal-switch"/>
-          <span>Switch with default style</span>
-          <Switch
-            onChange={this.handleChange}
-            checked={this.state.checked}
-            id="normal-switch"
-          />
+            isOn={false}
+            onColor='green'
+            offColor='red'
+            label='Long / Short'
+            labelStyle={{ color: 'black', fontWeight: '900' }}
+            size='large'
+            onToggle={(isOn) => console.log('changed to : ', isOn)}
           />;
       </View>
     );
