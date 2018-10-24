@@ -10,3 +10,9 @@ export function resetHistory() {
         type: 'history-reset-defaults'
     };
 }
+
+export function updateSyncStatus() {
+  return {
+    type: 'history-sync-status'
+  };
+}

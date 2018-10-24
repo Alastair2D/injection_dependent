@@ -1,4 +1,4 @@
-import { saveInj, resetHistory } from '../redux/actions/history';
+import { saveInj, resetHistory, updateSyncStatus } from '../redux/actions/history';
 import { nextInjSite, checkSites, resetSites, rotateNSites } from '../redux/actions/sites';
 
 describe('actions', () => {
@@ -11,12 +11,19 @@ describe('actions', () => {
     expect(saveInj(injection)).toEqual(expectedAction)
   })
 
-  it('should reset history', () => {
+  it('should create an action to reset history', () => {
     const expectedAction = {
       type: 'history-reset-defaults'
     }
     expect(resetHistory()).toEqual(expectedAction)
   })
+
+  it('should create an action to change dbsync status to true', () => {
+    const expectedAction = {
+      type: 'history-sync-status'
+    }
+    expect(updateSyncStatus()).toEqual(expectedAction)
+  });
 
   it('should create an action to move to next inj site', () => {
     const expectedAction = {
@@ -25,7 +32,7 @@ describe('actions', () => {
     expect(nextInjSite()).toEqual(expectedAction)
   })
 
-  it('should rotate injection sites by n', () => {
+  it('should create an action to rotate injection sites by n', () => {
     const n = 5
     const expectedAction = {
       type: 'sites-rotate-n-sites',
@@ -34,14 +41,14 @@ describe('actions', () => {
     expect(rotateNSites(n)).toEqual(expectedAction)
   })
 
-  it('should reset injection sites', () => {
+  it('should create an action to reset injection sites', () => {
     const expectedAction = {
       type: 'sites-reset-defaults'
     }
     expect(resetSites()).toEqual(expectedAction)
   })
 
-  it('should change the state of the checkbox', () => {
+  it('should create an action to change the state of the checkbox', () => {
     const part = 'Thigh'
     const previousCheckedStatus = true
     const expectedAction = {

@@ -12,6 +12,13 @@ export default function historyReducer (state = [{ site: injectionsites[injectio
         case 'history-reset-defaults':
             return [{ site: injectionsites[injectionsites.length - 1], time: moment() }];
 
+        case 'history-sync-status':
+          let syncStatusNew = state.map((inj) => {
+            inj.dbsync = true
+            return inj
+          })
+          return syncStatusNew
+
         default:
             return state;
     }
