@@ -3,6 +3,11 @@ export function nextInjSite() {
     type: 'sites-next-injection-site'
   };
 }
+export function prevInjSite() {
+  return {
+    type: 'sites-previous-injection-site'
+  };
+}
 
 export function rotateNSites(n) {
   return {

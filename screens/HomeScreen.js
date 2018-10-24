@@ -4,8 +4,10 @@ import moment from 'moment';
 import CurrentSite from '../components/CurrentSite';
 import PreviousSite from '../components/PreviousSite';
 import Header from '../components/Header';
+import ConfirmModal from './ConfirmModal';
 import injectionsites from '../components/injectionsites';
 import BodyImages from '../components/BodyImages';
+import LongShortSwitch from '../components/LongShortSwitch';
 import GestureRecognizer, {
   swipeDirections
 } from 'react-native-swipe-gestures';
@@ -18,17 +20,18 @@ import { nextInjSite, resetSites, rotateNSites } from '../redux/actions/sites';
 
 export class HomeScreen extends React.Component {
 
-  nextSite() {
-    // const rotatedSites = this.state.sites.slice(1).concat(this.state.sites[0]);
-    this.props.nextInjSite();
-  }
-
   onSwipeLeft = () => {
     this.handleSkip();
   }
 
   onSwipeRight = () => {
-    this.handleConfirmation();
+    // this.handleConfirmation();
+    this.handleSkip();
+  }
+
+  nextSite() {
+    // const rotatedSites = this.state.sites.slice(1).concat(this.state.sites[0]);
+    this.props.nextInjSite();
   }
 
   handleConfirmation() {
@@ -72,6 +75,8 @@ export class HomeScreen extends React.Component {
             id="currentSite"
             site={this.skipUntilActive()}
           />
+          <ConfirmModal />
+          <LongShortSwitch />
           <PreviousSite
             id='previousSite'
             site={this.props.history[this.props.history.length - 1].site}
