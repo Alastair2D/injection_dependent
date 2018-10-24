@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { saveInj } from '../redux/actions/history';
 import { nextInjSite, rotateNSites } from '../redux/actions/sites';
 
-export class ModalConfirm extends Component {
+export class ConfirmModal extends Component {
   state = {
     modalVisible: false,
   };
@@ -28,7 +28,7 @@ export class ModalConfirm extends Component {
           }}>
           <View style={styles.container}>
             <View>
-              <Text>Injection site: {this.props.sites[0].part} {this.props.sites[0].quadrant}</Text>
+              <Text>Injection site: {this.props.sites[0].side} {this.props.sites[0].part} {this.props.sites[0].quadrant}</Text>
 
               <TouchableHighlight
                 onPress={() => {
@@ -85,4 +85,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ModalConfirm);
+export default connect(mapStateToProps, mapDispatchToProps)(ConfirmModal);

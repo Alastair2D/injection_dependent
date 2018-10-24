@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import ModalConfirm from '../screens/ConfirmModal';
 
 class CurrentSite extends Component {
   render() {
@@ -9,7 +8,6 @@ class CurrentSite extends Component {
         <Text id="site" style={styles.current}>
           { this.props.site.side } { this.props.site.part } { this.props.site.quadrant }
         </Text>
-        <ModalConfirm />
       </View>
     );
   }

@@ -91,4 +91,10 @@ describe("Homescreen", () => {
       expect(mockSaveInj.mock.calls.length).toBe(0)
     })
   });
+
+  describe('ConfirmModal', () => {
+    it('renders a confirm modal', () => {
+      expect(hs.find(<ConfirmModal />).length).toBe(1);
+    })
+  })
 });

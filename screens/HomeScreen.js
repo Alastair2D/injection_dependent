@@ -4,6 +4,7 @@ import moment from 'moment';
 import CurrentSite from '../components/CurrentSite';
 import PreviousSite from '../components/PreviousSite';
 import Header from '../components/Header';
+import ConfirmModal from './ConfirmModal';
 import injectionsites from '../components/injectionsites';
 import BodyImages from '../components/BodyImages';
 import GestureRecognizer, {
