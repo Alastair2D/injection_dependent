@@ -8,19 +8,19 @@ import { nextInjSite, rotateNSites } from '../redux/actions/sites';
 export default class ConfirmModal extends Component {
   state = {
     modalVisible: false,
-    confirmPressStatus: false,
-    cancelPressStatus: false
-  };
+    pressStatus: true,
+    };
 
   setModalVisible(visible) {
     this.setState({ modalVisible: visible });
   }
 
-  _onConfirmHideUnderlay() {
-    this.setState({confirmPressStatus: false }) 
+  _onHideUnderlay() {
+    this.setState({pressStatus: false }) 
   }
-  _onConfirmShowUnderlay() {
-    this.setState({confirmPressStatus: true})
+
+  _onShowUnderlay() {
+    this.setState({pressStatus: true})
   }
 
   render() {
@@ -31,6 +31,10 @@ export default class ConfirmModal extends Component {
           presentationStyle="fullScreen"
           transparent={false}
           visible={this.state.modalVisible}
+          onRequestClose={() => {
+            // this is for Android
+            Alert.alert('Modal has been closed.');
+          }}
         >
           <View style={styles.container}>
             <View>
@@ -38,23 +42,23 @@ export default class ConfirmModal extends Component {
                 Confirm injection site: {this.props.site.side} {this.props.site.part} {this.props.site.quadrant} {'\n'}
               </Text>
               <TouchableHighlight
-                underlayColor='orange'
+                underlayColor={'orange'}
                 activeOpacity={1}
                 id={"confirm"}
                 style={
-                  this.state.confirmPressStatus
+                  this.state.pressStatus
                     ? styles.buttonPress
                     : styles.button
                 }
-                onConfirmHideUnderlay={this._onConfirmHideUnderlay.bind(this)}
-                onConfirmShowUnderlay={this._onConfirmShowUnderlay.bind(this)}
+                onHideUnderlay={() => this._onHideUnderlay()}
+                onShowUnderlay={() => this._onShowUnderlay()}
                 onPress={() => {
                   this.setModalVisible(!this.state.modalVisible);
                   this.props.onConfirmation();
                 }}
               >
                 <Text style={
-                  this.state.confirmPressStatus
+                  this.state.pressStatus
                     ? styles.welcomePress
                     : styles.welcome
                 }
@@ -107,21 +111,21 @@ const styles = StyleSheet.create({
     margin: 10,
     color: "#000066"
  },
- welcomePress: {
+  welcomePress: {
     fontSize: 20,
     textAlign: "center",
     margin: 10,
     color: "#ffffff"
- },
- button: {
-  borderColor: "#000066",
-  borderWidth: 1,
-  borderRadius: 10
-},
-buttonPress: {
-  borderColor: "#000066",
-  backgroundColor: "#000066",
-  borderWidth: 1,
-  borderRadius: 10
-}
+  },
+  button: {
+    borderColor: "#000066",
+    borderWidth: 1,
+    borderRadius: 10
+  },
+  buttonPress: {
+    borderColor: "#000066",
+    backgroundColor: "#000066",
+    borderWidth: 1,
+    borderRadius: 10
+  }
 });
