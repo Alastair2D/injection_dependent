@@ -1,8 +1,5 @@
 import injectionsites from './injectionsites';
 import moment from 'moment';
-// import timekeeper from 'timekeeper';
-
-// timekeeper.freeze(new Date(1539760000000))
 
 export default class DefaultFirstInj {
   constructor() {
