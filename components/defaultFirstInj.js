@@ -1,10 +1,16 @@
 import injectionsites from './injectionsites';
 import moment from 'moment';
-import timekeeper from 'timekeeper';
+// import timekeeper from 'timekeeper';
 
-timekeeper.freeze(new Date(1539760000000))
-const defaultHistory = [
-  { site: injectionsites[injectionsites.length - 1], time: moment(), dbsync: true, medType: 'Short' }
-];
+// timekeeper.freeze(new Date(1539760000000))
 
-export default defaultHistory;
+export default class DefaultFirstInj {
+  constructor() {
+    this.defaultFirstInj = {
+      site: injectionsites[injectionsites.length - 1],
+      time: moment(),
+      dbsync: true,
+      medType: 'Short',
+    }
+  }
+}
