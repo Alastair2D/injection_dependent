@@ -68,7 +68,7 @@ describe('sites reducer', () => {
 
 describe('history reducer', () => {
   timekeeper.freeze(new Date(1539760000000))
-  const defaultHistory = [{ site: injectionsites[injectionsites.length - 1], time: moment() }];
+  const defaultHistory = [{ site: injectionsites[injectionsites.length - 1], time: moment(), dbsync: true }];
 
   it('should return the initial state', () => {
     expect(reducer(undefined, {}).history).toEqual(defaultHistory)
@@ -92,4 +92,14 @@ describe('history reducer', () => {
       type: 'history-reset-defaults'
     })).toEqual({ sites: [3,4,5,1,2], history: defaultHistory })
   })
+
+  it('changes history sync to true', () => {
+    expect(reducer({
+      sites: [1,2,3,4],
+      history: [{ site: 1, dbsync: false }, { site: 2, dbsync: false }]
+    }, {
+      type: 'history-sync-status',
+    })).toEqual({ sites: [1,2,3,4], history: [{ site:1, dbsync: true }, { site: 2, dbsync: true }] })
+
+  });
 })

@@ -1,11 +1,13 @@
 import { shallow } from "enzyme";
 import React from "react";
-import { Button } from "react-native";
+import { createMockStore } from 'redux-test-utils';
+import { Button, Switch } from "react-native";
 import moment from 'moment';
 import timekeeper from 'timekeeper';
 import GestureRecognizer, { swipeDirections } from "react-native-swipe-gestures";
 
 import { HomeScreen } from "../screens/HomeScreen";
+import ConfirmModal from '../components/ConfirmModal';
 import CurrentSite from "../components/CurrentSite";
 import PreviousSite from "../components/PreviousSite";
 import injectionsites from "../components/injectionsites";
@@ -62,9 +64,9 @@ describe("Homescreen", () => {
     });
   });
 
-  describe("Confirmation swipe right", () => {
-    it("should call Save and Next actions after pressing Confirm", () => {
-      hs.find(GestureRecognizer).simulate('swipeRight');
+  describe("handleConfirmation", () => {
+    it("should call Save and Next actions", () => {
+      hs.instance().handleConfirmation();
       const currentSite = hs.find(CurrentSite);
       expect(currentSite.length).toEqual(1);
       expect(mockNextInjSite.mock.calls.length).toBe(1)
@@ -72,8 +74,8 @@ describe("Homescreen", () => {
       // expect(currentSite.props().site).toEqual(injectionsites[1]);
     });
     it("should call Save and Next actions again after pressing a second time", () => {
-      hs.find(GestureRecognizer).simulate('swipeRight');
-      hs.find(GestureRecognizer).simulate('swipeRight');
+      hs.instance().handleConfirmation();
+      hs.instance().handleConfirmation();
       const currentSite = hs.find(CurrentSite);
       expect(currentSite.length).toEqual(1);
       expect(mockNextInjSite.mock.calls.length).toBe(2)
@@ -82,9 +84,60 @@ describe("Homescreen", () => {
     })
   })
 
-  describe("Skip swipe left", () => {
-    it('should call the Next action on press', () => {
+  describe('Switch', () => {
+    it('will be to Short by default', () => {
+      hs.instance().handleConfirmation();
+      expect(mockSaveInj.mock.calls.length).toBe(1)
+      expect(mockSaveInj).toHaveBeenCalledWith({
+        site: injectionsites[0],
+        time: moment(),
+        dbsync: false,
+        medType: "Short"
+      })
+    })
+    it('should change whether injections are saved with long or short med type', () => {
+      hs.find(Switch).simulate('valueChange')
+      hs.instance().handleConfirmation();
+      expect(mockSaveInj.mock.calls.length).toBe(1)
+      expect(mockSaveInj).toHaveBeenCalledWith({
+        site: injectionsites[0],
+        time: moment(),
+        dbsync: false,
+        medType: "Long"
+      })
+    })
+    // it('should change whether injections are saved with long or short med type', () => {
+    //   hs.find(Switch).simulate('valueChange')
+    //   hs.find(Switch).simulate('valueChange')
+    //   hs.instance().handleConfirmation();
+    //   expect(mockSaveInj.mock.calls.length).toBe(1)
+    //   expect(mockSaveInj).toHaveBeenCalledWith({
+    //     site: injectionsites[0],
+    //     time: moment(),
+    //     dbsync: false,
+    //     medType: "Short"
+    //   })
+    // })
+  })
+
+  describe("Passes right props to Modal", () => {
+    it("should give handleConfirmation as a prop to Modal", () => {
+      const cM = hs.find(ConfirmModal)
+      expect(cM.props().site).toEqual(injectionsites[0])
+      expect(cM.props().onConfirmation()).toEqual(hs.instance().handleConfirmation())
+    })
+  })
+
+  describe("Skip on swipe", () => {
+    it('should call the Next action on swipeLeft', () => {
       hs.find(GestureRecognizer).simulate('swipeLeft')
+      const currentSite = hs.find(CurrentSite);
+      expect(currentSite.length).toEqual(1);
+      expect(mockNextInjSite.mock.calls.length).toBe(1)
+      expect(mockSaveInj.mock.calls.length).toBe(0)
+    })
+    it('should call the Next action on swipeRight', () => {
+      hs.find(GestureRecognizer).simulate('swipeRight')
       const currentSite = hs.find(CurrentSite);
       expect(currentSite.length).toEqual(1);
       expect(mockNextInjSite.mock.calls.length).toBe(1)
