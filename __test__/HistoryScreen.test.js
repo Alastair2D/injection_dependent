@@ -7,8 +7,13 @@ import mockAxios from "../__mocks__/axios"
 
 describe("HistoryScreen", () => {
   let historyScreen;
+  let mockUpdateSyncStatus = jest.fn()
   beforeEach(() => {
-    historyScreen = shallow(<HistoryScreen history={'SomeMockHistory'} />);
+    historyScreen = shallow(
+      <HistoryScreen
+        history={['SomeMockHistory']}
+        updateSyncStatus = {mockUpdateSyncStatus}
+      />);
   });
 
   describe('HistoryTable', () => {
@@ -17,7 +22,7 @@ describe("HistoryScreen", () => {
     });
     it('passes the Table the history data', () => {
       let table = historyScreen.find(HistoryTable)
-      expect(table.props().history).toEqual('SomeMockHistory')
+      expect(table.props().history).toEqual(['SomeMockHistory'])
     })
   });
 
@@ -44,7 +49,7 @@ describe("HistoryScreen", () => {
       })
       it('wont save if no username has been provided', () => {
         historyScreen.find('#save').simulate('press')
-        expect(mockAxios.post.calls.length).toEqual(0)
+        expect(mockAxios.post.mock.calls.length).toEqual(0)
       })
       it('changes placeholder text if no username has been provided', () => {
         historyScreen.find('#save').simulate('press')
@@ -52,10 +57,13 @@ describe("HistoryScreen", () => {
         expect(userInput.props().placeholder).toEqual('Change me down here')
       })
       it('saveData calls axios post', () => {
+        userInput = historyScreen.find(TextInput)
+        userInput.simulate('changeText', 'Bob')
         historyScreen.find('#save').simulate('press')
         expect(mockAxios.post).toHaveBeenCalledWith(
           'https://guarded-caverns-16437.herokuapp.com/injections'
         )
+        expect(mockUpdateSyncStatus.mock.calls.length).toBe(1)
       })
     })
 
@@ -65,7 +73,7 @@ describe("HistoryScreen", () => {
       })
       it('wont load if no username has been provided', () => {
         historyScreen.find('#load').simulate('press')
-        expect(mockAxios.post.calls.length).toEqual(0)
+        expect(mockAxios.get.mock.calls.length).toEqual(0)
       })
       it('changes placeholder text if no username has been provided', () => {
         historyScreen.find('#load').simulate('press')
@@ -74,9 +82,12 @@ describe("HistoryScreen", () => {
       })
       it('loadData calls axios get', () => {
         historyScreen.find('#load').simulate('press')
+        userInput = historyScreen.find(TextInput)
+        userInput.simulate('changeText', 'Bob')
         expect(mockAxios.get).toHaveBeenCalledWith(
           'https://guarded-caverns-16437.herokuapp.com/injections?user_id=1'
         )
+        expect(mockUpdateSyncStatus.mock.calls.length).toBe(1)
       })
     })
   });
