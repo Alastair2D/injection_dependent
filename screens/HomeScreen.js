@@ -4,7 +4,6 @@ import moment from 'moment';
 import CurrentSite from '../components/CurrentSite';
 import PreviousSite from '../components/PreviousSite';
 import Header from '../components/Header';
-import ConfirmModal from '../components/ConfirmModal';
 import injectionsites from '../components/injectionsites';
 import BodyImages from '../components/BodyImages';
 import LongShortSwitch from '../components/LongShortSwitch';
@@ -78,10 +77,6 @@ export class HomeScreen extends React.Component {
           <CurrentSite
             id="currentSite"
             site={this.skipUntilActive()}
-          />
-          <ConfirmModal
-            site={this.props.sites[0]}
-            onConfirmation={() => this.handleConfirmation()}
           />
           <LongShortSwitch />
           <PreviousSite

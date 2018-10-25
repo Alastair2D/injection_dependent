@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import { Modal, Text } from 'react-native';
+import { Modal, Text, TouchableHighlight, View } from 'react-native';
 import moment from 'moment';
 import ConfirmModal from '../components/ConfirmModal';
 import injectionsites from '../components/injectionsites';
@@ -12,7 +12,8 @@ describe('ConfirmModal', () => {
 
   beforeEach(() => {
     mockHandleConfirmation = jest.fn();
-    cM = shallow(<ConfirmModal site={site} onConfirmation={mockHandleConfirmation} />);
+    cM = shallow(<ConfirmModal site={site}
+      onConfirmation={mockHandleConfirmation} />);;
   });
 
   it('renders confirm this site button', () => {
@@ -26,33 +27,49 @@ describe('ConfirmModal', () => {
     expect(text).toEqual('Confirm this site');
   });
 
-  it('renders cancel button', () => {
-    const cancel = cM.find("#cancel");
-    expect(cancel.length).toEqual(1);
-    const text = cancel
-      .dive()
-      .find(Text)
-      .dive()
-      .text();
-    expect(text).toEqual('Cancel');
-  });
+  describe('cancel and finalConfirm', () => {
+    beforeEach(() => {
+      cM.find("#firstConfirm").simulate('press');
+    });
 
-  it('renders confirm button', () => {
-    const finalConfirm = cM.find("#finalConfirm");
-    expect(finalConfirm.length).toEqual(1);
-    const text = finalConfirm
-      .dive()
-      .find(Text)
-      .dive()
-      .text();
-    expect(text).toEqual('Confirm');
+    it('modal visibility is true after first confirm', () => {
+      expect(cM.state().modalVisible).toEqual(true);
+    });
+
+    it('renders cancel button', () => {
+      const cancel = cM.find("#cancel");
+      expect(cancel.length).toEqual(1);
+      const text = cancel
+        .dive()
+        .find(Text)
+        .dive()
+        .text();
+      expect(text).toEqual('Cancel');
+    });
+
+    it('sets Modal visible', () => {
+      let cancel = cM.find("#cancel");
+      cancel.simulate('press');
+      expect(cM.state().modalVisible).toEqual(false)
+    });
+
+    it('renders confirm button', () => {
+      const finalConfirm = cM.find("#finalConfirm");
+      expect(finalConfirm.length).toEqual(1);
+      const text = finalConfirm
+        .dive()
+        .find(Text)
+        .dive()
+        .text();
+      expect(text).toEqual('Confirm');
+    })
+
+    it('changes the state of modalVisible', () => {
+      let finalConfirm = cM.find("#finalConfirm");
+      finalConfirm.simulate('press');
+      expect(finalConfirm.length).toEqual(1);
+      expect(mockHandleConfirmation.mock.calls.length).toBe(1);
+    });
+
   })
-
-  it('changes the state of modalVisible', () => {
-    let finalConfirm = cM.find("#finalConfirm");
-    finalConfirm.simulate('press');
-    finalConfirm = cM.find("#finalConfirm");
-    expect(finalConfirm.length).toEqual(1);
-    expect(mockHandleConfirmation.mock.calls.length).toBe(1)
-  });
 })
