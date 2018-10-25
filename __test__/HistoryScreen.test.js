@@ -38,17 +38,46 @@ describe("HistoryScreen", () => {
       let axios = mockAxios;
       jest.setMock("axios", axios);
     })
-    it('saveData calls axios post', () => {
-      historyScreen.find('#save').simulate('press')
-      expect(mockAxios.post).toHaveBeenCalledWith(
-        'https://guarded-caverns-16437.herokuapp.com/injections'
-      )
+    describe('Save', () => {
+      beforeEach(() => {
+
+      })
+      it('wont save if no username has been provided', () => {
+        historyScreen.find('#save').simulate('press')
+        expect(mockAxios.post.calls.length).toEqual(0)
+      })
+      it('changes placeholder text if no username has been provided', () => {
+        historyScreen.find('#save').simulate('press')
+        userInput = historyScreen.find(TextInput)
+        expect(userInput.props().placeholder).toEqual('Change me down here')
+      })
+      it('saveData calls axios post', () => {
+        historyScreen.find('#save').simulate('press')
+        expect(mockAxios.post).toHaveBeenCalledWith(
+          'https://guarded-caverns-16437.herokuapp.com/injections'
+        )
+      })
     })
-    it('loadData calls axios get', () => {
-      historyScreen.find('#load').simulate('press')
-      expect(mockAxios.get).toHaveBeenCalledWith(
-        'https://guarded-caverns-16437.herokuapp.com/injections?user_id=1'
-      )
+
+    describe('Load', () => {
+      beforeEach(() => {
+
+      })
+      it('wont load if no username has been provided', () => {
+        historyScreen.find('#load').simulate('press')
+        expect(mockAxios.post.calls.length).toEqual(0)
+      })
+      it('changes placeholder text if no username has been provided', () => {
+        historyScreen.find('#load').simulate('press')
+        userInput = historyScreen.find(TextInput)
+        expect(userInput.props().placeholder).toEqual('Change me down here')
+      })
+      it('loadData calls axios get', () => {
+        historyScreen.find('#load').simulate('press')
+        expect(mockAxios.get).toHaveBeenCalledWith(
+          'https://guarded-caverns-16437.herokuapp.com/injections?user_id=1'
+        )
+      })
     })
   });
 });
