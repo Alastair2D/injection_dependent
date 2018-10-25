@@ -1,19 +1,29 @@
 import { shallow } from "enzyme";
 import { Text, Button, TextInput } from "react-native";
 import React from "react";
+import timekeeper from 'timekeeper';
+
 import { HistoryScreen } from "../screens/HistoryScreen";
 import HistoryTable from "../components/HistoryTable";
 import mockAxios from "../__mocks__/axios"
+import DefaultFirstInj from "../components/defaultFirstInj"
 
 describe("HistoryScreen", () => {
+  timekeeper.freeze(new Date(1539760000000))
+  let firstInj = new DefaultFirstInj().defaultFirstInj
+
+  let history
   let historyScreen;
   let mockUpdateSyncStatus = jest.fn()
   beforeEach(() => {
+    firstInj.dbsync = false
+    history = [firstInj]
     historyScreen = shallow(
       <HistoryScreen
-        history={['SomeMockHistory']}
+        history={history}
         updateSyncStatus = {mockUpdateSyncStatus}
-      />);
+      />
+    );
   });
 
   describe('HistoryTable', () => {
@@ -22,7 +32,7 @@ describe("HistoryScreen", () => {
     });
     it('passes the Table the history data', () => {
       let table = historyScreen.find(HistoryTable)
-      expect(table.props().history).toEqual(['SomeMockHistory'])
+      expect(table.props().history).toEqual(history)
     })
   });
 
@@ -61,7 +71,15 @@ describe("HistoryScreen", () => {
         userInput.simulate('changeText', 'Bob')
         historyScreen.find('#save').simulate('press')
         expect(mockAxios.post).toHaveBeenCalledWith(
-          'https://guarded-caverns-16437.herokuapp.com/injections'
+          'https://guarded-caverns-16437.herokuapp.com/injections',
+          {
+            injection: {
+              user_id: 'Bob',
+              site: JSON.stringify(firstInj.site),
+              time: firstInj.time.unix(),
+              medtype: firstInj.medType
+            }
+          }
         )
         expect(mockUpdateSyncStatus.mock.calls.length).toBe(1)
       })

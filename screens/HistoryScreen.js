@@ -37,7 +37,7 @@ export class HistoryScreen extends React.Component {
             injection: {
               user_id: this.state.user_id,
               site: JSON.stringify(inj.site),
-              time: inj.time.unix() * 1000,
+              time: inj.time.unix(),
               medtype: inj.medType
             }
           })
@@ -57,7 +57,7 @@ export class HistoryScreen extends React.Component {
         data[i].forEach((inj) => {
           self.props.saveInj({
             site: JSON.parse(inj.site),
-            time: moment.unix(parseInt(inj.time, 10)/1000),
+            time: moment.unix(parseInt(inj.time, 10)),
             dbsync: true,
             medType: inj.medtype
           })
