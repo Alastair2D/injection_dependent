@@ -7,16 +7,12 @@ import Header from '../components/Header';
 import ConfirmModal from '../components/ConfirmModal';
 import injectionsites from '../components/injectionsites';
 import BodyImages from '../components/BodyImages';
-// import LongShortSwitch from '../components/LongShortSwitch';
 import GestureRecognizer, {
   swipeDirections
 } from 'react-native-swipe-gestures';
-
 import { connect } from 'react-redux'
 import { saveInj, resetHistory } from '../redux/actions/history';
 import { nextInjSite, resetSites, rotateNSites } from '../redux/actions/sites';
-
-// import injectionsites from '../components/injectionsites';
 
 export class HomeScreen extends React.Component {
   constructor(props) {
@@ -31,17 +27,14 @@ export class HomeScreen extends React.Component {
   }
 
   onSwipeRight = () => {
-    // this.handleConfirmation();
     this.handleSkip();
   }
 
   nextSite() {
-    // const rotatedSites = this.state.sites.slice(1).concat(this.state.sites[0]);
     this.props.nextInjSite();
   }
 
   handleConfirmation() {
-    // const newHistory = this.state.history.concat({ site: this.state.sites[0], time: moment() });
     this.props.saveInj({
       site: this.props.sites[0],
       time: moment(),
@@ -101,17 +94,6 @@ export class HomeScreen extends React.Component {
     );
   }
 }
-
-// this.state = {
-//   sites: injectionsites,
-//   history: [{ site: injectionsites[injectionsites.length - 1], time: moment() }],
-// };
-
-// HomeScreen.propTypes = {
-//     // sites: PropTypes.arrayOf(PropTypes.strings).isRequired,
-//     saveInj: PropTypes.func.isRequired,
-//     nextInjSite: PropTypes.func.isRequired
-// };
 
 const styles = StyleSheet.create({
   container: {

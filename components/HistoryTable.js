@@ -12,7 +12,6 @@ export default class HistoryTable extends Component {
         injection.medType,
         injection.dbsync.toString()
       ];
-
     })
     return formattedData.reverse()
   }
