@@ -31,6 +31,10 @@ We used [Jest](https://jestjs.io/) and [Enzyme](https://github.com/airbnb/enzyme
 
 The repo with our backend is [here](https://github.com/andrewwood2/inj_dep_api) and deployed on [heroku](https://guarded-caverns-16437.herokuapp.com/).
 
+## Demo
+
+(To be added)
+
 ## How to install and use
 
 ### Download the project
@@ -72,11 +76,23 @@ I want to be able to view confirmation history.
 As a user,
 So I can avoid certain sites,
 I want to be able to configure this in settings.
+
+As a user,
+So I can access the whole history after quitting the app,
+I want the history stored on a database.
+
+As a user,
+To ensure I retrieve only my history,
+I want to be able to input a username.
+
+As a user,
+So I remember the type of medication used,
+I want to be able to choose between long and short-acting insulin.
 ```
 
-### UX Wireframe
+### Mockup
 
-[MVP UX Wireframe](https://github.com/Alastair2D/injection_dependent/blob/master/images/MVP_D1.png)
+[MVP Mockup](https://github.com/Alastair2D/injection_dependent/blob/master/images/MVP_D1.png)
 
 ## Useful links
 
