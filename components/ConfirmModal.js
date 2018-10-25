@@ -8,10 +8,18 @@ import { nextInjSite, rotateNSites } from '../redux/actions/sites';
 export default class ConfirmModal extends Component {
   state = {
     modalVisible: false,
+    pressStatus: false,
   };
 
   setModalVisible(visible) {
     this.setState({ modalVisible: visible });
+  }
+
+  _onHideUnderlay() {
+    this.setState({pressStatus: false }) 
+  }
+  _onShowUnderlay() {
+    this.setState({pressStatus: true})
   }
 
   render() {
@@ -29,15 +37,28 @@ export default class ConfirmModal extends Component {
                 Confirm injection site: {this.props.site.side} {this.props.site.part} {this.props.site.quadrant} {'\n'}
               </Text>
               <TouchableHighlight
-                underlayColor='blue'
-                activeOpacity={0.98}
+                underlayColor='orange'
+                activeOpacity={1}
                 id={"finalConfirm"}
+                style={
+                  this.state.pressStatus
+                    ? styles.buttonPress
+                    : styles.button
+                }
+                onHideUnderlay={this._onHideUnderlay.bind(this)}
+                onShowUnderlay={this._onShowUnderlay.bind(this)}
                 onPress={() => {
                   this.setModalVisible(!this.state.modalVisible);
                   this.props.onConfirmation();
                 }}
               >
-                <Text style={styles.text}>Confirm</Text>
+                <Text style={
+                  this.state.pressStatus
+                    ? styles.welcomePress
+                    : styles.welcome
+                }
+              
+                >Confirm</Text>
               </TouchableHighlight>
               <TouchableHighlight
                 id={"cancel"}
@@ -78,5 +99,28 @@ const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
     fontSize: 20
-  }
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: "center",
+    margin: 10,
+    color: "#000066"
+ },
+ welcomePress: {
+    fontSize: 20,
+    textAlign: "center",
+    margin: 10,
+    color: "#ffffff"
+ },
+ button: {
+  borderColor: "#000066",
+  borderWidth: 1,
+  borderRadius: 10
+},
+buttonPress: {
+  borderColor: "#000066",
+  backgroundColor: "#000066",
+  borderWidth: 1,
+  borderRadius: 10
+}
 });
