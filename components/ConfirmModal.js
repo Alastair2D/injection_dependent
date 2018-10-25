@@ -8,18 +8,19 @@ import { nextInjSite, rotateNSites } from '../redux/actions/sites';
 export default class ConfirmModal extends Component {
   state = {
     modalVisible: false,
-    pressStatus: false,
+    confirmPressStatus: false,
+    cancelPressStatus: false
   };
 
   setModalVisible(visible) {
     this.setState({ modalVisible: visible });
   }
 
-  _onHideUnderlay() {
-    this.setState({pressStatus: false }) 
+  _onConfirmHideUnderlay() {
+    this.setState({confirmPressStatus: false }) 
   }
-  _onShowUnderlay() {
-    this.setState({pressStatus: true})
+  _onConfirmShowUnderlay() {
+    this.setState({confirmPressStatus: true})
   }
 
   render() {
@@ -39,21 +40,21 @@ export default class ConfirmModal extends Component {
               <TouchableHighlight
                 underlayColor='orange'
                 activeOpacity={1}
-                id={"finalConfirm"}
+                id={"confirm"}
                 style={
-                  this.state.pressStatus
+                  this.state.confirmPressStatus
                     ? styles.buttonPress
                     : styles.button
                 }
-                onHideUnderlay={this._onHideUnderlay.bind(this)}
-                onShowUnderlay={this._onShowUnderlay.bind(this)}
+                onConfirmHideUnderlay={this._onConfirmHideUnderlay.bind(this)}
+                onConfirmShowUnderlay={this._onConfirmShowUnderlay.bind(this)}
                 onPress={() => {
                   this.setModalVisible(!this.state.modalVisible);
                   this.props.onConfirmation();
                 }}
               >
                 <Text style={
-                  this.state.pressStatus
+                  this.state.confirmPressStatus
                     ? styles.welcomePress
                     : styles.welcome
                 }
