@@ -29,6 +29,8 @@ export default class ConfirmModal extends Component {
                 Confirm injection site: {this.props.site.side} {this.props.site.part} {this.props.site.quadrant} {'\n'}
               </Text>
               <TouchableHighlight
+                underlayColor='blue'
+                activeOpacity={0.98}
                 id={"finalConfirm"}
                 onPress={() => {
                   this.setModalVisible(!this.state.modalVisible);
