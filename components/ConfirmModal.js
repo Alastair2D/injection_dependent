@@ -66,12 +66,27 @@ export default class ConfirmModal extends Component {
                 >Confirm</Text>
               </TouchableHighlight>
               <TouchableHighlight
+                underlayColor={'blue'}
+                activeOpacity={1}
                 id={"cancel"}
+                style={
+                  this.state.pressStatus
+                    ? styles.button
+                    : styles.buttonPress
+                }
+                onHideUnderlay={() => this._onShowUnderlay()}
+                onShowUnderlay={() => this._onHideUnderlay()}
                 onPress={() => {
                   this.setModalVisible(!this.state.modalVisible);
                 }}
               >
-                <Text style={styles.text}>Cancel</Text>
+                <Text style={
+                  this.state.pressStatus
+                    ? styles.welcome
+                    : styles.welcomePress
+               }>
+                  Cancel
+                </Text>
               </TouchableHighlight>
             </View>
           </View>
