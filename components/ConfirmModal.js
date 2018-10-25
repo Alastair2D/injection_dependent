@@ -22,6 +22,10 @@ export default class ConfirmModal extends Component {
           presentationStyle="fullScreen"
           transparent={false}
           visible={this.state.modalVisible}
+          onRequestClose={() => {
+            // this is for Android
+            Alert.alert('Modal has been closed.');
+          }}
         >
           <View style={styles.container}>
             <View>
