@@ -1,5 +1,6 @@
 import reducer from '../redux/reducers/index'
 import injectionsites from '../components/injectionsites';
+import DefaultFirstInj from '../components/defaultFirstInj';
 import moment from 'moment';
 import timekeeper from 'timekeeper';
 
@@ -68,10 +69,9 @@ describe('sites reducer', () => {
 
 describe('history reducer', () => {
   timekeeper.freeze(new Date(1539760000000))
-  const defaultHistory = [{ site: injectionsites[injectionsites.length - 1], time: moment(), dbsync: true }];
 
   it('should return the initial state', () => {
-    expect(reducer(undefined, {}).history).toEqual(defaultHistory)
+    expect(reducer(undefined, {}).history).toEqual([new DefaultFirstInj().defaultFirstInj])
   })
   it('should handle history-save-injection', () => {
     expect(
@@ -90,7 +90,7 @@ describe('history reducer', () => {
       history: [1]
     }, {
       type: 'history-reset-defaults'
-    })).toEqual({ sites: [3,4,5,1,2], history: defaultHistory })
+    })).toEqual({ sites: [3,4,5,1,2], history: [new DefaultFirstInj().defaultFirstInj] })
   })
 
   it('changes history sync to true', () => {

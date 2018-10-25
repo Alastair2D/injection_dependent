@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import { Modal, Text, TouchableHighlight, View } from 'react-native';
+import { Modal, Text, TouchableHighlight, View, Alert } from 'react-native';
 import moment from 'moment';
 import ConfirmModal from '../components/ConfirmModal';
 import injectionsites from '../components/injectionsites';
@@ -9,6 +9,7 @@ describe('ConfirmModal', () => {
   let cM;
   let site = injectionsites[0];
   let mockHandleConfirmation;
+  let mockAlert;
 
   beforeEach(() => {
     mockHandleConfirmation = jest.fn();
@@ -70,6 +71,15 @@ describe('ConfirmModal', () => {
       expect(finalConfirm.length).toEqual(1);
       expect(mockHandleConfirmation.mock.calls.length).toBe(1);
     });
-
   })
+
+  describe('Modal', () => {
+    it('throws an Alert on Android devices when closed', () => {
+      Alert.alert = jest.fn();
+      modal = cM.find(Modal)
+      // expect(modal.props().onRequestClose).toEqual(A)
+      modal.simulate('requestClose')
+      expect(Alert.alert).toHaveBeenCalledWith('Modal has been closed.')
+    });
+  });
 })
