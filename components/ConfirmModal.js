@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
-import {Modal, Text, TouchableHighlight, View, Alert, StyleSheet } from 'react-native';
+import { Modal, Text, TouchableHighlight, View, Alert, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { saveInj } from '../redux/actions/history';
 import { nextInjSite, rotateNSites } from '../redux/actions/sites';
@@ -22,10 +22,6 @@ export default class ConfirmModal extends Component {
           presentationStyle="fullScreen"
           transparent={false}
           visible={this.state.modalVisible}
-          onRequestClose={() => {
-            // this is for Android
-            Alert.alert('Modal has been closed.');
-          }}
         >
           <View style={styles.container}>
             <View>
@@ -33,6 +29,7 @@ export default class ConfirmModal extends Component {
                 Confirm injection site: {this.props.site.side} {this.props.site.part} {this.props.site.quadrant} {'\n'}
               </Text>
               <TouchableHighlight
+                id={"finalConfirm"}
                 onPress={() => {
                   this.setModalVisible(!this.state.modalVisible);
                   this.props.onConfirmation();
@@ -41,6 +38,7 @@ export default class ConfirmModal extends Component {
                 <Text style={styles.text}>Confirm</Text>
               </TouchableHighlight>
               <TouchableHighlight
+                id={"cancel"}
                 onPress={() => {
                   this.setModalVisible(!this.state.modalVisible);
                 }}
@@ -52,6 +50,7 @@ export default class ConfirmModal extends Component {
         </Modal>
 
         <TouchableHighlight
+          id={"firstConfirm"}
           style={{marginTop: 40}}
           onPress={() => {
             this.setModalVisible(true);
