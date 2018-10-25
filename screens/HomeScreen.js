@@ -67,7 +67,12 @@ export class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
         <View>
-          <Header />
+          {/* <Header /> */}
+          <PreviousSite
+            id='previousSite'
+            site={this.props.history[this.props.history.length - 1].site}
+            time={this.props.history[this.props.history.length - 1].time}
+          />
           <GestureRecognizer
             onSwipeLeft={state => this.onSwipeLeft(state)}
             onSwipeRight={state => this.onSwipeRight(state)}
@@ -84,11 +89,7 @@ export class HomeScreen extends React.Component {
             onConfirmation={() => this.handleConfirmation()}
           />
           <Switch value={this.state.shortMed} onValueChange={(value) => (this.setState({ shortMed: value })) } />
-          <PreviousSite
-            id='previousSite'
-            site={this.props.history[this.props.history.length - 1].site}
-            time={this.props.history[this.props.history.length - 1].time}
-          />
+         
         </View>
       </View>
     );
