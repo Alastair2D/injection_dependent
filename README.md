@@ -1,8 +1,10 @@
 # Injection Dependent
 
- [![Build Status](https://travis-ci.org/Alastair2D/injection_dependent.svg?branch=master)](https://travis-ci.org/Alastair2D/injection_dependent.svg?branch=master)    ![Scrutinizer](https://img.shields.io/scrutinizer/g/filp/whoops.svg)    ![npm bundle size (minified)](https://img.shields.io/bundlephobia/min/react.svg)  ![License](https://img.shields.io/github/license/mashape/apistatus.svg)
+ [![Build Status](https://travis-ci.org/Alastair2D/injection_dependent.svg?branch=master)]
 
 This is our final project to finish the course at Makers. The intention of the project is to help those with type 1 diabetes manage the condition by creating a mobile app that tracks and advises on injection sites.
+
+[Team](https://github.com/Alastair2D/injection_dependent/tree/master#team) | [Team Goals](https://github.com/Alastair2D/injection_dependent/tree/master#team-goals) | [Technology](https://github.com/Alastair2D/injection_dependent/tree/master#technology) | [Demo](https://github.com/Alastair2D/injection_dependent/tree/master#demo) | [Install and Use Project](https://github.com/Alastair2D/injection_dependent/tree/master#how-to-install-and-use) | [User Stories](https://github.com/Alastair2D/injection_dependent/tree/master#user-stories) | [Mockup](https://github.com/Alastair2D/injection_dependent/tree/master#mockup) | [Useful Links](https://github.com/Alastair2D/injection_dependent/tree/master#useful-links)
 
 ## Team
 
@@ -90,7 +92,7 @@ So I remember the type of medication used,
 I want to be able to choose between long and short-acting insulin.
 ```
 
-### Mockup
+## Mockup
 
 [MVP Mockup](https://github.com/Alastair2D/injection_dependent/blob/master/images/MVP_D1.png)
 
