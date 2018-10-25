@@ -7,7 +7,6 @@ import Header from '../components/Header';
 import ConfirmModal from '../components/ConfirmModal';
 import injectionsites from '../components/injectionsites';
 import BodyImages from '../components/BodyImages';
-// import LongShortSwitch from '../components/LongShortSwitch';
 import GestureRecognizer, {
   swipeDirections
 } from 'react-native-swipe-gestures';
