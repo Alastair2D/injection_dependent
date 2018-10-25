@@ -108,9 +108,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    saveInj: (inj) => { dispatch(saveInj(inj)); },
-    updateSyncStatus: () => { dispatch(updateSyncStatus()); },
-    resetHistory: () => { dispatch(resetHistory()); }
+
   };
 }
 
