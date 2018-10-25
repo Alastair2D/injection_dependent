@@ -45,7 +45,15 @@ export class HomeScreen extends React.Component {
   }
 
   handleSkip() {
-    this.nextSite();
+    let self = this
+    let i
+    let skippedPart = self.props.sites[0].part
+    for(i = 0; i < self.props.sites.length; i++) {
+      if (self.props.sites[i].part != skippedPart ) {
+        self.props.rotateNSites(i)
+        break
+      }
+    }
   }
 
   skipUntilActive() {
@@ -69,8 +77,8 @@ export class HomeScreen extends React.Component {
         <View>
           <Header />
           <GestureRecognizer
-            onSwipeLeft={state => this.onSwipeLeft(state)}
-            onSwipeRight={state => this.onSwipeRight(state)}
+            onSwipeLeft={ () => this.handleSkip() }
+            onSwipeRight={ () => this.handleSkip() }
             config={config}
           >
             <BodyImages imgNum={this.props.sites[0].imgNum} />
