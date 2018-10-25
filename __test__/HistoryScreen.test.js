@@ -14,14 +14,19 @@ describe("HistoryScreen", () => {
 
   let history
   let historyScreen;
-  let mockUpdateSyncStatus = jest.fn()
+  let mockUpdateSyncStatus
+  let mockResetHistory
+
   beforeEach(() => {
     firstInj.dbsync = false
     history = [firstInj]
+    mockUpdateSyncStatus = jest.fn()
+    mockResetHistory = jest.fn()
     historyScreen = shallow(
       <HistoryScreen
         history={history}
         updateSyncStatus = {mockUpdateSyncStatus}
+        resetHistory = {mockResetHistory}
       />
     );
   });
@@ -50,8 +55,8 @@ describe("HistoryScreen", () => {
 
   describe('DB save and load', () => {
     beforeEach(() => {
-      let axios = mockAxios;
-      jest.setMock("axios", axios);
+      // let axios = mockAxios;
+      jest.setMock("axios", mockAxios);
     })
     describe('Save', () => {
       beforeEach(() => {
@@ -99,13 +104,14 @@ describe("HistoryScreen", () => {
         expect(userInput.props().placeholder).toEqual('Change me down here')
       })
       it('loadData calls axios get', () => {
-        historyScreen.find('#load').simulate('press')
         userInput = historyScreen.find(TextInput)
         userInput.simulate('changeText', 'Bob')
+        historyScreen.find('#load').simulate('press')
         expect(mockAxios.get).toHaveBeenCalledWith(
-          'https://guarded-caverns-16437.herokuapp.com/injections?user_id=1'
+          'https://guarded-caverns-16437.herokuapp.com/injections?user_id=Bob'
         )
         expect(mockUpdateSyncStatus.mock.calls.length).toBe(1)
+        expect(mockResetHistory.mock.calls.length).toBe(1)
       })
     })
   });
