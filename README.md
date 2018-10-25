@@ -25,9 +25,11 @@ This is our final project to finish the course at Makers. The intention of the p
 
 ## Technology
 
-This project was built with Javascript and [React Native](https://facebook.github.io/react-native/).   
+This project was built with Javascript, [React Native](https://facebook.github.io/react-native/) and [Redux](https://redux.js.org/introduction).   
 We used [Jest](https://jestjs.io/) and [Enzyme](https://github.com/airbnb/enzyme) testing frameworks. Jest provides test coverage as well.   
-[ESLint](https://github.com/Intellicode/eslint-plugin-react-native) has been set up as a style checking.
+[ESLint](https://github.com/Intellicode/eslint-plugin-react-native) has been set up as a style checking.   
+
+The repo with our backend is [here](https://github.com/andrewwood2/inj_dep_api) and deployed on [heroku](https://guarded-caverns-16437.herokuapp.com/).
 
 ## How to install and use
 
@@ -53,25 +55,28 @@ Download the [Expo client](https://expo.io/) on your iOS or Android phone and co
 
 ```
 As a user,
-so I know where to inject,
+So I know where to inject,
 I want the app to generate a suggestion.
 
 As a user,
-so I know the last injection site,
+So I know the last injection site,
 I want to be able to see this.
+```
+### Version 1
 
+```
 As a user,
-so I can see previous sites used,
+So I can see previous sites used,
 I want to be able to view confirmation history.
 
 As a user,
-so I can avoid certain sites,
+So I can avoid certain sites,
 I want to be able to configure this in settings.
 ```
 
-### UI Modelling
+### UX Wireframe
 
-![MVP UI Model](https://github.com/Alastair2D/injection_dependent/blob/Al_adding_images/images/MVP_D1.png)
+[MVP UX Wireframe](https://github.com/Alastair2D/injection_dependent/blob/master/images/MVP_D1.png)
 
 ## Useful links
 
