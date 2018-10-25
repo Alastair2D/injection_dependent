@@ -8,19 +8,20 @@ import { nextInjSite, rotateNSites } from '../redux/actions/sites';
 export default class ConfirmModal extends Component {
   state = {
     modalVisible: false,
-    confirmPressStatus: false,
-    cancelPressStatus: false
-  };
+    confirmPressStatus: true,
+    cancelPressStatus: true,
+    };
 
   setModalVisible(visible) {
     this.setState({ modalVisible: visible });
   }
 
-  _onConfirmHideUnderlay() {
-    this.setState({confirmPressStatus: false }) 
+  _onHideUnderlay() {
+    this.setState({pressStatus: false }) 
   }
-  _onConfirmShowUnderlay() {
-    this.setState({confirmPressStatus: true})
+
+  _onShowUnderlay() {
+    this.setState({pressStatus: true})
   }
 
   render() {
@@ -31,23 +32,30 @@ export default class ConfirmModal extends Component {
           presentationStyle="fullScreen"
           transparent={false}
           visible={this.state.modalVisible}
+          onRequestClose={() => {
+            // this is for Android
+            Alert.alert('Modal has been closed.');
+          }}
         >
           <View style={styles.container}>
             <View>
-              <Text>
-                Confirm injection site: {this.props.site.side} {this.props.site.part} {this.props.site.quadrant} {'\n'}
+              <Text style={{fontSize: 20, fontStyle: 'italic'}}>
+                Confirm injection site:{'\n'}
+              </Text>
+              <Text style={{ fontWeight: 'bold', textAlign: 'center', fontSize: 20 }}>
+                {this.props.site.side} {this.props.site.part} {this.props.site.quadrant} {'\n'}
               </Text>
               <TouchableHighlight
-                underlayColor='orange'
+                underlayColor={'orange'}
                 activeOpacity={1}
-                id={"confirm"}
+                id={"finalConfirm"}
                 style={
                   this.state.confirmPressStatus
                     ? styles.buttonPress
                     : styles.button
                 }
-                onConfirmHideUnderlay={this._onConfirmHideUnderlay.bind(this)}
-                onConfirmShowUnderlay={this._onConfirmShowUnderlay.bind(this)}
+                onHideUnderlay={() => this._onHideUnderlay()}
+                onShowUnderlay={() => this._onShowUnderlay()}
                 onPress={() => {
                   this.setModalVisible(!this.state.modalVisible);
                   this.props.onConfirmation();
@@ -61,13 +69,31 @@ export default class ConfirmModal extends Component {
               
                 >Confirm</Text>
               </TouchableHighlight>
+              <Text>
+                {'\n'}
+              </Text>
               <TouchableHighlight
+                underlayColor={'#000066'}
+                activeOpacity={1}
                 id={"cancel"}
+                style={
+                  this.state.cancelPressStatus
+                    ? styles.button
+                    : styles.buttonPress
+                }
+                onHideUnderlay={() => this._onShowUnderlay()}
+                onShowUnderlay={() => this._onHideUnderlay()}
                 onPress={() => {
                   this.setModalVisible(!this.state.modalVisible);
                 }}
               >
-                <Text style={styles.text}>Cancel</Text>
+                <Text style={
+                  this.state.cancelPressStatus
+                    ? styles.welcome
+                    : styles.welcomePress
+               }>
+                  Cancel
+                </Text>
               </TouchableHighlight>
             </View>
           </View>
@@ -105,23 +131,23 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: "center",
     margin: 10,
-    color: "#000066"
+    color: "#ffffff"
  },
- welcomePress: {
+  welcomePress: {
     fontSize: 20,
     textAlign: "center",
     margin: 10,
     color: "#ffffff"
- },
- button: {
-  borderColor: "#000066",
-  borderWidth: 1,
-  borderRadius: 10
-},
-buttonPress: {
-  borderColor: "#000066",
-  backgroundColor: "#000066",
-  borderWidth: 1,
-  borderRadius: 10
-}
+  },
+  button: {
+    borderColor: "#000066",
+    borderWidth: 1,
+    borderRadius: 10,
+  },
+  buttonPress: {
+    borderColor: "#000066",
+    backgroundColor: "#000066",
+    borderWidth: 1,
+    borderRadius: 10,
+  }
 });
