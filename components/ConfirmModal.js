@@ -8,7 +8,8 @@ import { nextInjSite, rotateNSites } from '../redux/actions/sites';
 export default class ConfirmModal extends Component {
   state = {
     modalVisible: false,
-    pressStatus: true,
+    confirmPressStatus: true,
+    cancelPressStatus: true,
     };
 
   setModalVisible(visible) {
@@ -38,15 +39,18 @@ export default class ConfirmModal extends Component {
         >
           <View style={styles.container}>
             <View>
-              <Text>
-                Confirm injection site: {this.props.site.side} {this.props.site.part} {this.props.site.quadrant} {'\n'}
+              <Text style={{fontSize: 20, fontStyle: 'italic'}}>
+                Confirm injection site:{'\n'}
+              </Text>
+              <Text style={{ fontWeight: 'bold', textAlign: 'center', fontSize: 20 }}>
+                {this.props.site.side} {this.props.site.part} {this.props.site.quadrant} {'\n'}
               </Text>
               <TouchableHighlight
                 underlayColor={'orange'}
                 activeOpacity={1}
                 id={"confirm"}
                 style={
-                  this.state.pressStatus
+                  this.state.confirmPressStatus
                     ? styles.buttonPress
                     : styles.button
                 }
@@ -58,19 +62,22 @@ export default class ConfirmModal extends Component {
                 }}
               >
                 <Text style={
-                  this.state.pressStatus
+                  this.state.confirmPressStatus
                     ? styles.welcomePress
                     : styles.welcome
                 }
               
                 >Confirm</Text>
               </TouchableHighlight>
+              <Text>
+                {'\n'}
+              </Text>
               <TouchableHighlight
-                underlayColor={'blue'}
+                underlayColor={'#000066'}
                 activeOpacity={1}
                 id={"cancel"}
                 style={
-                  this.state.pressStatus
+                  this.state.cancelPressStatus
                     ? styles.button
                     : styles.buttonPress
                 }
@@ -81,7 +88,7 @@ export default class ConfirmModal extends Component {
                 }}
               >
                 <Text style={
-                  this.state.pressStatus
+                  this.state.cancelPressStatus
                     ? styles.welcome
                     : styles.welcomePress
                }>
@@ -124,7 +131,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: "center",
     margin: 10,
-    color: "#000066"
+    color: "#ffffff"
  },
   welcomePress: {
     fontSize: 20,
@@ -135,12 +142,12 @@ const styles = StyleSheet.create({
   button: {
     borderColor: "#000066",
     borderWidth: 1,
-    borderRadius: 10
+    borderRadius: 10,
   },
   buttonPress: {
     borderColor: "#000066",
     backgroundColor: "#000066",
     borderWidth: 1,
-    borderRadius: 10
+    borderRadius: 10,
   }
 });
