@@ -10,7 +10,8 @@
       "redux/reducers/*.js",
       "*.{js,jsx}",
       "!setupTests.js",
-      "!App.js"
+      "!App.js",
+      "!components/TabBarIcon.js"
     ],
     "preset": "react-native",
     "testEnvironment": "jsdom",

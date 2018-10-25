@@ -35,7 +35,7 @@ describe("ConnectedHistoryScreen", () => {
   })
 
   it("adds resetHistory action to props", () => {
-    homescreen.props().resetHistory()
+    historyscreen.props().resetHistory()
     expect(store.getActions()).toEqual([{"type": "history-reset-defaults"}]);
   })
 });
