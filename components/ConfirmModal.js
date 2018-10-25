@@ -48,7 +48,7 @@ export default class ConfirmModal extends Component {
               <TouchableHighlight
                 underlayColor={'orange'}
                 activeOpacity={1}
-                id={"confirm"}
+                id={"finalConfirm"}
                 style={
                   this.state.confirmPressStatus
                     ? styles.buttonPress
