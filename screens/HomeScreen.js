@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { StyleSheet, View, Switch, Text } from 'react-native';
+import { StyleSheet, View, Switch, Text, Image } from 'react-native';
 import moment from 'moment';
 import CurrentSite from '../components/CurrentSite';
 import PreviousSite from '../components/PreviousSite';
@@ -21,6 +21,11 @@ export class HomeScreen extends React.Component {
       shortMed: true
     }
   }
+
+  static navigationOptions = {
+    headerTitle: (<Image style={{ width: 300, height: 40,  }} source={require('../assets/images/bizz.png')}/>),
+    backgroundColor: 'orange',
+  };
 
   onSwipeLeft = () => {
     this.handleSkip();
