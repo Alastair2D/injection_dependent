@@ -8,7 +8,12 @@ import { connect } from 'react-redux'
 import { saveInj, resetHistory, updateSyncStatus } from '../redux/actions/history';
 
 export class HistoryScreen extends React.Component {
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      user_id: 'Enter username here...'
+    }
+  }
 
   static navigationOptions = {
     title: 'History'
@@ -20,6 +25,25 @@ export class HistoryScreen extends React.Component {
       <ScrollView style={styles.container}>
 
         <HistoryTable history={this.props.history} />
+          <Button
+            title={'Load'}
+            id={'load'}
+            onPress={ () => {
+              this.prepareLoad()
+            }}
+          />
+          <Button
+            title={'Save'}
+            id={'save'}
+            onPress={() => this.saveData()}
+          />
+        <Text>Username:</Text>
+        <TextInput
+          name="username"
+          id="username"
+          placeholder={this.state.user_id}
+          onChangeText={ (user_id) => this.setState({ user_id }) }
+        />
       </ScrollView>
     );
   }
