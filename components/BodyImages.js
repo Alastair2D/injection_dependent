@@ -45,8 +45,8 @@ export default class BodyImages extends Component {
         36: require('../images/Arm/leftArm4.png'),
         37: require('../images/Arm/rightArm4.png'),
         38: require('../images/Buttock/leftButtock4.png'),
-        39: require('../images/Buttock/rightButtock4.png'),
-      }
+        39: require('../images/Buttock/rightButtock4.png')
+      },
     };
   }
 
