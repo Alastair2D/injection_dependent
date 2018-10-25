@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { StyleSheet, View, Switch } from 'react-native';
+import { StyleSheet, View, Switch, Text } from 'react-native';
 import moment from 'moment';
 import CurrentSite from '../components/CurrentSite';
 import PreviousSite from '../components/PreviousSite';
@@ -88,7 +88,10 @@ export class HomeScreen extends React.Component {
             site={this.props.sites[0]}
             onConfirmation={() => this.handleConfirmation()}
           />
-          <Switch value={this.state.shortMed} onValueChange={(value) => (this.setState({ shortMed: value })) } />
+          <View style={{alignItems: 'center', marginBottom: 30}}>
+            <Text>Long -- Short</Text>
+            <Switch value={this.state.shortMed} onValueChange={(value) => (this.setState({ shortMed: value })) } />
+          </View>
          
         </View>
       </View>
