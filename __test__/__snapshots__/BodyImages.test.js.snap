@@ -6,9 +6,9 @@ exports[`BodyImages renders correctly 1`] = `
     style={
       Object {
         "alignSelf": "center",
-        "height": 280,
-        "padding": 10,
-        "width": 180,
+        "height": 290,
+        "padding": 5,
+        "width": 220,
       }
     }
   />

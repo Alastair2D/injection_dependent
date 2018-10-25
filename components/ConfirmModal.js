@@ -12,16 +12,12 @@ export default class ConfirmModal extends Component {
     cancelPressStatus: true,
     };
 
+  state() {
+    return this.state;
+  }
+
   setModalVisible(visible) {
     this.setState({ modalVisible: visible });
-  }
-
-  _onHideUnderlay() {
-    this.setState({pressStatus: false }) 
-  }
-
-  _onShowUnderlay() {
-    this.setState({pressStatus: true})
   }
 
   render() {
@@ -54,8 +50,6 @@ export default class ConfirmModal extends Component {
                     ? styles.buttonPress
                     : styles.button
                 }
-                onHideUnderlay={() => this._onHideUnderlay()}
-                onShowUnderlay={() => this._onShowUnderlay()}
                 onPress={() => {
                   this.setModalVisible(!this.state.modalVisible);
                   this.props.onConfirmation();
@@ -66,8 +60,9 @@ export default class ConfirmModal extends Component {
                     ? styles.welcomePress
                     : styles.welcome
                 }
-              
-                >Confirm</Text>
+                >
+                Confirm
+                </Text>
               </TouchableHighlight>
               <Text>
                 {'\n'}
@@ -81,8 +76,7 @@ export default class ConfirmModal extends Component {
                     ? styles.button
                     : styles.buttonPress
                 }
-                onHideUnderlay={() => this._onShowUnderlay()}
-                onShowUnderlay={() => this._onHideUnderlay()}
+
                 onPress={() => {
                   this.setModalVisible(!this.state.modalVisible);
                 }}
