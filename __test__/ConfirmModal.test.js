@@ -82,4 +82,21 @@ describe('ConfirmModal', () => {
       expect(Alert.alert).toHaveBeenCalledWith('Modal has been closed.')
     });
   });
-})
+
+  describe('clicking to change style', () => {
+    it('changes confirmPressStatus when clicked', () => {
+      cM.find('#finalConfirm').simulate('press');
+      expect(cM.state().confirmPressStatus).toEqual(true);
+    });
+  });
+
+  describe('state', () => {
+    it('is a method to return the state', () => {
+      expect(cM.state()).toEqual({
+        modalVisible: false,
+        confirmPressStatus: true,
+        cancelPressStatus: true,
+      });
+    });
+  });
+});
