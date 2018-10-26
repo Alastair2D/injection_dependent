@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { StyleSheet, View, Switch } from 'react-native';
+import { StyleSheet, View, Switch, Text, Image } from 'react-native';
 import moment from 'moment';
 import CurrentSite from '../components/CurrentSite';
 import PreviousSite from '../components/PreviousSite';
@@ -20,6 +20,19 @@ export class HomeScreen extends React.Component {
     this.state = {
       shortMed: true
     }
+  }
+  
+  static navigationOptions = {
+    headerTitle: (<Image style={{ width: 300, height: 40,  }} source={require('../assets/images/bizz.png')}/>),
+    backgroundColor: 'orange',
+  };
+
+  onSwipeLeft = () => {
+    this.handleSkip();
+  }
+
+  onSwipeRight = () => {
+    this.handleSkip();
   }
 
   nextSite() {
@@ -70,7 +83,12 @@ export class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
         <View>
-          <Header />
+          {/* <Header /> */}
+          <PreviousSite
+            id='previousSite'
+            site={this.props.history[this.props.history.length - 1].site}
+            time={this.props.history[this.props.history.length - 1].time}
+          />
           <GestureRecognizer
             onSwipeLeft={ () => this.handleSkip() }
             onSwipeRight={ () => this.handleSkip() }
@@ -86,12 +104,11 @@ export class HomeScreen extends React.Component {
             site={this.props.sites[0]}
             onConfirmation={() => this.handleConfirmation()}
           />
-          <Switch value={this.state.shortMed} onValueChange={(value) => (this.setState({ shortMed: value })) } />
-          <PreviousSite
-            id='previousSite'
-            site={this.props.history[this.props.history.length - 1].site}
-            time={this.props.history[this.props.history.length - 1].time}
-          />
+          <View style={{alignItems: 'center', marginBottom: 30}}>
+            <Text>Long -- Short</Text>
+            <Switch value={this.state.shortMed} onValueChange={(value) => (this.setState({ shortMed: value })) } />
+          </View>
+         
         </View>
       </View>
     );

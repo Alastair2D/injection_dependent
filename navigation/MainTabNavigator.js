@@ -39,8 +39,8 @@ HistoryStack.navigationOptions = {
       focused={focused}
       name={
         Platform.OS === 'ios'
-          ? `ios-link${focused ? '' : '-outline'}`
-          : 'md-link'
+          ? `ios-book${focused ? '' : '-outline'}`
+          : 'md-book'
       }
     />
   )
@@ -57,8 +57,8 @@ SettingsStack.navigationOptions = {
       focused={focused}
       name={
         Platform.OS === 'ios'
-          ? `ios-options${focused ? '' : '-outline'}`
-          : 'md-options'
+          ? `ios-settings${focused ? '' : '-outline'}`
+          : 'md-settings'
       }
     />
   )

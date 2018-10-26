@@ -64,9 +64,9 @@ export default class BodyImages extends Component {
 
 const styles = StyleSheet.create({
   image: {
-    width: 180,
-    height: 280,
-    padding: 10,
+    width: 220,
+    height: 290,
+    padding: 5,
     alignSelf: 'center'
   }
 });
