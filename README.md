@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/Alastair2D/injection_dependent.svg?branch=master)](https://travis-ci.org/Alastair2D/injection_dependent.svg?branch=master)
-
 # Injection Dependent
 
  ![Build Status](https://travis-ci.org/Alastair2D/injection_dependent.svg?branch=master)
