@@ -77,7 +77,6 @@ describe('ConfirmModal', () => {
     it('throws an Alert on Android devices when closed', () => {
       Alert.alert = jest.fn();
       modal = cM.find(Modal)
-      // expect(modal.props().onRequestClose).toEqual(A)
       modal.simulate('requestClose')
       expect(Alert.alert).toHaveBeenCalledWith('Modal has been closed.')
     });
@@ -99,4 +98,27 @@ describe('ConfirmModal', () => {
       });
     });
   });
+  describe('button style', () => {
+    it('finalConfirm should have button style', () => {
+      const finalConfirm = cM.find("#finalConfirm");
+      finalConfirm.simulate('pressIn')
+      finalConfirm.simulate('pressOut')
+      expect(finalConfirm.props().style).toEqual({
+        borderColor: "#000066",
+        backgroundColor: "#000066",
+        borderWidth: 1,
+        borderRadius: 10,
+      });
+    })
+    it('cancel should have button style', () => {
+      const cancel = cM.find("#cancel");
+      cancel.simulate('pressIn')
+      cancel.simulate('pressOut')
+      expect(cancel.props().style).toEqual({
+        borderColor: "#000066",
+        borderWidth: 1,
+        borderRadius: 10,
+      });
+    })
+  })
 });

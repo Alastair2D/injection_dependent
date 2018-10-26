@@ -15,15 +15,6 @@ export default class ConfirmModal extends Component {
     };
   }
 
-  //
-  // state() {
-  //   return this.state;
-  // }
-
-  setModalVisible(visible) {
-    this.setState({ modalVisible: visible });
-  }
-
   render() {
     return (
       <View style={styles.show}>
@@ -54,8 +45,10 @@ export default class ConfirmModal extends Component {
                     ? styles.buttonPress
                     : styles.button
                 }
+                onPressIn={() => this.setState({ confirmPressStatus: false })}
+                onPressOut={() => this.setState({ confirmPressStatus: true })}
                 onPress={() => {
-                  this.setModalVisible(!this.state.modalVisible);
+                  this.setState({ modalVisible: !this.state.modalVisible })
                   this.props.onConfirmation();
                 }}
               >
@@ -80,9 +73,10 @@ export default class ConfirmModal extends Component {
                     ? styles.button
                     : styles.buttonPress
                 }
-
+                onPressIn={() => this.setState({ cancelPressStatus: true })}
+                onPressOut={() => this.setState({ cancelPressStatus: false })}
                 onPress={() => {
-                  this.setModalVisible(!this.state.modalVisible);
+                  this.setState({ modalVisible: !this.state.modalVisible })
                 }}
               >
                 <Text style={
@@ -101,7 +95,7 @@ export default class ConfirmModal extends Component {
           id={"firstConfirm"}
           style={{marginTop: 40}}
           onPress={() => {
-            this.setModalVisible(true);
+            this.setState({ modalVisible: true })
           }}
         >
           <Text style={styles.text}>Confirm this site</Text>
