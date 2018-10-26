@@ -4,16 +4,24 @@
   "jest": {
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "src/**/*.{js,jsx}",
+      "components/**/*.{js,jsx}",
+      "screens/*.{js,jsx}",
+      "redux/actions/*.js",
+      "redux/reducers/*.js",
       "*.{js,jsx}",
-      "!setupTests.js"
+      "!setupTests.js",
+      "!App.js",
+      "!components/TabBarIcon.js"
     ],
     "preset": "react-native",
     "testEnvironment": "jsdom",
     "setupFiles": [
       "./setupTests.js"
     ],
-    "verbose": true
+    "verbose": true,
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   },
   "private": true,
   "scripts": {
@@ -22,20 +30,40 @@
     "ios": "expo start --ios",
     "eject": "expo eject",
     "test": "jest",
-    "lint": "./node_modules/.bin/eslint src/**/*.js App.js"
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "./node_modules/.bin/eslint components/*.js App.js screens/*.js"
   },
   "dependencies": {
+    "@expo/samples": "2.1.1",
+    "axios": "^0.18.0",
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
     "expo": "^30.0.1",
     "expo-cli": "^2.2.0",
     "moment": "^2.22.2",
     "react": "16.3.1",
     "react-dom": "^16.5.2",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-30.0.0.tar.gz"
+    "react-native": "https://github.com/expo/react-native/archive/sdk-30.0.0.tar.gz",
+    "react-native-elements": "^0.19.1",
+    "react-native-modal": "^6.5.0",
+    "react-native-popup-menu": "^0.14.0",
+    "react-native-switch": "^1.5.0",
+    "react-native-switch-toggle": "^1.0.6",
+    "react-native-table-component": "^1.1.8",
+    "react-navigation": "^2.16.0",
+    "react-redux": "^5.0.7",
+    "react-test-renderer": "^16.5.2",
+    "redux": "^4.0.1",
+    "toggle-switch-react-native": "^2.0.2"
   },
   "devDependencies": {
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
+    "enzyme-to-json": "^3.3.4",
+    "enzyme-redux": "^0.2.1",
     "eslint": "^5.7.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
@@ -46,7 +74,9 @@
     "jsdom": "^12.2.0",
     "react-native-mock": "^0.3.1",
     "react-native-mock-render": "^0.1.2",
+    "react-native-swipe-gestures": "^1.0.2",
     "react-test-renderer": "^16.5.2",
+    "redux-test-utils": "^0.3.0",
     "timekeeper": "^2.1.2"
   }
 }

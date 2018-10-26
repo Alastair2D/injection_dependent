@@ -1,10 +1,10 @@
-[![Build Status](https://travis-ci.org/Alastair2D/injection_dependent.svg?branch=master)](https://travis-ci.org/Alastair2D/injection_dependent.svg?branch=master)
-
 # Injection Dependent
 
- [![Build Status](https://travis-ci.org/Alastair2D/injection_dependent.svg?branch=master)](https://travis-ci.org/Alastair2D/injection_dependent.svg?branch=master)
+ ![Build Status](https://travis-ci.org/Alastair2D/injection_dependent.svg?branch=master)
 
 This is our final project to finish the course at Makers. The intention of the project is to help those with type 1 diabetes manage the condition by creating a mobile app that tracks and advises on injection sites.
+
+[Team](https://github.com/Alastair2D/injection_dependent/tree/master#team) | [Team Goals](https://github.com/Alastair2D/injection_dependent/tree/master#team-goals) | [Technology](https://github.com/Alastair2D/injection_dependent/tree/master#technology) | [Demo](https://github.com/Alastair2D/injection_dependent/tree/master#demo) | [Install and Use Project](https://github.com/Alastair2D/injection_dependent/tree/master#how-to-install-and-use) | [User Stories](https://github.com/Alastair2D/injection_dependent/tree/master#user-stories) | [Mockup](https://github.com/Alastair2D/injection_dependent/tree/master#mockup) | [Useful Links](https://github.com/Alastair2D/injection_dependent/tree/master#useful-links)
 
 ## Team
 
@@ -27,9 +27,15 @@ This is our final project to finish the course at Makers. The intention of the p
 
 ## Technology
 
-This project was built with Javascript and [React Native](https://facebook.github.io/react-native/).   
+This project was built with Javascript, [React Native](https://facebook.github.io/react-native/) and [Redux](https://redux.js.org/introduction).   
 We used [Jest](https://jestjs.io/) and [Enzyme](https://github.com/airbnb/enzyme) testing frameworks. Jest provides test coverage as well.   
-[ESLint](https://github.com/Intellicode/eslint-plugin-react-native) has been set up as a style checking.
+[ESLint](https://github.com/Intellicode/eslint-plugin-react-native) has been set up as a style checking tool and Travis CI for Continuous Integration.
+
+The repo with our backend is [here](https://github.com/andrewwood2/inj_dep_api) and deployed on [heroku](https://guarded-caverns-16437.herokuapp.com/).
+
+## Demo
+
+(To be added)
 
 ## How to install and use
 
@@ -55,17 +61,51 @@ Download the [Expo client](https://expo.io/) on your iOS or Android phone and co
 
 ```
 As a user,
-so I know where to inject,
+So I know where to inject,
 I want the app to generate a suggestion.
 
 As a user,
-so I know the last injection site,
+So I know the last injection site,
 I want to be able to see this.
 ```
+### Version 1
 
-### UI Modelling
+```
+As a user,
+So I can see previous sites used,
+I want to be able to view confirmation history.
 
-![MVP UI Model](https://github.com/Alastair2D/injection_dependent/blob/Al_adding_images/images/MVP_D1.png)
+As a user,
+So I can avoid certain sites,
+I want to be able to configure this in settings.
+
+As a user,
+In case I accidentally press confirm or change my mind,
+I want to be able to cancel.
+
+As a user,
+So I can access the whole history after quitting the app,
+I want the history to be stored on a database.
+
+As a user,
+To ensure I retrieve only my history,
+I want to be able to input my username.
+
+As a user,
+So I remember the type of medication used,
+I want to be able to choose between long and short-acting insulin.
+```
+
+### Next steps
+
+1. Authentication
+2. Styling and interaction development
+3. Instructions on first time app open
+4. Sync with your bluetooth enabled blood tester
+
+## Mockup
+
+[MVP Mockup](https://github.com/Alastair2D/injection_dependent/blob/master/images/MVP_D1.png)
 
 ## Useful links
 
