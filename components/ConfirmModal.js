@@ -30,10 +30,10 @@ export default class ConfirmModal extends Component {
         >
           <View style={styles.container}>
             <View>
-              <Text style={{fontSize: 20, fontStyle: 'italic'}}>
+              <Text style={{fontSize: 20 }}>
                 Confirm injection site:{'\n'}
               </Text>
-              <Text style={{ fontWeight: 'bold', textAlign: 'center', fontSize: 20 }}>
+              <Text style={{ textAlign: 'center', fontSize: 20 }}>
                 {this.props.site.side} {this.props.site.part} {this.props.site.quadrant} {'\n'}
               </Text>
               <TouchableHighlight
