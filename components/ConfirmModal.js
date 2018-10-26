@@ -45,8 +45,8 @@ export default class ConfirmModal extends Component {
                     ? styles.buttonPress
                     : styles.button
                 }
-                onPressIn={() => this.setState({ confirmPressStatus: false })}
-                onPressOut={() => this.setState({ confirmPressStatus: true })}
+                onPressIn={() => this.setState({ confirmPressStatus: true })}
+                onPressOut={() => this.setState({ confirmPressStatus: false })}
                 onPress={() => {
                   this.setState({ modalVisible: !this.state.modalVisible })
                   this.props.onConfirmation();
