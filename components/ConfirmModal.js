@@ -6,12 +6,13 @@ import { saveInj } from '../redux/actions/history';
 import { nextInjSite, rotateNSites } from '../redux/actions/sites';
 
 export default class ConfirmModal extends Component {
-  state = {
-    modalVisible: false,
-  };
-
-  setModalVisible(visible) {
-    this.setState({ modalVisible: visible });
+  constructor(props) {
+    super(props)
+    this.state = {
+      modalVisible: false,
+      confirmPressStatus: true,
+      cancelPressStatus: true,
+    };
   }
 
   render() {
@@ -29,25 +30,62 @@ export default class ConfirmModal extends Component {
         >
           <View style={styles.container}>
             <View>
-              <Text>
-                Confirm injection site: {this.props.site.side} {this.props.site.part} {this.props.site.quadrant} {'\n'}
+              <Text style={{fontSize: 20, fontStyle: 'italic'}}>
+                Confirm injection site:{'\n'}
+              </Text>
+              <Text style={{ fontWeight: 'bold', textAlign: 'center', fontSize: 20 }}>
+                {this.props.site.side} {this.props.site.part} {this.props.site.quadrant} {'\n'}
               </Text>
               <TouchableHighlight
+                underlayColor={'orange'}
+                activeOpacity={1}
                 id={"finalConfirm"}
+                style={
+                  this.state.confirmPressStatus
+                    ? styles.buttonPress
+                    : styles.button
+                }
+                onPressIn={() => this.setState({ confirmPressStatus: true })}
+                onPressOut={() => this.setState({ confirmPressStatus: false })}
                 onPress={() => {
-                  this.setModalVisible(!this.state.modalVisible);
+                  this.setState({ modalVisible: !this.state.modalVisible })
                   this.props.onConfirmation();
                 }}
               >
-                <Text style={styles.text}>Confirm</Text>
+                <Text style={
+                  this.state.confirmPressStatus
+                    ? styles.welcomePress
+                    : styles.welcome
+                }
+                >
+                Confirm
+                </Text>
               </TouchableHighlight>
+              <Text>
+                {'\n'}
+              </Text>
               <TouchableHighlight
+                underlayColor={'#000066'}
+                activeOpacity={1}
                 id={"cancel"}
+                style={
+                  this.state.cancelPressStatus
+                    ? styles.button
+                    : styles.buttonPress
+                }
+                onPressIn={() => this.setState({ cancelPressStatus: true })}
+                onPressOut={() => this.setState({ cancelPressStatus: false })}
                 onPress={() => {
-                  this.setModalVisible(!this.state.modalVisible);
+                  this.setState({ modalVisible: !this.state.modalVisible })
                 }}
               >
-                <Text style={styles.text}>Cancel</Text>
+                <Text style={
+                  this.state.cancelPressStatus
+                    ? styles.welcome
+                    : styles.welcomePress
+               }>
+                  Cancel
+                </Text>
               </TouchableHighlight>
             </View>
           </View>
@@ -57,7 +95,7 @@ export default class ConfirmModal extends Component {
           id={"firstConfirm"}
           style={{marginTop: 40}}
           onPress={() => {
-            this.setModalVisible(true);
+            this.setState({ modalVisible: true })
           }}
         >
           <Text style={styles.text}>Confirm this site</Text>
@@ -80,5 +118,28 @@ const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
     fontSize: 20
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: "center",
+    margin: 10,
+    color: "#ffffff"
+ },
+  welcomePress: {
+    fontSize: 20,
+    textAlign: "center",
+    margin: 10,
+    color: "#ffffff"
+  },
+  button: {
+    borderColor: "#000066",
+    borderWidth: 1,
+    borderRadius: 10,
+  },
+  buttonPress: {
+    borderColor: "#000066",
+    backgroundColor: "#000066",
+    borderWidth: 1,
+    borderRadius: 10,
   }
 });
