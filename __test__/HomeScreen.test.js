@@ -130,13 +130,13 @@ describe("Homescreen", () => {
       hs.find(GestureRecognizer).simulate('swipeLeft')
       const currentSite = hs.find(CurrentSite);
       expect(mockRotateNSites.mock.calls.length).toBe(1)
-      expect(mockRotateNSites).toHaveBeenCalledWith(8)
+      expect(mockRotateNSites).toHaveBeenCalledWith(4)
     })
     it('should call the Next action on swipeRight', () => {
       hs.find(GestureRecognizer).simulate('swipeRight')
       const currentSite = hs.find(CurrentSite);
       expect(mockRotateNSites.mock.calls.length).toBe(1)
-      expect(mockRotateNSites).toHaveBeenCalledWith(8)
+      expect(mockRotateNSites).toHaveBeenCalledWith(4)
     })
   });
 });
