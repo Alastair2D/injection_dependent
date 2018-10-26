@@ -27,14 +27,6 @@ export class HomeScreen extends React.Component {
     backgroundColor: 'orange',
   };
 
-  onSwipeLeft = () => {
-    this.handleSkip();
-  }
-
-  onSwipeRight = () => {
-    this.handleSkip();
-  }
-
   nextSite() {
     this.props.nextInjSite();
   }
@@ -53,8 +45,11 @@ export class HomeScreen extends React.Component {
     let self = this
     let i
     let skippedPart = self.props.sites[0].part
+    let skippedSide = self.props.sites[0].side
     for(i = 0; i < self.props.sites.length; i++) {
-      if (self.props.sites[i].part != skippedPart ) {
+      if (
+        self.props.sites[i].part != skippedPart || self.props.sites[i].side != skippedSide
+      ) {
         self.props.rotateNSites(i)
         break
       }
@@ -105,7 +100,7 @@ export class HomeScreen extends React.Component {
             <Text>Long -- Short</Text>
             <Switch value={this.state.shortMed} onValueChange={(value) => (this.setState({ shortMed: value })) } />
           </View>
-         
+
         </View>
       </View>
     );

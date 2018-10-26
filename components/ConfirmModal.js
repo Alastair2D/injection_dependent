@@ -6,18 +6,13 @@ import { saveInj } from '../redux/actions/history';
 import { nextInjSite, rotateNSites } from '../redux/actions/sites';
 
 export default class ConfirmModal extends Component {
-  state = {
-    modalVisible: false,
-    confirmPressStatus: true,
-    cancelPressStatus: true,
+  constructor(props) {
+    super(props)
+    this.state = {
+      modalVisible: false,
+      confirmPressStatus: true,
+      cancelPressStatus: true,
     };
-
-  state() {
-    return this.state;
-  }
-
-  setModalVisible(visible) {
-    this.setState({ modalVisible: visible });
   }
 
   render() {
@@ -50,8 +45,10 @@ export default class ConfirmModal extends Component {
                     ? styles.buttonPress
                     : styles.button
                 }
+                onPressIn={() => this.setState({ confirmPressStatus: true })}
+                onPressOut={() => this.setState({ confirmPressStatus: false })}
                 onPress={() => {
-                  this.setModalVisible(!this.state.modalVisible);
+                  this.setState({ modalVisible: !this.state.modalVisible })
                   this.props.onConfirmation();
                 }}
               >
@@ -76,9 +73,10 @@ export default class ConfirmModal extends Component {
                     ? styles.button
                     : styles.buttonPress
                 }
-
+                onPressIn={() => this.setState({ cancelPressStatus: true })}
+                onPressOut={() => this.setState({ cancelPressStatus: false })}
                 onPress={() => {
-                  this.setModalVisible(!this.state.modalVisible);
+                  this.setState({ modalVisible: !this.state.modalVisible })
                 }}
               >
                 <Text style={
@@ -97,7 +95,7 @@ export default class ConfirmModal extends Component {
           id={"firstConfirm"}
           style={{marginTop: 40}}
           onPress={() => {
-            this.setModalVisible(true);
+            this.setState({ modalVisible: true })
           }}
         >
           <Text style={styles.text}>Confirm this site</Text>
