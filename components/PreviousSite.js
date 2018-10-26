@@ -4,9 +4,10 @@ import { StyleSheet, Text, View } from 'react-native';
 class PreviousSite extends Component {
   render() {
     return (
-      <View>
-        <Text id="site" style={styles.previous}>
-          Previous: { this.props.site.side } { this.props.site.part } { this.props.site.quadrant }, {this.props.time.calendar()}
+      <View style={{ marginBottom: 10 }}>
+        <Text>
+          <Text style={styles.previous}>Previous: </Text> <Text id="site" style={styles.site}>{ this.props.site.side } { this.props.site.part } { this.props.site.quadrant }{'\n'}</Text>
+          <Text style={styles.previous}>When:       </Text><Text id="time" style={styles.site}>{this.props.time.calendar()}</Text>
         </Text>
       </View>
     );
@@ -15,8 +16,15 @@ class PreviousSite extends Component {
 
 const styles = StyleSheet.create({
   previous: {
-    fontSize: 25,
-    textAlign: 'center',
+    fontStyle: 'italic',
+  },
+  site: {
+    fontWeight: 'bold',
+  },
+  timeText: {
+    fontStyle: 'italic',
+    marginLeft: 30,
+    fontWeight: 'bold',
   },
 });
 
