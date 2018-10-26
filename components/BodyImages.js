@@ -45,8 +45,8 @@ export default class BodyImages extends Component {
         36: require('../images/Buttock/rightButtock1.png'),
         37: require('../images/Buttock/rightButtock2.png'),
         38: require('../images/Buttock/rightButtock3.png'),
-        39: require('../images/Buttock/rightButtock4.png')
-      }
+        39: require('../images/Buttock/rightButtock4.png'),
+      },
     };
   }
 
@@ -67,6 +67,6 @@ const styles = StyleSheet.create({
     width: 220,
     height: 290,
     padding: 5,
-    alignSelf: 'center'
-  }
+    alignSelf: 'center',
+  },
 });

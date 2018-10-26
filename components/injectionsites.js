@@ -1,4 +1,4 @@
-const injectionsites =[
+const injectionsites = [
   { part: 'Thigh', side: 'Left', quadrant: 1, active: true, imgNum: 0 },
   { part: 'Thigh', side: 'Left', quadrant: 2, active: true, imgNum: 1 },
   { part: 'Thigh', side: 'Left', quadrant: 3, active: true, imgNum: 2 },
@@ -38,7 +38,7 @@ const injectionsites =[
   { part: 'Buttock', side: 'Right', quadrant: 1, active: true, imgNum: 36 },
   { part: 'Buttock', side: 'Right', quadrant: 2, active: true, imgNum: 37 },
   { part: 'Buttock', side: 'Right', quadrant: 3, active: true, imgNum: 38 },
-  { part: 'Buttock', side: 'Right', quadrant: 4, active: true, imgNum: 39 }
+  { part: 'Buttock', side: 'Right', quadrant: 4, active: true, imgNum: 39 },
 ];
 
 export default injectionsites;

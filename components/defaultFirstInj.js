@@ -1,5 +1,5 @@
-import injectionsites from './injectionsites';
 import moment from 'moment';
+import injectionsites from './injectionsites';
 
 export default class DefaultFirstInj {
   constructor() {
@@ -8,6 +8,6 @@ export default class DefaultFirstInj {
       time: moment(),
       dbsync: true,
       medType: 'Short',
-    }
+    };
   }
 }

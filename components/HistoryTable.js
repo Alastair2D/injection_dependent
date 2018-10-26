@@ -10,10 +10,10 @@ export default class HistoryTable extends Component {
         injection.time.format('MMMM Do YYYY, h:mm a'),
         `${injection.site.side} ${injection.site.part} ${injection.site.quadrant}`,
         injection.medType,
-        injection.dbsync.toString()
+        injection.dbsync.toString(),
       ];
-    })
-    return formattedData.reverse()
+    });
+    return formattedData.reverse();
   }
 
   render() {
@@ -21,7 +21,7 @@ export default class HistoryTable extends Component {
       <View style={styles.container}>
         <Table borderStyle={{ borderWidth: 2, borderColor: '#c8e1ff' }}>
           <Row
-            data={["Date", "Site", "MedType", "Sync status"]}
+            data={['Date', 'Site', 'MedType', 'Sync status']}
             style={styles.head}
             textStyle={styles.text}
           />
@@ -35,5 +35,5 @@ export default class HistoryTable extends Component {
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 16, paddingTop: 30, backgroundColor: '#fff' },
   head: { height: 40, backgroundColor: '#f1f8ff' },
-  text: { margin: 6 }
+  text: { margin: 6 },
 });

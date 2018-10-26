@@ -31,7 +31,7 @@ export default class ConfirmModal extends Component {
           <View style={styles.container}>
             <View>
               <Text style={{fontSize: 20 }}>
-                Confirm injection site:{'\n'}
+                Confirm injection site:{ '\n' }
               </Text>
               <Text style={{ textAlign: 'center', fontSize: 20 }}>
                 {this.props.site.side} {this.props.site.part} {this.props.site.quadrant} {'\n'}
@@ -39,7 +39,7 @@ export default class ConfirmModal extends Component {
               <TouchableHighlight
                 underlayColor={'#A3C5CA'}
                 activeOpacity={1}
-                id={"finalConfirm"}
+                id={'finalConfirm'}
                 style={
                   this.state.confirmPressStatus
                     ? styles.buttonPress
@@ -48,7 +48,7 @@ export default class ConfirmModal extends Component {
                 onPressIn={() => this.setState({ confirmPressStatus: true })}
                 onPressOut={() => this.setState({ confirmPressStatus: false })}
                 onPress={() => {
-                  this.setState({ modalVisible: !this.state.modalVisible })
+                  this.setState({ modalVisible: !this.state.modalVisible });
                   this.props.onConfirmation();
                 }}
               >
@@ -67,7 +67,7 @@ export default class ConfirmModal extends Component {
               <TouchableHighlight
                 underlayColor={'#000066'}
                 activeOpacity={1}
-                id={"cancel"}
+                id={'cancel'}
                 style={
                   this.state.cancelPressStatus
                     ? styles.button
@@ -76,7 +76,7 @@ export default class ConfirmModal extends Component {
                 onPressIn={() => this.setState({ cancelPressStatus: true })}
                 onPressOut={() => this.setState({ cancelPressStatus: false })}
                 onPress={() => {
-                  this.setState({ modalVisible: !this.state.modalVisible })
+                  this.setState({ modalVisible: !this.state.modalVisible });
                 }}
               >
                 <Text style={
@@ -92,10 +92,10 @@ export default class ConfirmModal extends Component {
         </Modal>
 
         <TouchableHighlight
-          id={"firstConfirm"}
-          style={{marginTop: 40}}
+          id={'firstConfirm'}
+          style={{ marginTop: 40 }}
           onPress={() => {
-            this.setState({ modalVisible: true })
+            this.setState({ modalVisible: true });
           }}
         >
           <Text style={styles.text}>Confirm this site</Text>
@@ -117,28 +117,28 @@ const styles = StyleSheet.create({
   },
   text: {
     textAlign: 'center',
-    fontSize: 20
+    fontSize: 20,
   },
   welcome: {
     fontSize: 20,
-    textAlign: "center",
+    textAlign: 'center',
     margin: 10,
-    color: "#ffffff"
+    color: '#ffffff',
  },
-  welcomePress: {
+    welcomePress: {
     fontSize: 20,
-    textAlign: "center",
+    textAlign: 'center',
     margin: 10,
-    color: "#ffffff"
+    color: '#ffffff',
   },
   button: {
-    borderColor: "#000066",
+    borderColor: '#000066',
     borderWidth: 1,
     borderRadius: 10,
   },
   buttonPress: {
-    borderColor: "#000066",
-    backgroundColor: "#000066",
+    borderColor: '#000066',
+    backgroundColor: '#000066',
     borderWidth: 1,
     borderRadius: 10,
   }
