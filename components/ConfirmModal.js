@@ -37,7 +37,7 @@ export default class ConfirmModal extends Component {
                 {this.props.site.side} {this.props.site.part} {this.props.site.quadrant} {'\n'}
               </Text>
               <TouchableHighlight
-                underlayColor={'orange'}
+                underlayColor={'#A3C5CA'}
                 activeOpacity={1}
                 id={"finalConfirm"}
                 style={
@@ -108,7 +108,7 @@ export default class ConfirmModal extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'orange',
+    backgroundColor: '#A3C5CA',
     alignItems: 'center',
     justifyContent: 'center',
   },
