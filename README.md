@@ -80,17 +80,28 @@ So I can avoid certain sites,
 I want to be able to configure this in settings.
 
 As a user,
+In case I accidentally press confirm or change my mind,
+I want to be able to cancel.
+
+As a user,
 So I can access the whole history after quitting the app,
-I want the history stored on a database.
+I want the history to be stored on a database.
 
 As a user,
 To ensure I retrieve only my history,
-I want to be able to input a username.
+I want to be able to input my username.
 
 As a user,
 So I remember the type of medication used,
 I want to be able to choose between long and short-acting insulin.
 ```
+
+### Next steps
+
+1. Authentication
+2. Styling and interaction development
+3. Instructions on first time app open
+4. Sync with your bluetooth enabled blood tester
 
 ## Mockup
 
