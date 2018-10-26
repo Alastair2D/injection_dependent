@@ -23,8 +23,7 @@ export class HomeScreen extends React.Component {
   }
 
   static navigationOptions = {
-    headerTitle: (<Image style={{ width: 300, height: 40,  }} source={require('../assets/images/bizz.png')}/>),
-    backgroundColor: 'orange',
+    title: 'Injection Dependent'
   };
 
   nextSite() {
@@ -110,7 +109,7 @@ export class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'orange',
+    backgroundColor: '#A3C5CA',
     alignItems: 'center',
     justifyContent: 'center'
   },
