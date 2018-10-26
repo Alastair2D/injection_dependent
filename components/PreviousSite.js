@@ -16,15 +16,11 @@ class PreviousSite extends Component {
 
 const styles = StyleSheet.create({
   previous: {
-    fontStyle: 'italic',
   },
   site: {
-    fontWeight: 'bold',
   },
   timeText: {
-    fontStyle: 'italic',
     marginLeft: 30,
-    fontWeight: 'bold',
   },
 });
 
