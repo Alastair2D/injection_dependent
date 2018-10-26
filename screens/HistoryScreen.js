@@ -64,6 +64,9 @@ export class HistoryScreen extends React.Component {
         })
       }
     })
+    .catch(error => {
+      console.log(error);
+    })
   }
 
   render() {
