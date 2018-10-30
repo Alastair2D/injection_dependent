@@ -14,16 +14,15 @@ This is our final project to finish the course at Makers. The intention of the p
 [Alastair Edmonds](https://github.com/Alastair2D)   
 [Harry Pugh](https://github.com/hjpugh)
 
-## Team Goals
+## Demo
 
-* Learn React Native
-* Learn React Native testing framework (Jest and Enzyme)
-* Create something useful
-* Improve quality of life
-* TDD everything
-* Write code easy to read and change
-* Working together: pair programming, ensure knowledge sharing, communication
-* Agile rituals: sprint planning, daily stand-up, retro
+![Injection Dependent demo](./images/InjectionDependentDemo.gif)
+
+## Motivation
+
+Those diagnosed with Type 1 diabetes typically have to inject insulin 4 times a day. These injections need to be made in different locations around the body to avoid lipohypertrophy. This is the build up of fatty lumps under the skin, which can interfere with insulin absorption, look unpleasant and be mildly painful.
+
+While there are apps out there to help monitor blood sugar levels, there is nothing to help those new to the condition keep track of where they are injecting.
 
 ## Technology
 
@@ -33,9 +32,16 @@ We used [Jest](https://jestjs.io/) and [Enzyme](https://github.com/airbnb/enzyme
 
 The repo with our backend is [here](https://github.com/andrewwood2/inj_dep_api) and deployed on [heroku](https://guarded-caverns-16437.herokuapp.com/).
 
-## Demo
+## Team Goals
 
-(To be added)
+* Create something useful
+* Learn React Native
+* Learn React Native testing framework (Jest and Enzyme)
+* Improve quality of life
+* TDD everything
+* Write code that's easy to read and change
+* Working together: pair programming, ensure knowledge sharing, communication
+* Agile rituals: sprint planning, daily stand-up, retro
 
 ## How to install and use
 
@@ -45,7 +51,7 @@ The repo with our backend is [here](https://github.com/andrewwood2/inj_dep_api) 
 2. Change into the directory `cd injection_dependent`
 3. Install the dependencies with `npm install`
 
-### Run the test
+### Run the tests
 
 1. `npm test` will run the tests and get you the test coverage
 2. `npm run lint` will run eslint
